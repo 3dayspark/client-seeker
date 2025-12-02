@@ -28,3 +28,4 @@ test.txt                  # 忽略根目录下的 test.txt 文件
 /*.txt
 /*.log
 /*.json
+!requirements.txt 
