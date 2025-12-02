@@ -1,0 +1,482 @@
+[
+  {
+    "node_text": "科学研究和技术服务业",
+    "depth": 0,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "研究和试验发展",
+    "depth": 1,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "自然科学研究和试验发展",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工程和技术研究和试验发展",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农业科学研究和试验发展",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医学研究和试验发展",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会人文科学研究",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专业技术服务业",
+    "depth": 1,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "气象服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地震服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋气象服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋环境服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他海洋服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "测绘地理信息服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "遥感测绘服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他测绘地理信息服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "质检技术服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "检验检疫服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "检测服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计量服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "标准化服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "认证认可服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他质检技术服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环境与生态监测检测服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环境保护监测",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生态资源监测",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "野生动物疫源疫病防控监测",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地质勘查",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "能源矿产地质勘查",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "固体矿产地质勘查",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水、二氧化碳等矿产地质勘查",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基础地质勘查",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地质勘查技术服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工程技术与设计服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工程管理服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工程监理服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工程勘察活动",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工程设计活动",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "规划设计管理",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "土地规划服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工业与专业设计及其他专业技术服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工业设计服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专业设计服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "兽医服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明专业技术服务业",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "科技推广和应用服务业",
+    "depth": 1,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "技术推广服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农林牧渔技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "新材料技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "节能技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "新能源技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环保技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "三维（3D)打印技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他技术推广服务",
+    "depth": 3,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "知识产权服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "科技中介服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "创业空间服务",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他科技推广服务业",
+    "depth": 2,
+    "top_level_parent": "科学研究和技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

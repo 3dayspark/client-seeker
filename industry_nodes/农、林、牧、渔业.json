@@ -1,0 +1,794 @@
+[
+  {
+    "node_text": "农、林、牧、渔业",
+    "depth": 0,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农业",
+    "depth": 1,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "谷物种植",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "稻谷种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "小麦种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玉米种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他谷物种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "豆类、油料和薯类种植",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "豆类种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "油料种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "薯类种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉、麻、糖、烟草种植",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉花种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "麻类种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "糖料种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烟草种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蔬菜、食用菌及园艺作物种植",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蔬菜种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食用菌种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "花卉种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他园艺作物种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水果种植",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "仁果类和核果类水果种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "葡萄种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "柑橘类种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "香蕉等亚热带水果种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他水果种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "坚果、含油果、香料和饮料作物种植",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "坚果种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "含油果种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "香料作物种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "茶叶种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他饮料作物种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中药材种植",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中草药种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他中药材种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "草种植及割草",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "草种植",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "天然草原割草",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他农业",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林业",
+    "depth": 1,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林木育种和育苗",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林木育种",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林木育苗",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "造林和更新",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "森林经营、管护和改培",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "森林经营和管护",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "森林改培",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木材和竹材采运",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木材采运",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "竹材采运",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林产品采集",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木竹材林产品采集",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非木竹材林产品采集",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "畜牧业",
+    "depth": 1,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "牲畜饲养",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "牛的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "马的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "猪的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "羊的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "骆驼饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他牲畜饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家禽饲养",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鸡的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鸭的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鹅的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他家禽饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "狩猎和捕捉动物",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他畜牧业",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "兔的饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蜜蜂饲养",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明畜牧业",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "渔业",
+    "depth": 1,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水产养殖",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海水养殖",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "内陆养殖",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水产捕捞",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海水捕捞",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "内陆捕捞",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农、林、牧、渔专业及辅助性活动",
+    "depth": 1,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农业专业及辅助性活动",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "种子种苗培育活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农业机械活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "灌溉活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农产品初加工活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农作物病虫害防治活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他农业专业及辅助性活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林业专业及辅助性活动",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林业有害生物防治活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "森林防火活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林产品初级加工活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他林业专业及辅助性活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "畜牧专业及辅助性活动",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "畜牧良种繁殖活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "畜禽粪污处理活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他畜牧专业及辅助性活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "渔业专业及辅助性活动",
+    "depth": 2,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鱼苗及鱼种场活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他渔业专业及辅助性活动",
+    "depth": 3,
+    "top_level_parent": "农、林、牧、渔业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

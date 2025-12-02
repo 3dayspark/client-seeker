@@ -1,0 +1,314 @@
+[
+  {
+    "node_text": "卫生和社会工作",
+    "depth": 0,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "卫生",
+    "depth": 1,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医院",
+    "depth": 2,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "综合医院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中医医院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中西医结合医院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "民族医院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专科医院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "疗养院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基层医疗卫生服务",
+    "depth": 2,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社区卫生服务中心（站）",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "街道卫生院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "乡镇卫生院",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "村卫生室",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "门诊部（所）",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专业公共卫生服务",
+    "depth": 2,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "疾病预防控制中心",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专科疾病防治院（所、站）",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "妇幼保健院（所、站）",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "急救中心（站）服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "采供血机构服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计划生育技术服务活动",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他卫生活动",
+    "depth": 2,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "健康体检服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "临床检验服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明卫生服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会工作",
+    "depth": 1,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "提供住宿社会工作",
+    "depth": 2,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "干部休养所",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "护理机构服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "精神康复服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "老年人、残疾人养护服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "临终关怀服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "孤残儿童收养和庇护服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他提供住宿社会救助",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "不提供住宿社会工作",
+    "depth": 2,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会看护与帮助服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "康复辅具适配服务",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他不提供住宿社会工作",
+    "depth": 3,
+    "top_level_parent": "卫生和社会工作",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

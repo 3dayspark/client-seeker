@@ -1,0 +1,186 @@
+[
+  {
+    "node_text": "住宿和餐饮业",
+    "depth": 0,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "住宿业",
+    "depth": 1,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "旅游饭店",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "一般旅馆",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "经济型连锁酒店",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他一般旅馆",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "民宿服务",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "露营地服务",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他住宿业",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "餐饮业",
+    "depth": 1,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "正餐服务",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "快餐服务",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "饮料及冷饮服务",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "茶馆服务",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "咖啡馆服务",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "酒吧服务",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他饮料及冷饮服务",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "餐饮配送及外卖送餐服务",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "餐饮配送服务",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "外卖送餐服务",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他餐饮业",
+    "depth": 2,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "小吃服务",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明餐饮业",
+    "depth": 3,
+    "top_level_parent": "住宿和餐饮业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

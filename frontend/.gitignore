@@ -1,0 +1,21 @@
+# API Keys and sensitive information
+api_keys.json
+
+# Python dependencies and caches
+venv/
+__pycache__/
+*.pyc
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/package-lock.json
+frontend/dist/
+
+# Database and cache files
+chroma_db/
+playwright_user_data/
+qcc_server_cache/
+storage_index/
+
+# Log files
+*.log

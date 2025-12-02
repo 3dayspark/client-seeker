@@ -1,0 +1,498 @@
+[
+  {
+    "node_text": "金融业",
+    "depth": 0,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货币金融服务",
+    "depth": 1,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中央银行服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货币银行服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "商业银行服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "政策性银行服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信用合作社服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农村资金互助社服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他货币银行服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非货币银行服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "融资租赁服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "财务公司服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "典当",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车金融公司服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "小额贷款公司服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "消费金融公司服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "网络借贷服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他非货币银行服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "银行理财服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "银行监管服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "资本市场服务",
+    "depth": 1,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "证券市场服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "证券市场管理服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "证券经纪交易服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公开募集证券投资基金",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非公开募集证券投资基金",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "创业投资基金",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "天使投资",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他非公开募集证券投资基金",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "期货市场服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "期货市场管理服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他期货市场服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "证券期货监管服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "资本投资服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他资本市场服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保险业",
+    "depth": 1,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人身保险",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人寿保险",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "年金保险",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "健康保险",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "意外伤害保险",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "财产保险",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "再保险",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "商业养老金",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保险中介服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保险经纪服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保险代理服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保险公估服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保险资产管理",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保险监管服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他保险活动",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他金融业",
+    "depth": 1,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金融信托与管理服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信托公司",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他金融信托与管理服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "控股公司服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非金融机构支付服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金融信息服务",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金融资产管理公司",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明金融业",
+    "depth": 2,
+    "top_level_parent": "金融业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货币经纪公司服务",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未包括金融业",
+    "depth": 3,
+    "top_level_parent": "金融业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

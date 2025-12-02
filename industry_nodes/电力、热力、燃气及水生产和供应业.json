@@ -1,0 +1,194 @@
+[
+  {
+    "node_text": "电力、热力、燃气及水生产和供应业",
+    "depth": 0,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电力、热力生产和供应业",
+    "depth": 1,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电力生产",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "火力发电",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "热电联产",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水力发电",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "核力发电",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "风力发电",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "太阳能发电",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物质能发电",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电力生产",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电力供应",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "热力生产和供应",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "燃气生产和供应业",
+    "depth": 1,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "燃气生产和供应业",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "天然气生产和供应业",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "液化石油气生产和供应业",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤气生产和供应业",
+    "depth": 3,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物质燃气生产和供应业",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水的生产和供应业",
+    "depth": 1,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "自来水生产和供应",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "污水处理及其再生利用",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海水淡化处理",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他水的处理、利用与分配",
+    "depth": 2,
+    "top_level_parent": "电力、热力、燃气及水生产和供应业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

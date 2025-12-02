@@ -1,0 +1,58 @@
+[
+  {
+    "node_text": "房地产业",
+    "depth": 0,
+    "top_level_parent": "房地产业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "房地产业",
+    "depth": 1,
+    "top_level_parent": "房地产业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "房地产开发经营",
+    "depth": 2,
+    "top_level_parent": "房地产业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "物业管理",
+    "depth": 2,
+    "top_level_parent": "房地产业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "房地产中介服务",
+    "depth": 2,
+    "top_level_parent": "房地产业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "房地产租赁经营",
+    "depth": 2,
+    "top_level_parent": "房地产业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他房地产业",
+    "depth": 2,
+    "top_level_parent": "房地产业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

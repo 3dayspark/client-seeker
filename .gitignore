@@ -1,0 +1,30 @@
+# Sensitive information
+api_keys.json
+*.pem # 忽略所有 .pem 文件，通常是私钥或证书
+
+# Python specific files and directories
+__pycache__/
+*.pyc
+venv/
+
+# Frontend specific files and directories
+frontend/node_modules/
+frontend/dist/
+# frontend/package-lock.json
+
+# Database files
+chroma_db/
+my_filters_database.db
+
+# Cache and temporary directories/files
+*.log                     # 忽略所有 .log 文件
+local_page_data_cache/
+playwright_user_data/
+qcc_server_cache/
+storage_index/
+test.txt                  # 忽略根目录下的 test.txt 文件
+
+# Exclude root level temporary files
+/*.txt
+/*.log
+/*.json
