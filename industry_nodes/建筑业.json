@@ -1,0 +1,474 @@
+[
+  {
+    "node_text": "建筑业",
+    "depth": 0,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "房屋建筑业",
+    "depth": 1,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "住宅房屋建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育场馆建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他房屋建筑业",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "土木工程建筑业",
+    "depth": 1,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路、道路、隧道和桥梁工程建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公路工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "市政道路工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "城市轨道交通工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他道路、隧道和桥梁工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水利和水运工程建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水源及供水设施工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "河湖治理及防洪设施工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "港口及航运设施工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋工程建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋油气资源开发利用工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋能源开发利用工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海底隧道工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海底设施铺设工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他海洋工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工矿工程建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "架线和管道工程建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "架线及设备工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "管道工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地下综合管廊工程建筑",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "节能环保工程施工",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "节能工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环保工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生态保护工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电力工程施工",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "火力发电工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水力发电工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "核电工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "风能发电工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "太阳能发电工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电力工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他土木工程建筑",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "园林绿化工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育场地设施工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "游乐设施工程施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他土木工程建筑施工",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑安装业",
+    "depth": 1,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电气安装",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "管道和设备安装",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他建筑安装业",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育场地设施安装",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他建筑安装",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑装饰、装修和其他建筑业",
+    "depth": 1,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑装饰和装修业",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公共建筑装饰和装修",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "住宅装饰和装修",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑幕墙装饰和装修",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑物拆除和场地准备活动",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑物拆除活动",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "场地准备活动",
+    "depth": 3,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "提供施工设备服务",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明建筑业",
+    "depth": 2,
+    "top_level_parent": "建筑业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

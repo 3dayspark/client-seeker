@@ -1,0 +1,26 @@
+[
+  {
+    "node_text": "国际组织",
+    "depth": 0,
+    "top_level_parent": "国际组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "国际组织",
+    "depth": 1,
+    "top_level_parent": "国际组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "国际组织",
+    "depth": 2,
+    "top_level_parent": "国际组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

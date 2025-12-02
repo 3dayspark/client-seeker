@@ -1,0 +1,730 @@
+[
+  {
+    "node_text": "交通运输、仓储和邮政业",
+    "depth": 0,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路运输业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路旅客运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "高速铁路旅客运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "城际铁路旅客运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "普通铁路旅客运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路货物运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路运输辅助活动",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "客运火车站",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货运火车站（场）",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路运输维护活动",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他铁路运输辅助活动",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "道路运输业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "城市公共交通运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公共电汽车客运",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "城市轨道交通",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "出租车客运",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公共自行车服务",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他城市公共交通运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公路旅客运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "长途客运",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "旅游客运",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他公路客运",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "道路货物运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "普通货物道路运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "冷藏车道路运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "集装箱道路运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "大型货物道路运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "危险货物道路运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "邮件包裹道路运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "城市配送",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "搬家运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他道路货物运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "道路运输辅助活动",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "客运汽车站",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货运枢纽（站）",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公路管理与养护",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他道路运输辅助活动",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水上运输业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水上旅客运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海上旅客运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "内河旅客运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "客运轮渡运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水上货物运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "远洋货物运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "沿海货物运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "内河货物运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水上运输辅助活动",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "客运港口",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货运港口",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他水上运输辅助活动",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空运输业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空客货运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空旅客运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空货物运输",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通用航空服务",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通用航空生产服务",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "观光游览航空服务",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育航空运动服务",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他通用航空服务",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空运输辅助活动",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机场",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "空中交通管理",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他航空运输辅助活动",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "管道运输业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海底管道运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "陆地管道运输",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "多式联运和运输代理业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "多式联运",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "运输代理业",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货物运输代理",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "旅客票务代理",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他运输代理业",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "装卸搬运和仓储业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "装卸搬运",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通用仓储",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "低温仓储",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "危险品仓储",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "油气仓储",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "危险化学品仓储",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他危险品仓储",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "谷物、棉花等农产品仓储",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "谷物仓储",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉花仓储",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他农产品仓储",
+    "depth": 3,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中药材仓储",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他仓储业",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "邮政业",
+    "depth": 1,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "邮政基本服务",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "快递服务",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他寄递服务",
+    "depth": 2,
+    "top_level_parent": "交通运输、仓储和邮政业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

@@ -1,0 +1,6130 @@
+[
+  {
+    "node_text": "制造业",
+    "depth": 0,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农副食品加工业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "谷物磨制",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "稻谷加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "小麦加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玉米加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "杂粮加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他谷物磨制",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "饲料加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物饲料加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他饲料加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "植物油加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食用植物油加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非食用植物油加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "制糖业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "屠宰及肉类加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "牲畜屠宰",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "禽类屠宰",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "肉制品及副产品加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水产品加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水产品冷冻加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鱼糜制品及水产品干腌制加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鱼油提取及制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他水产品加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蔬菜、菌类、水果和坚果加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蔬菜加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食用菌加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水果和坚果加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他农副食品加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "淀粉及淀粉制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "豆制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蛋品加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明农副食品加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食品制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "焙烤食品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "糕点、面包制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "饼干及其他焙烤食品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "糖果、巧克力及蜜饯制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "糖果、巧克力制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蜜饯制作",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "方便食品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "米、面制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "速冻食品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "方便面制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他方便食品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "乳制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "液体乳制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "乳粉制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他乳制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "罐头食品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "肉、禽类罐头制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水产品罐头制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "蔬菜、水果罐头制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他罐头食品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "调味品、发酵制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "味精制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "酱油、食醋及类似制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他调味品、发酵制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他食品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "营养食品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保健食品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "冷冻饮品及食用冰制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "盐加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食品及饲料添加剂制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明食品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "酒、饮料和精制茶制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "酒的制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "酒精制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "白酒制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "啤酒制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "黄酒制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "葡萄酒制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他酒制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "饮料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "碳酸饮料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "瓶（罐）装饮用水制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "果菜汁及果菜汁饮料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "含乳饮料和植物蛋白饮料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "固体饮料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "茶饮料及其他饮料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "精制茶加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烟草制品业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烟叶复烤",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "卷烟制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他烟草制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉纺织及印染精加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉纺纱加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉织造加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉印染精加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛纺织及染整精加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛条和毛纱线加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛织造加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛染整精加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "麻纺织及染整精加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "麻纤维纺前加工和纺纱",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "麻织造加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "麻染整精加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "丝绢纺织及印染精加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "缫丝加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "绢纺和丝织加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "丝印染精加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化纤织造及印染精加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化纤织造加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化纤织物染整精加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "针织或钩针编织物及其制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "针织或钩针编织物织造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "针织或钩针编织物印染精加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "针织或钩针编织品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用纺织制成品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "床上用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛巾类制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "窗帘、布艺类产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他家用纺织制成品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "产业用纺织制成品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非织造布制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "绳、索、缆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织带和帘子布制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "篷、帆布制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他产业用纺织制成品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织服装、服饰业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机织服装制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "运动机织服装制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他机织服装制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "针织或钩针编织服装制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "运动休闲针织服装制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他针织或钩针编织服装制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "服饰制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮革、毛皮、羽毛及其制品和制鞋业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮革鞣制加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮革制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮革服装制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮箱、包（袋）制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮手套及皮装饰制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他皮革制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛皮鞣制及制品加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛皮鞣制加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "毛皮服装加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他毛皮制品加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "羽毛(绒)加工及制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "羽毛（绒）加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "羽毛（绒）制品加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "制鞋业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织面料鞋制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮鞋制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料鞋制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "橡胶鞋制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他制鞋业",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木材加工和木、竹、藤、棕、草制品业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木材加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锯材加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木片加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "单板加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他木材加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人造板制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "胶合板制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纤维板制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "刨花板制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他人造板制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木质制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑用木料及木材组件加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木门窗制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木楼梯制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木地板制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木制容器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "软木制品及其他木制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "竹、藤、棕、草等制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "竹制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "藤制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棕制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "草及其他制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家具制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木质家具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "竹、藤家具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属家具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料家具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他家具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "造纸和纸制品业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纸浆制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木竹浆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非木竹浆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "造纸",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机制纸及纸板制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "手工纸制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "加工纸制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纸制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纸和纸板容器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他纸制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "印刷和记录媒介复制业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "印刷",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "书、报刊印刷",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "本册印制",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "包装装潢及其他印刷",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "装订及印刷相关服务",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "记录媒介复制",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文教、工美、体育和娱乐用品制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文教办公用品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "笔的制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "教学用模型及教具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "墨水、墨汁制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他文教办公用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "乐器制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中乐器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "西乐器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子乐器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他乐器及零件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工艺美术及礼仪用品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "雕塑工艺品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属工艺品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "漆器工艺品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "花画工艺品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "天然植物纤维编织工艺品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "抽纱刺绣工艺品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地毯、挂毯制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "珠宝首饰及有关物品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他工艺美术及礼仪用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育用品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "球类制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专项运动器材及配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "健身器材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "运动防护用具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他体育用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玩具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电玩具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑胶玩具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属玩具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "弹射玩具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "娃娃玩具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "儿童乘骑玩耍的童车类产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他玩具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "游艺器材及娱乐用品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "露天游乐场所游乐设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "游艺用品及室内游艺器材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他娱乐用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石油、煤炭及其他燃料加工业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "精炼石油产品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "原油加工及石油制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他原油制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤炭加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "炼焦",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤制合成气生产",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤制液体燃料生产",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他煤炭加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "核燃料加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物质燃料加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物质液体燃料生产",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物质致密成型燃料加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化学原料和化学制品制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基础化学原料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "无机酸制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "无机碱制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "无机盐制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有机化学原料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他基础化学原料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "肥料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "氮肥制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "磷肥制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "钾肥制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "复混肥料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有机肥料及微生物肥料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他肥料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农药制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化学农药制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物化学农药及微生物农药制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "涂料、油墨、颜料及类似产品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "涂料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "油墨及类似产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工业颜料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工艺美术颜料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "染料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "密封用填料及类似品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "合成材料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "初级形态塑料及合成树脂制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "合成橡胶制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "合成纤维单（聚合）体制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他合成材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专用化学产品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化学试剂和助剂制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专项化学用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林产化学产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化用信息化学品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医学生产用信息化学品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环境污染处理专用药剂材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "动物胶制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他专用化学产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "炸药、火工及焰火产品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "炸药及火工产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "焰火、鞭炮产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用化学产品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "肥皂及洗涤剂制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化妆品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "口腔清洁用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "香料、香精制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他日用化学产品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医药制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化学药品原料药制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化学药品制剂制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中药饮片加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中成药生产",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "兽用药品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物药品制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物药品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基因工程药物和疫苗制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "卫生材料及医药用品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "药用辅料及包装材料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化学纤维制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纤维素纤维原料及纤维制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化纤浆粕制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人造纤维（纤维素纤维）制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "合成纤维制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锦纶纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "涤纶纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "腈纶纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "维纶纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "丙纶纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "氨纶纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他合成纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物基材料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物基化学纤维制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生物基、淀粉基新材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "橡胶和塑料制品业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "橡胶制品业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "轮胎制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "橡胶板、管、带制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "橡胶零件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "再生橡胶制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用及医用橡胶制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "运动场地用塑胶制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他橡胶制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料制品业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料薄膜制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料板、管、型材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料丝、绳及编织品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "泡沫塑料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料人造革、合成革制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料包装箱及容器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用塑料制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人造草坪制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料零件及其他塑料制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非金属矿物制品业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水泥、石灰和石膏制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水泥制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石灰和石膏制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石膏、水泥制品及类似制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水泥制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "砼结构构件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石棉水泥制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "轻质建筑材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他水泥类似制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "砖瓦、石材等建筑材料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "粘土砖瓦及建筑砌块制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑用石加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "防水建筑材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "隔热和隔音材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他建筑材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "平板玻璃制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "特种玻璃制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他玻璃制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "技术玻璃制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "光学玻璃制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用玻璃制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃包装容器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃保温容器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "制镜及类似品加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他玻璃制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃纤维和玻璃纤维增强塑料制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃纤维及制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃纤维增强塑料制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "陶瓷制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑陶瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "卫生陶瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "特种陶瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用陶瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "陈设艺术陶瓷制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "园艺陶瓷制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他陶瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "耐火材料制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石棉制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "云母制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "耐火陶瓷制品及其他耐火材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石墨及其他非金属矿物制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石墨及碳素制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他非金属矿物制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "黑色金属冶炼和压延加工业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "炼铁",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "炼钢",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "钢压延加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁合金冶炼",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有色金属冶炼和压延加工业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "常用有色金属冶炼",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铜冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铅锌冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "镍钴冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锡冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锑冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铝冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "镁冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "硅冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他常用有色金属冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "贵金属冶炼",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "银冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他贵金属冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "稀有稀土金属冶炼",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "钨钼冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "稀土金属冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他稀有金属冶炼",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有色金属合金制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有色金属压延加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铜压延加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铝压延加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "贵金属压延加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "稀有稀土金属压延加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他有色金属压延加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属制品业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "结构性金属制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属结构制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属门窗制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属工具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "切削工具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "手工具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农用及园林用金属工具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "刀剪及类似日用金属工具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他金属工具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "集装箱及金属包装容器制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "集装箱制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属压力容器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属包装容器及材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属丝绳及其制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑、安全用金属制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑、家具用金属配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑装饰及水暖管道零件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "安全、消防用金属制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他建筑、安全用金属制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属表面处理及热处理加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "搪瓷制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生产专用搪瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑装饰搪瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "搪瓷卫生洁具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "搪瓷日用品及其他搪瓷制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属制日用品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属制厨房用器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属制餐具和器皿制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属制卫生器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他金属制日用品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铸造及其他金属制品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "黑色金属铸造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有色金属铸造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锻件及粉末冶金制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "交通及公共管理用金属标牌制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明金属制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通用设备制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锅炉及原动设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锅炉及辅助设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "内燃机及配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽轮机及辅机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水轮机及辅机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "风能原动设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他原动设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属加工机械制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属切削机床制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属成形机床制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铸造机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属切割及焊接设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机床功能部件及附件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他金属加工机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "物料搬运设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "轻小型起重设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生产专用起重机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生产专用车辆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "连续搬运设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电梯、自动扶梯及升降机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "客运索道制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机械式停车设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他物料搬运设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "泵、阀门、压缩机及类似机械制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "泵及真空设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "气体压缩机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "阀门和旋塞制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "液压动力机械及元件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "液力动力机械及元件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "气压动力机械及元件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "轴承、齿轮和传动部件制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "滚动轴承制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "滑动轴承制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "齿轮及齿轮减、变速箱制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他传动部件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烘炉、风机、包装等设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烘炉、熔炉及电炉制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "风机、风扇制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "气体、液体分离及纯净设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "制冷、空调设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "风动和电动工具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "喷枪及类似器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "包装专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化、办公用机械制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电影机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "幻灯及投影设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "照相机及器材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "复印和胶印设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算器及货币专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他文化、办公用机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通用零部件制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属密封件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "紧固件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "弹簧制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机械零部件加工",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他通用零部件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他通用设备制造业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工业机器人制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "特殊作业机器人制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "增材制造装备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明通用设备制造业",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专用设备制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "采矿、冶金、建筑专用设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "矿山机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石油钻采专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "深海石油钻探设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑工程用机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑材料生产专用机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "冶金专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "隧道施工专用机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化工、木材、非金属加工专用设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "炼油、化工生产专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "橡胶加工专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "塑料加工专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木竹材加工机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "模具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他非金属加工专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食品、饮料、烟草及饲料生产专用设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食品、酒、饮料及茶生产专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农副食品加工专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烟草生产专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "饲料生产专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "印刷、制药、日化及日用品生产专用设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "制浆和造纸专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "印刷专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用化工专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "制药专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "照明器具生产专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "玻璃、陶瓷和搪瓷制品生产专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他日用品生产专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织、服装和皮革加工专用设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "皮革、毛皮及其制品加工专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "缝制机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "洗涤机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子和电工机械专用设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电工机械专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "半导体器件专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子元器件与机电组件设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电子专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农、林、牧、渔专用机械制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "拖拉机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机械化农业及园艺机具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "营林及木竹采伐机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "畜牧机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "渔业机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农林牧渔机械配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉花加工机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他农、林、牧、渔业机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医疗仪器设备及器械制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医疗诊断、监护及治疗设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "口腔科用设备及器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医疗实验室及医用消毒设备和器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医疗、外科及兽医用器械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机械治疗及病房护理设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "康复辅具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "眼镜制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他医疗设备及器械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环保、邮政、社会公共服务及其他专用设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环境保护专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地质勘查专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "邮政专用机械及器材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "商业、饮食、服务专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会公共安全设备及器材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "交通安全、管制及类似专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水资源专用机械制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他专用设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车整车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽柴油车整车制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "新能源车整车制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车用发动机制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "改装汽车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "低速汽车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车车身、挂车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车零部件及配件制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路、船舶、航空航天和其他运输设备制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路运输设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "高铁车组制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路机车车辆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "窄轨机车车辆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "高铁设备、配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路机车车辆配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路专用设备及器材、配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他铁路运输设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "城市轨道交通设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "船舶及相关装置制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属船舶制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非金属船舶制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "娱乐船和运动船制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "船用配套设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "船舶改装",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "船舶拆除",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋工程装备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航标器材及其他相关装置制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空、航天器及设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "飞机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航天器及运载火箭制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航天相关设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空相关设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他航空航天器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "摩托车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "摩托车整车制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "摩托车零部件及配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "自行车和残疾人座车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "自行车制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "残疾人座车制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "助动车制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非公路休闲车及零配件制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "潜水救捞及其他未列明运输设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "潜水装备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "水下救捞装备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明运输设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电气机械和器材制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电机制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "发电机及发电机组制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电动机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "微特电机及组件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "输配电及控制设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "变压器、整流器和电感器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电容器及其配套设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "配电开关控制设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电力电子元器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "光伏设备及元器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他输配电及控制设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电线、电缆、光缆及电工器材制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电线、电缆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "光纤制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "光缆制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "绝缘制品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电工器材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电池制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锂离子电池制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "镍氢电池制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铅蓄电池制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锌锰电池制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电池制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用电力器具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用制冷电器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用空气调节器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用通风电器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用厨房电器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用清洁卫生电器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用美容、保健护理电器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用电力器具专用配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他家用电力器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非电力家用器具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "燃气及类似能源家用器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "太阳能器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他非电力家用器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "照明器具制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电光源制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "照明灯具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "舞台及场地用灯制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "智能照明器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "灯用电器附件及其他照明器具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电气机械及器材制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电气信号设备装置制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明电气机械及器材制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机、通信和其他电子设备制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机整机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机零部件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机外围设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工业控制计算机及系统制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信息安全设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他计算机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通信设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通信系统设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通信终端设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播电视设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播电视节目制作及发射设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播电视接收设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播电视专用配件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专业音响设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "应用电视设备及其他广播电视设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "雷达及配套设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非专业视听设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电视机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "音响设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "影视录放设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "智能消费设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "可穿戴智能设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "智能车载设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "智能无人飞行器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "服务消费机器人制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他智能消费设备制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子器件制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子真空器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "半导体分立器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "集成电路制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "显示器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "半导体照明器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "光电子器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电子器件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子元件及电子专用材料制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电阻电容电感元件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子电路制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "敏感元件及传感器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电声器件及零件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子专用材料制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电子元件制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电子设备制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "仪器仪表制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通用仪器仪表制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工业自动控制系统装置制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电工仪器仪表制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "绘图、计算及测量仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "实验分析仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "试验机制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "供应用仪器仪表制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他通用仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专用仪器仪表制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环境监测专用仪器仪表制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "运输设备及生产用计数仪表制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "导航、测绘、气象及海洋专用仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农林牧渔专用仪器仪表制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地质勘探和地震专用仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "教学专用仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "核子及核辐射测量仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子测量仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他专用仪器制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "钟表与计时仪器制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "光学仪器制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "衡器制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他仪器仪表制造业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他制造业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用杂品制造",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鬃毛加工、制刷及清扫工具制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他日用杂品制造",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "核辐射加工",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明制造业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "废弃资源综合利用业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属废料和碎屑加工处理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非金属废料和碎屑加工处理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属制品、机械和设备修理业",
+    "depth": 1,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属制品修理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通用设备修理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专用设备修理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路、船舶、航空航天等运输设备修理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁路运输设备修理",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "船舶修理",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "航空航天器修理",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他运输设备修理",
+    "depth": 3,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电气设备修理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "仪器仪表修理",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他机械和设备修理业",
+    "depth": 2,
+    "top_level_parent": "制造业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

@@ -1,0 +1,378 @@
+[
+  {
+    "node_text": "信息传输、软件和信息技术服务业",
+    "depth": 0,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电信、广播电视和卫星传输服务",
+    "depth": 1,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电信",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "固定电信服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "移动电信服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电信服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播电视传输服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有线广播电视传输服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "无线广播电视传输服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "卫星传输服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播电视卫星传输服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他卫星传输服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网和相关服务",
+    "depth": 1,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网接入及相关服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网信息服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网搜索服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网游戏服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网其他信息服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网平台",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网生产服务平台",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网生活服务平台",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网科技创新平台",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网公共服务平台",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他互联网平台",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网安全服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网数据服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他互联网服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "软件和信息技术服务业",
+    "depth": 1,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "软件开发",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基础软件开发",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "支撑软件开发",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "应用软件开发",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他软件开发",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "集成电路设计",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信息系统集成和物联网技术服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信息系统集成服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "物联网技术服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "运行维护服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信息处理和存储支持服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信息技术咨询服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "数字内容服务",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "地理遥感信息服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "动漫、游戏数字内容服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他数字内容服务",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他信息技术服务业",
+    "depth": 2,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "呼叫中心",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明信息技术服务业",
+    "depth": 3,
+    "top_level_parent": "信息传输、软件和信息技术服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

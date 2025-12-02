@@ -1,0 +1,394 @@
+[
+  {
+    "node_text": "公共管理、社会保障和社会组织",
+    "depth": 0,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中国共产党机关",
+    "depth": 1,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中国共产党机关",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "国家机构",
+    "depth": 1,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "国家权力机构",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "国家行政机构",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "综合事务管理机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "对外事务管理机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公共安全管理机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会事务管理机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "经济事务管理机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "行政监督检查机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "监察委员会、人民法院和人民检察院",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "监察委员会",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人民法院",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人民检察院",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他国家机构",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "消防管理机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明国家机构",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人民政协、民主党派",
+    "depth": 1,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人民政协",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "民主党派",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会保障",
+    "depth": 1,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基本保险",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基本养老保险",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基本医疗保险",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "失业保险",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工伤保险",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生育保险",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他基本保险",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "补充保险",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他社会保障",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "群众团体、社会团体和其他成员组织",
+    "depth": 1,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "群众团体",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工会",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "妇联",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "共青团",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他群众团体",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会团体",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "专业性团体",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "行业性团体",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他社会团体",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基金会",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宗教组织",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宗教团体服务",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宗教活动场所服务",
+    "depth": 3,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "基层群众自治组织",
+    "depth": 1,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社区居民自治组织",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "村民自治组织",
+    "depth": 2,
+    "top_level_parent": "公共管理、社会保障和社会组织",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

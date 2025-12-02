@@ -1,0 +1,434 @@
+[
+  {
+    "node_text": "采矿业",
+    "depth": 0,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤炭开采和洗选业",
+    "depth": 1,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烟煤和无烟煤开采洗选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "褐煤开采洗选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他煤炭采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石油和天然气开采业",
+    "depth": 1,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石油开采",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "陆地石油开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋石油开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "天然气开采",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "陆地天然气开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "海洋天然气及可燃冰开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "黑色金属矿采选业",
+    "depth": 1,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铁矿采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锰矿、铬矿采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他黑色金属矿采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "有色金属矿采选业",
+    "depth": 1,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "常用有色金属矿采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铜矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铅锌矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "镍钴矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锡矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "锑矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "铝矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "镁矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他常用有色金属矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "贵金属矿采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "银矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他贵金属矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "稀有稀土金属矿采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "钨钼矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "稀土金属矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "放射性金属矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他稀有金属矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非金属矿采选业",
+    "depth": 1,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "土砂石开采",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石灰石、石膏开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑装饰用石开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "耐火土石开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "粘土及其他土砂石开采",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化学矿开采",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "采盐",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石棉及其他非金属矿采选",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石棉、云母矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石墨、滑石采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宝石、玉石采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明非金属矿采选",
+    "depth": 3,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "开采专业及辅助性活动",
+    "depth": 1,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤炭开采和洗选专业及辅助性活动",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石油和天然气开采专业及辅助性活动",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他开采专业及辅助性活动",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他采矿业",
+    "depth": 1,
+    "top_level_parent": "采矿业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他采矿业",
+    "depth": 2,
+    "top_level_parent": "采矿业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

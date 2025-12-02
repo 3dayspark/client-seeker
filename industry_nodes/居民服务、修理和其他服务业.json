@@ -1,0 +1,346 @@
+[
+  {
+    "node_text": "居民服务、修理和其他服务业",
+    "depth": 0,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "居民服务业",
+    "depth": 1,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家庭服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "托儿所服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "洗染服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "理发及美容服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "洗浴和保健养生服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "洗浴服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "足浴服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "养生保健服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "摄影扩印服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "婚姻服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "殡葬服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他居民服务业",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机动车、电子产品和日用产品修理业",
+    "depth": 1,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车、摩托车等修理与维护",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车修理与维护",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "大型车辆装备修理与维护",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "摩托车修理与维护",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "助动车等修理与维护",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机和办公设备维修",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机和辅助设备修理",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通讯设备修理",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他办公设备维修",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用电器修理",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用电子产品修理",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用电器修理",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他日用产品修理业",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "自行车修理",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鞋和皮革修理",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家具和相关物品修理",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明日用产品修理业",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他服务业",
+    "depth": 1,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "清洁服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑物清洁服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他清洁服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物服务",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物饲养",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物医院服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物美容服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物寄托收养服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他宠物服务",
+    "depth": 3,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明服务业",
+    "depth": 2,
+    "top_level_parent": "居民服务、修理和其他服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

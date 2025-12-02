@@ -1,0 +1,498 @@
+[
+  {
+    "node_text": "文化、体育和娱乐业",
+    "depth": 0,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "新闻和出版业",
+    "depth": 1,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "新闻业",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "出版业",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "图书出版",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "报纸出版",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "期刊出版",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "音像制品出版",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子出版物出版",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "数字出版",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他出版业",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播、电视、电影和录音制作业",
+    "depth": 1,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电视",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "影视节目制作",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播电视集成播控",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电影和广播电视节目发行",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电影放映",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "录音制作",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化艺术业",
+    "depth": 1,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文艺创作与表演",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "艺术表演场馆",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "图书馆与档案馆",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "图书馆",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "档案馆",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文物及非物质文化遗产保护",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "博物馆",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烈士陵园、纪念馆",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "群众文体活动",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他文化艺术业",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育",
+    "depth": 1,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育组织",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育竞赛组织",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育保障组织",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他体育组织",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育场地设施管理",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育场馆管理",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他体育场地设施管理",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "健身休闲活动",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他体育",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育中介代理服务",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育健康服务",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明体育",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "娱乐业",
+    "depth": 1,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "室内娱乐活动",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "歌舞厅娱乐活动",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电子游艺厅娱乐活动",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "网吧活动",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他室内娱乐活动",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "游乐园",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "休闲观光活动",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "彩票活动",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育彩票服务",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "福利彩票服务",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他彩票服务",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化体育娱乐活动与经纪代理服务",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化活动服务",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育表演服务",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化娱乐经纪人",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育经纪人",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他文化艺术经纪代理",
+    "depth": 3,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他娱乐业",
+    "depth": 2,
+    "top_level_parent": "文化、体育和娱乐业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

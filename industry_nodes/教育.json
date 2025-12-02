@@ -1,0 +1,186 @@
+[
+  {
+    "node_text": "教育",
+    "depth": 0,
+    "top_level_parent": "教育",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "教育",
+    "depth": 1,
+    "top_level_parent": "教育",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "学前教育",
+    "depth": 2,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "初等教育",
+    "depth": 2,
+    "top_level_parent": "教育",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "普通小学教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "成人小学教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中等教育",
+    "depth": 2,
+    "top_level_parent": "教育",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "普通初中教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "职业初中教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "成人初中教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "普通高中教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "成人高中教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中等职业学校教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "高等教育",
+    "depth": 2,
+    "top_level_parent": "教育",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "普通高等教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "成人高等教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "特殊教育",
+    "depth": 2,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "技能培训、教育辅助及其他教育",
+    "depth": 2,
+    "top_level_parent": "教育",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "职业技能培训",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体校及体育培训",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化艺术培训",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "教育辅助服务",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明教育",
+    "depth": 3,
+    "top_level_parent": "教育",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

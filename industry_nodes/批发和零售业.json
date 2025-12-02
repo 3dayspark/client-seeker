@@ -1,0 +1,1194 @@
+[
+  {
+    "node_text": "批发和零售业",
+    "depth": 0,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "批发业",
+    "depth": 1,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农、林、牧、渔产品批发",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "谷物、豆及薯类批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "种子批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "畜牧渔业饲料批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "棉、麻批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "林业产品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "牲畜批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "渔业产品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他农牧产品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食品、饮料及烟草制品批发",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "米、面制品及食用油批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "糕点、糖果及糖批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "果品、蔬菜批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "肉、禽、蛋、奶及水产品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "盐及调味品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "营养和保健品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "酒、饮料及茶叶批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烟草制品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他食品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织、服装及家庭用品批发",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织品、针织品及原料批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "服装批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鞋帽批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化妆品及卫生用品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "厨具卫具及日用杂品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "灯具、装饰物品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用视听设备批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用家电批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他家庭用品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化、体育用品及器材批发",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文具用品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育用品及器材批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "图书批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "报刊批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "音像制品、电子和数字出版物批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "首饰、工艺品及收藏品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "乐器批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他文化用品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医药及医疗器材批发",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "西药批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中药批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "动物用药品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医疗用品及器材批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "矿产品、建材及化工产品批发",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "煤炭及制品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "石油及制品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非金属矿及制品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "金属及金属矿批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建材批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化肥批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农药批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农用薄膜批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他化工产品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机械设备、五金产品及电子产品批发",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农业机械批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车及零配件批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "摩托车及零配件批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "五金产品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "电气设备批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机、软件及辅助设备批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通讯设备批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广播影视设备批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他机械设备及电子产品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "贸易经纪与代理",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "贸易代理",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "一般物品拍卖",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "艺术品、收藏品拍卖",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "艺术品代理",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他贸易经纪与代理",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他批发业",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "再生物资回收与批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物食品用品批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网批发",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明批发业",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "零售业",
+    "depth": 1,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "综合零售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "百货零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "超级市场零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "便利店零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他综合零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "食品、饮料及烟草制品专门零售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "粮油零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "糕点、面包零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "果品、蔬菜零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "肉、禽、蛋、奶及水产品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "营养和保健品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "酒、饮料及茶叶零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "烟草制品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他食品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织、服装及日用品专门零售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "纺织品及针织品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "服装零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "鞋帽零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "化妆品及卫生用品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "厨具卫具及日用杂品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "钟表、眼镜零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "箱包零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "自行车等代步设备零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他日用品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化、体育用品及器材专门零售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文具用品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育用品及器材零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "图书、报刊零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "音像制品、电子和数字出版物零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "珠宝首饰零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "工艺美术品及收藏品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "乐器零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "照相器材零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他文化用品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医药及医疗器材专门零售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "西药零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "中药零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "动物用药品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医疗用品及器材零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "保健辅助治疗器材零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车、摩托车、零配件和燃料及其他动力销售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车新车零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车旧车零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车零配件零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "摩托车及零配件零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机动车燃油零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机动车燃气零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机动车充电销售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用电器及电子产品专门零售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家用视听设备零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用家电零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机、软件及辅助设备零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "通信设备零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他电子产品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "五金、家具及室内装饰材料专门零售",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "五金零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "灯具零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "家具零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "涂料零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "卫生洁具零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "木质装饰材料零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "陶瓷、石材装饰材料零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他室内装饰材料零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "货摊、无店铺及其他零售业",
+    "depth": 2,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "流动货摊零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "邮购及电视、电话零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "自动售货机零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "旧货零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "生活用燃料零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "宠物食品用品零售",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明零售业",
+    "depth": 3,
+    "top_level_parent": "批发和零售业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]

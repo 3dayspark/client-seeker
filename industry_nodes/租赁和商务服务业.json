@@ -1,0 +1,578 @@
+[
+  {
+    "node_text": "租赁和商务服务业",
+    "depth": 0,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "租赁业",
+    "depth": 1,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "机械设备经营租赁",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "汽车租赁",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农业机械经营租赁",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "建筑工程机械与设备经营租赁",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "计算机及通讯设备经营租赁",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "医疗设备经营租赁",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他机械与设备经营租赁",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文体设备和用品出租",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "休闲娱乐用品设备出租",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育用品设备出租",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化用品设备出租",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "图书出租",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "音像制品出租",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他文体设备和用品出租",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "日用品出租",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "商务服务业",
+    "depth": 1,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "组织管理服务",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "企业总部管理",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "投资与资产管理",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "资源与产权交易服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "单位后勤管理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "农村集体经济组织管理",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他组织管理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "综合管理服务",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "园区管理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "商业综合体管理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "市场管理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "供应链管理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他综合管理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "法律服务",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "律师及相关法律服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公证服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他法律服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "咨询与调查",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "会计、审计及税务服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "市场调查",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "社会经济咨询",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "健康咨询",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "环保咨询",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育咨询",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他专业咨询与调查",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "广告业",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "互联网广告服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他广告服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "人力资源服务",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "公共就业服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "职业中介服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "劳务派遣服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "创业指导服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他人力资源服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "安全保护服务",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "安全服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "安全系统监控服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他安全保护服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "会议、展览及相关服务",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "科技会展服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "旅游会展服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "体育会展服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "文化会展服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他会议、展览及相关服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他商务服务业",
+    "depth": 2,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": true,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "旅行社及相关服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "包装服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "办公服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "翻译服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "信用服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "非融资担保服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "商务代理代办服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "票务代理服务",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  },
+  {
+    "node_text": "其他未列明商务服务业",
+    "depth": 3,
+    "top_level_parent": "租赁和商务服务业",
+    "is_expandable": false,
+    "has_checkbox": true,
+    "is_checked": false
+  }
+]
