@@ -17,12 +17,12 @@ chroma_db/
 my_filters_database.db
 
 # Cache and temporary directories/files
-*.log                     # 忽略所有 .log 文件
+*.log
 local_page_data_cache/
 playwright_user_data/
 qcc_server_cache/
 storage_index/
-test.txt                  # 忽略根目录下的 test.txt 文件
+test.txt
 
 # Exclude root level temporary files
 /*.txt
