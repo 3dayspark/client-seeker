@@ -8,6 +8,10 @@ const USER_NAME = "自分";
 const AI_AVATAR = `https://ui-avatars.com/api/?name=AI&background=0D8ABC&color=fff&size=128`;
 const USER_AVATAR = `https://ui-avatars.com/api/?name=User&background=333&color=fff&size=128`;
 
+// APIエンドポイントの設定（開発環境用）
+// 本番環境へデプロイする際は、適切なドメインに変更してください
+const API_ENDPOINT = "http://192.168.1.41:8000/chat";
+
 /**
  * ロケットアイコンコンポーネント
  * ステータス: 進行中を表示
@@ -416,7 +420,7 @@ function App() {
     let incomingTextResponse = "";
     
     try {
-      const response = await fetch('http://192.168.1.41:8000/chat', {
+      const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
