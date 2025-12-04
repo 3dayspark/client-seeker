@@ -1,6 +1,6 @@
 # Sensitive information
 api_keys.json
-*.pem # 忽略所有 .pem 文件，通常是私钥或证书
+*.pem
 
 # Python specific files and directories
 __pycache__/
