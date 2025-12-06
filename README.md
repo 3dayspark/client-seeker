@@ -1,4 +1,4 @@
-# 自然言語指示に基づく企業DB検索条件の自動設定エージェント (Agentic RAG / Playwright)
+# 対話型・企業データベース検索AI (Agentic RAG / Playwright)
 
 ## 概要
 **「広東省にある、資本金1億以上の自動車ガラスメーカーを探したい」**
@@ -26,7 +26,7 @@ ReactフロントエンドとFastAPIバックエンドをSSE (Server-Sent Events
 *   操作完了後の「実行レポート」
 をチャット形式で可視化し、ユーザーに安心感を与えるUXを実現しました。
 
-## 🛠 技術スタック
+## 技術スタック
 
 | カテゴリ | 技術・ツール | 用途 |
 | --- | --- | --- |
@@ -39,25 +39,7 @@ ReactフロントエンドとFastAPIバックエンドをSSE (Server-Sent Events
 
 ## アーキテクチャ図
 
-```mermaid
-graph TD
-    User[ユーザー] -->|自然言語入力| React[React Frontend]
-    React -->|SSE Request| API[FastAPI Backend]
-    
-    subgraph "Agent Core (ReAct Loop)"
-        API -->|Prompt| LLM[Master LLM]
-        LLM -->|Action Decision| Router{Action Router}
-    end
-    
-    Router -->|検索実行| Browser[Playwright Controller]
-    Router -->|知識補完| RAG[LlamaIndex / Knowledge Base]
-    Router -->|質問/回答| Response[Response Generator]
-    
-    Browser -->|DOM構造/スクリーンショット| LLM
-    Browser -->|操作結果| React
-    
-    RAG -->|業界知識| LLM
-```
+<img src="./assets/architecture.png" alt="Architecture Diagram" width="500">
 
 ## プロジェクト構造 (主要ファイル抜粋)
 
@@ -88,7 +70,7 @@ LLMが生成するJSON形式が崩れていた場合、正規表現を用いて�
 推論コストと精度のバランスを取るため、メインの推論には「Gemini Flash」、サブタスクやバックアップには「Qwen (ModelScope)」を切り替えて使用できる設計にしています。
 
 
-## 🚀 セットアップと実行
+## セットアップと実行
 
 本プロジェクトは、Backend（Python/FastAPI）とFrontend（React）を別々のターミナルで起動して連携させます。
 
