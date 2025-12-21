@@ -1,5 +1,5 @@
 # 公式Pythonランタイムをベースイメージとして使用
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 # ワーキングディレクトリの設定
 WORKDIR /app
