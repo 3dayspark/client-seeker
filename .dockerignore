@@ -1,0 +1,15 @@
+.git
+*.md
+.env
+__pycache__
+*.log
+*.pkl
+*.pickle
+*.zip
+*.tar.gz
+test*
+temp/
+local_page_data_cache/
+chroma_db/
+playwright_user_data/
+qcc_server_cache/
