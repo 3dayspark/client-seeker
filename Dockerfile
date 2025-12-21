@@ -1,25 +1,32 @@
-# 公式Pythonランタイムをベースイメージとして使用
-FROM python:3.11-slim
-
-# ワーキングディレクトリの設定
+# ステージ1: 依存関係のインストール（キャッシュ可能）
+FROM python:3.11-slim as deps
 WORKDIR /app
 
-# requirements.txtをコピーして依存関係をインストール
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Node.js と Playwright の依存関係をインストール
+# システム依存関係と Playwright のインストール
 RUN apt-get update && \
     apt-get install -y curl gnupg && \
     curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g playwright && \
-    playwright install-deps chromium
+    playwright install-deps chromium && \
+    rm -rf /var/lib/apt/lists/*
 
-# 残りのプロジェクトコードをコピー
+# Python 依存ライブラリのコピーとインストール
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip cache purge
+
+# ステージ2: 最終イメージのビルド
+FROM python:3.11-slim
+WORKDIR /app
+
+# ステージ1からインストール済みの依存関係をコピー
+COPY --from=deps /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+
+# プロジェクトの残りのコードをコピー
 COPY . .
 
-# FastAPIのデフォルトポートを公開
+# ポートを公開
 EXPOSE 8000
 
 # 起動コマンド
