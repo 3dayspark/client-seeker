@@ -64,7 +64,7 @@ MODEL_SCOPE_MODEL_ID = playwright_test.MODEL_SCOPE_MODEL_ID
 
 GEMINI_API_KEYS = playwright_test.GEMINI_API_KEYS
 GEMINI_API_URL = playwright_test.GEMINI_API_URL
-USE_GEMINI_AS_LLM = True
+USE_GEMINI_AS_LLM = False
 
 # --- グローバル変数 ---
 modelscope_client = None
