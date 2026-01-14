@@ -10,8 +10,11 @@ const USER_AVATAR = `https://ui-avatars.com/api/?name=User&background=333&color=
 
 // APIエンドポイントの設定（開発環境用）
 // 本番環境へデプロイする際は、適切なドメインに変更してください
-const API_ENDPOINT = "http://192.168.1.41:8000/chat";
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:8000'
+  : `http://${window.location.hostname}:8000`;
 
+const API_ENDPOINT = `${API_BASE_URL}/chat`;
 /**
  * ロケットアイコンコンポーネント
  * ステータス: 進行中を表示

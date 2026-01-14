@@ -1858,7 +1858,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
     Logger.log_to_frontend("🚀 クラウドブラウザを起動中...")
     
     p = await async_playwright().start() 
-    browser: Browser = await p.chromium.launch(headless=True)
+    browser: Browser = await p.chromium.launch(headless=False)
     page: Page = await browser.new_page()
 
     target_url = "https://www.qcc.com/web/search/advance?hasState=true"
