@@ -1,4 +1,17 @@
-# 対話型・企業データベース検索AI (Agentic RAG / Playwright)
+# 対話型・企業データベース検索AI / Interactive Corporate DB Search AI
+### (Agentic RAG / Playwright)
+
+<div align="center">
+
+[**🇯🇵 日本語 (Japanese)**](#jp) | [**🇺🇸 English**](#en)
+
+</div>
+
+---
+
+<div id="jp"></div>
+
+# 🇯🇵 対話型・企業データベース検索AI (Agentic RAG / Playwright)
 
 ## 概要
 **「広東省にある、資本金1億以上の自動車ガラスメーカーを探したい」**
@@ -125,7 +138,6 @@ npm run dev
 *   バックエンドをLAN公開モード（`0.0.0.0`）で起動した場合、スマホからは `http://[PCのIPアドレス]:5173` でアクセスしてください（※Viteの設定で `--host` が必要な場合があります）。
 
 
-
 ## 今後の展望 (Future Improvements)
 
 現在のプロトタイプは単一サーバー（Monolithic）構成で動作していますが、本番環境での大規模並列利用を見据え、以下のアーキテクチャ刷新と機能拡張を計画しています。
@@ -144,3 +156,151 @@ npm run dev
 
 ### 4. Human-in-the-loop (HITL) の強化
 エージェントが生成した検索条件に対し、実行前にユーザーが修正・承認できるインタラクションフローを追加します。ユーザーの修正操作をフィードバックデータとして蓄積し、次回の推論精度を向上させる仕組みを構築します。
+
+---
+
+<div id="en"></div>
+
+# 🇺🇸 Interactive Corporate DB Search AI (Agentic RAG / Playwright)
+
+## Overview
+**"I want to find auto glass manufacturers in Guangdong province with a capital of over 100 million."**
+
+This is an autonomous AI agent designed to parse such abstract natural language requests from sales representatives. It automatically maps, inputs, and executes search conditions on complex corporate database websites (SaaS/Search Portals) through their "Advanced Search" forms.
+
+Unlike traditional rule-based RPA, this system adopts an **Agentic RAG (Retrieval-Augmented Generation)** architecture powered by LLMs. This allows it to flexibly handle unknown search criteria and ambiguous expressions.
+
+## Key Features
+
+### 1. Autonomous Decision Making (ReAct Agent Pattern)
+The backend (`backend_app.py`) doesn't just feed user input directly into a search. Instead, the agent executes a "Thought-Act-Observe" loop.
+*   **Thought**: Analyzes the user's request to determine if there is sufficient information.
+*   **Act**: If knowledge is lacking, it searches the "Internal Knowledge Base (RAG)". If information is sufficient, it executes the "Browser Automation Tool". If there are ambiguities, it "Asks the User for clarification".
+
+### 2. Advanced DOM Parsing & Cost Reduction (LLM x Playwright)
+Instead of passing the entire web page HTML to the LLM, the system uses Playwright to parse the DOM structure. It **extracts only meaningful elements (checkboxes, dropdowns) into a lightweight JSON format** for the LLM to process (`playwright_test.py`).
+*   **Effect**: Reduces **token consumption by approximately 90%** compared to image recognition or full-text parsing, while improving inference accuracy.
+*   **Complex UI Handling**: Supports complex structures like "Industry Classification Trees" by automatically expanding them using a DFS (Depth-First Search) algorithm to identify the optimal categories.
+
+### 3. Real-time Streaming UI
+The React frontend and FastAPI backend are connected via SSE (Server-Sent Events).
+*   AI's "Thinking Process"
+*   Real-time "Screenshots" of browser operations
+*   Post-execution "Result Reports"
+These are visualized in a chat format, providing a transparent and reassuring UX for the user.
+
+## Tech Stack
+
+| Category | Technology/Tool | Usage |
+| --- | --- | --- |
+| **Frontend** | React, CSS (Custom) | Chat UI, Log Visualization, SSE Receiver |
+| **Backend** | Python, FastAPI | Async API Server, Agent Control |
+| **LLM / AI** | OpenAI SDK (ModelScope/Qwen), Gemini API | Inference, Code Generation, JSON Parsing |
+| **RAG** | LlamaIndex, HuggingFace Embeddings | Searching Industry Knowledge (Supply Chains, etc.) |
+| **Automation** | Playwright (Async API) | Headless Browser Control, DOM Parsing |
+| **Infra/Others** | SSE (Server-Sent Events) | Streaming Communication |
+
+## Architecture Diagram
+
+<img src="./assets/architecture.png" alt="Architecture Diagram" width="500">
+
+## Project Structure (Key Files)
+
+```text
+.
+├── backend_app.py       # FastAPI Entry Point (ReAct Agent Implementation)
+├── playwright_test.py   # Browser Logic (LLM x Playwright Integration)
+├── rag_utils.py         # Knowledge Base Search Logic using LlamaIndex
+├── requirements.txt     # Backend Dependencies
+├── knowledge_docs/      # Document Folder for RAG (Industry Knowledge)
+└── frontend/            # Frontend Project
+    └── src/
+        ├── App.jsx      # Main Chat UI & Log Component
+        ├── App.css      # Chat Styling
+        ├── main.jsx     # React Entry Point
+        └── assets/      # Static Resources
+```
+
+## Technical Highlights
+
+### Logic for Mutual Exclusion & Reasoning
+When selecting from the industry classification tree, if both a "Parent Category" and a "Child Category" are selected simultaneously, I implemented a **mutual exclusion logic** in Python to prioritize the more specific "Child Category" and deselect the parent. This reduces search noise.
+
+### Error Handling & Self-Correction
+To handle cases where the LLM generates broken JSON, I implemented a self-correction logic (`extract_json_from_text`) using regular expressions to repair the output, significantly improving system stability.
+
+### Hybrid LLM Configuration
+To balance inference cost and accuracy, the system is designed to switch between models: "Gemini Flash" for main inference tasks and "Qwen (ModelScope)" for sub-tasks or as a backup.
+
+## Setup & Execution
+
+This project requires running the Backend (Python/FastAPI) and Frontend (React) in separate terminals.
+
+### 1. Environment Setup (First Time Only)
+
+Run the following commands in the project root directory to create/activate a virtual environment and install dependencies.
+
+**Windows (PowerShell)**
+```powershell
+# Create Virtual Environment
+python -m venv venv
+
+# Activate Virtual Environment
+.\venv\Scripts\Activate.ps1
+
+# Install Backend Dependencies
+pip install -r requirements.txt
+
+# Download Playwright Browser Binaries (Required)
+playwright install
+```
+
+### 2. Start Backend
+
+With the virtual environment activated, run the following command to start the API server.
+
+```powershell
+# Ensure venv is activated: .\venv\Scripts\Activate.ps1
+
+# For Local Development (Access only from your machine)
+uvicorn backend_app:app --reload --port 8000
+
+# [Option] To allow access from other devices (e.g., Mobile) on the same LAN
+# uvicorn backend_app:app --reload --host 0.0.0.0 --port 8000
+```
+*   Upon success, `Uvicorn running on ...` will appear in the console.
+
+### 3. Start Frontend
+
+Open a new terminal, navigate to the frontend directory, and start the application.
+
+```powershell
+cd frontend
+
+# Install Dependencies (First Time Only)
+npm install
+
+# Start Development Server
+npm run dev
+```
+*   Open `http://localhost:5173` (or the URL shown) in your browser to access the chat interface.
+*   If you started the backend in LAN mode (`0.0.0.0`), access via mobile using `http://[YOUR_PC_IP]:5173`. Note: You may need to configure Vite with `--host`.
+
+## Future Improvements
+
+The current prototype operates as a monolithic application. To support large-scale parallel usage in a production environment, I plan to refresh the architecture and expand features as follows:
+
+### 1. Microservices Architecture (Scalability)
+Since the API server and browser processes currently share resources, there is a risk of OOM (Out Of Memory) errors during concurrent access. I plan to migrate to a **Producer-Consumer Pattern**:
+*   **API Gateway / Reasoning Agent**: A lightweight container responsible only for LLM inference and task generation.
+*   **Task Queue (Redis)**: Buffers execution jobs and controls flow rate.
+*   **Browser Workers**: Independent containers running Playwright, capable of **Horizontal Scaling** based on load.
+
+### 2. Remote Browser Isolation
+To minimize resource load on the application server, local browser instances will be replaced with a connection to an external browser cluster (e.g., Browserless, Selenium Grid) via **CDP (Chrome DevTools Protocol)**. This improves security (sandboxing) and stability.
+
+### 3. Session Persistence & Observability
+Currently, chat sessions and execution logs are managed in-memory. I will persist these to **Redis** or **PostgreSQL**. This ensures context is maintained after server restarts and allows for analysis of failed search keywords to improve RAG accuracy.
+
+### 4. Human-in-the-loop (HITL)
+I will add an interaction flow where users can review, modify, and approve the search conditions generated by the agent before execution. User modifications will be collected as feedback data to fine-tune future inference accuracy.
