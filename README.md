@@ -1,5 +1,4 @@
-# 対話型・企業データベース検索AI / Interactive Corporate DB Search AI
-### (Agentic RAG / Playwright)
+
 
 <div align="center">
 
@@ -11,7 +10,7 @@
 
 <div id="jp"></div>
 
-# 🇯🇵 対話型・企業データベース検索AI (Agentic RAG / Playwright)
+# 対話型・企業データベース検索AI (Agentic RAG / Playwright)
 
 ## 概要
 **「広東省にある、資本金1億以上の自動車ガラスメーカーを探したい」**
@@ -161,7 +160,7 @@ npm run dev
 
 <div id="en"></div>
 
-# 🇺🇸 Interactive Corporate DB Search AI (Agentic RAG / Playwright)
+# Interactive Corporate DB Search AI (Agentic RAG / Playwright)
 
 ## Overview
 **"I want to find auto glass manufacturers in Guangdong province with a capital of over 100 million."**
