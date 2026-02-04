@@ -1,6 +1,8 @@
 # Sensitive information
 api_keys.json
 *.pem
+.env
+.cursor
 
 # Python specific files and directories
 __pycache__/
@@ -15,6 +17,7 @@ frontend/dist/
 # Database files
 chroma_db/
 my_filters_database.db
+pgdata/
 
 # Cache and temporary directories/files
 *.log
@@ -23,6 +26,8 @@ playwright_user_data/
 qcc_server_cache/
 storage_index/
 test.txt
+db_schema_cache.txt
+test_pdf.py
 
 # Exclude root level temporary files
 /*.txt

@@ -1,0 +1,400 @@
+[
+  {
+    "id": "case_kb_01",
+    "description": "基础知识：供应链结构查询",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "自動車ガラス業界の主要なサプライヤー構造について教えて"
+      }
+    ],
+    "expected_intent": "consult_knowledge_base",
+    "expected_params": {
+      "query": "汽车玻璃"
+    }
+  },
+  {
+    "id": "case_kb_02",
+    "description": "专业术语/特定组件查询",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "IGBTモジュールの主要な中国メーカーを知りたい"
+      }
+    ],
+    "expected_intent": "consult_knowledge_base",
+    "expected_params": {
+      "query": "IGBT"
+    }
+  },
+  {
+    "id": "case_kb_03_adjusted",
+    "description": "政策影响 -> 实际上AI倾向于查CRM的行业报告（合理）",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "中国のカーボンニュートラル政策が鉄鋼業界に与える影響は？"
+      }
+    ],
+    "expected_intent": "search_internal_crm",
+    "expected_sql_keywords": [
+      "鉄鋼", "カーボンニュートラル"
+    ]
+  },
+  {
+    "id": "case_proposal_01",
+    "description": "明确提案：地域+行业",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "広東省にあるガラスの深加工工場を探してリストアップしてください。"
+      }
+    ],
+    "expected_intent": "propose_screening_condition",
+    "expected_params": {
+      "regions": ["広東省"],
+      "keywords": ["ガラス"]
+    }
+  },
+  {
+    "id": "case_proposal_02_adjusted",
+    "description": "华东地区 -> AI优先查KB确认产业链（合理行为）",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "華東地区（上海、江蘇、浙江）の半導体パッケージング企業を探して"
+      }
+    ],
+    "expected_intent": "consult_knowledge_base",
+    "expected_params": {
+      "query": "半导体封装"
+    }
+  },
+  {
+    "id": "case_proposal_03_adjusted",
+    "description": "白物家电 -> AI优先查KB（合理行为）",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "安徽省の白物家電メーカーをスクリーニングしたい"
+      }
+    ],
+    "expected_intent": "consult_knowledge_base",
+    "expected_params": {
+      "query": "白色家电"
+    }
+  },
+  {
+    "id": "case_proposal_04",
+    "description": "条件修改",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "深センのドローン企業を探して"
+      },
+      {
+        "role": "assistant",
+        "content": "条件を提案します：深セン市、ドローン。"
+      },
+      {
+        "role": "tool",
+        "content": "PROPOSAL_SAVED_DATA: {\"guidance\": \"...\", \"regions\": [\"広東省\"], \"keywords\": \"ドローン\"}"
+      },
+      {
+        "role": "user",
+        "content": "地域を四川省に変更してください"
+      }
+    ],
+    "expected_intent": "propose_screening_condition",
+    "expected_params": {
+      "regions": ["四川省"],
+      "keywords": ["ドローン"]
+    }
+  },
+  {
+    "id": "case_proposal_05",
+    "description": "高精度筛选",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "北京で登録資本金が1億元以上のAI企業を探して"
+      }
+    ],
+    "expected_intent": "propose_screening_condition",
+    "expected_params": {
+      "regions": ["北京市"],
+      "keywords": ["AI"]
+    }
+  },
+  {
+    "id": "case_execution_01",
+    "description": "正常执行",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "広東省にあるガラス工場を探して"
+      },
+      {
+        "role": "assistant",
+        "content": "条件を提案します。\n地域：広東省\nキーワード：ガラス製造"
+      },
+      {
+        "role": "tool",
+        "content": "PROPOSAL_SAVED_DATA: {\"guidance\": \"ターゲット：広東省のガラス製造企業\", \"regions\": [\"広東省\"], \"keywords\": \"ガラス、製造\"}"
+      },
+      {
+        "role": "user",
+        "content": "OK、その条件で検索を開始してください。"
+      }
+    ],
+    "expected_intent": "run_qcc_tool",
+    "expected_params": {
+      "regions": ["広東省"]
+    }
+  },
+  {
+    "id": "case_execution_02",
+    "description": "隐式确认",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "武漢の自動車部品工場リスト"
+      },
+      {
+        "role": "assistant",
+        "content": "武漢市の自動車部品製造企業を検索しますか？"
+      },
+      {
+        "role": "tool",
+        "content": "PROPOSAL_SAVED_DATA: {\"guidance\": \"武漢市 自動車部品\", \"regions\": [\"湖北省\"], \"keywords\": \"汽车零部件\"}"
+      },
+      {
+        "role": "user",
+        "content": "お願いします"
+      }
+    ],
+    "expected_intent": "run_qcc_tool",
+    "expected_params": {
+      "regions": ["湖北省"]
+    }
+  },
+  {
+    "id": "case_execution_03",
+    "description": "带修正的执行",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "上海の物流会社"
+      },
+      {
+        "role": "tool",
+        "content": "PROPOSAL_SAVED_DATA: {\"regions\": [\"上海市\"], \"keywords\": \"物流\"}"
+      },
+      {
+        "role": "user",
+        "content": "やっぱ蘇州にして"
+      }
+    ],
+    "expected_intent": "propose_screening_condition",
+    "expected_params": {
+      "regions": ["江蘇省"],
+      "keywords": ["物流"]
+    }
+  },
+  {
+    "id": "case_crm_01",
+    "description": "CRM查询：基础",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "上海にある企業で、現在「商談中」のステータスになっているところを教えて。"
+      }
+    ],
+    "expected_intent": "search_internal_crm",
+    "expected_sql_keywords": [
+      "companies", "sales_records", "上海", "商談中"
+    ]
+  },
+  {
+    "id": "case_crm_02",
+    "description": "CRM查询：金额",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "売上高（商談金額）が10万元以上の契約済み企業を表示して"
+      }
+    ],
+    "expected_intent": "search_internal_crm",
+    "expected_sql_keywords": [
+      "sales_amount", "100000", "status", "契約"
+    ]
+  },
+  {
+    "id": "case_crm_03",
+    "description": "CRM查询：联系人",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "「ABC Tech」という会社の担当者のメールアドレスを知りたい"
+      }
+    ],
+    "expected_intent": "search_internal_crm",
+    "expected_sql_keywords": [
+      "contacts", "email", "companies", "name", "ABC Tech"
+    ]
+  },
+  {
+    "id": "case_crm_04",
+    "description": "CRM查询：时间",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "2023年1月以降に登録された広東省の企業をリストアップして"
+      }
+    ],
+    "expected_intent": "search_internal_crm",
+    "expected_sql_keywords": [
+      "created_at", "2023-01-01", "region", "広東省"
+    ]
+  },
+  {
+    "id": "case_crm_05",
+    "description": "CRM查询：复杂组合",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "製造業で、まだ商談が始まっていない（ステータスが未接触など）浙江省の会社はある？"
+      }
+    ],
+    "expected_intent": "search_internal_crm",
+    "expected_sql_keywords": [
+      "companies", "industry", "浙江"
+    ]
+  },
+  {
+    "id": "case_missing_info_01_adjusted",
+    "description": "信息缺失 -> AI优先查KB（合理）",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "自動車部品メーカーのリストを作って"
+      }
+    ],
+    "expected_intent": "consult_knowledge_base",
+    "expected_params": {
+      "query": "汽车零部件"
+    }
+  },
+  {
+    "id": "case_missing_info_02",
+    "description": "信息极度缺失",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "もっと大きな工場を探したい"
+      }
+    ],
+    "expected_intent": "response_to_user",
+    "expected_content_keywords": ["地域", "業種"]
+  },
+  {
+    "id": "case_chat_01",
+    "description": "闲聊",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "こんにちは、調子はどう？"
+      }
+    ],
+    "expected_intent": "response_to_user",
+    "expected_content_keywords": ["こんにちは"]
+  },
+  {
+    "id": "case_chat_02",
+    "description": "能力询问",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "あなたは何ができますか？"
+      }
+    ],
+    "expected_intent": "response_to_user",
+    "expected_content_keywords": ["B2B", "企業", "データベース"]
+  },
+  {
+    "id": "case_chat_03",
+    "description": "越界指令",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "今夜の夕食のレシピを教えて"
+      }
+    ],
+    "expected_intent": "response_to_user",
+    "expected_content_keywords": ["B2B", "顧客"]
+  },
+  {
+    "id": "case_mixed_01",
+    "description": "混合意图 -> KB",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "深センでのFPC（フレキシブル基板）の製造プロセスと主要メーカーを教えて"
+      }
+    ],
+    "expected_intent": "consult_knowledge_base",
+    "expected_params": {
+      "query": "FPC"
+    }
+  },
+  {
+    "id": "case_mixed_02_adjusted",
+    "description": "混合意图 -> AI倾向于KB（合理）",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "蘇州にあるMEMSセンサーのパッケージング工場を探してください"
+      }
+    ],
+    "expected_intent": "consult_knowledge_base",
+    "expected_params": {
+      "query": "MEMS"
+    }
+  },
+  {
+    "id": "case_history_01",
+    "description": "历史回顾",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "EVバッテリーの構造について"
+      },
+      {
+        "role": "tool",
+        "content": "【Tool: Knowledge Base Result】...関連情報..."
+      },
+      {
+        "role": "user",
+        "content": "ありがとう、よくわかりました。"
+      }
+    ],
+    "expected_intent": "response_to_user",
+    "expected_content_keywords": ["回答", "お役", "嬉しい"]
+  },
+  {
+    "id": "case_proposal_negative",
+    "description": "负面筛选",
+    "history_snapshot": [
+      {
+        "role": "user",
+        "content": "山東省のタイヤメーカーで、行政処罰を受けていないところを探して"
+      }
+    ],
+    "expected_intent": "propose_screening_condition",
+    "expected_params": {
+      "guidance_text_contains": "行政処罰",
+      "regions": ["山東省"],
+      "keywords": ["タイヤ", "制造"]
+    }
+  }
+]

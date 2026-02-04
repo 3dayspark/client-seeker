@@ -19,6 +19,8 @@ from openai import OpenAI  # ModelScope API用
 
 # 独自のRAGユーティリティをインポート
 from rag_utils import build_or_load_index, query_knowledge_base
+# データベース接続をインポート
+from database import get_database_schema_info, execute_raw_sql
 
 # ログ設定
 logging.basicConfig(
@@ -71,6 +73,7 @@ modelscope_client = None
 gemini_api_key_pool = None
 gemini_base_headers = {"Content-Type": "application/json"}
 rag_index = None
+
 
 # チャット履歴管理
 # 本番環境ではRedisやDBへの移行を推奨
@@ -215,8 +218,7 @@ async def _call_master_llm(prompt: str, history: List[Dict[str, str]]) -> str:
     return "Error: No LLM client available."
 
 
-# --- ログキューシステム ---
-log_queue = asyncio.Queue()
+
 
 class PlaywrightLogger:
     def __init__(self, queue: asyncio.Queue):
@@ -252,13 +254,30 @@ class PlaywrightLogger:
             pass
 
 
+
+# --- 起動時のスキーマロード ---
+db_schema_context = ""
+
+@app.on_event("startup")
+async def startup_event():
+    global db_schema_context
+    # 起動時にスキーマ情報を取得・キャッシュ
+    db_schema_context = await get_database_schema_info()
+    logger.info("System Context: DB Schema loaded.")
+
+
 # ---------------------------------------------------------
-# コア: Master Agent 意思決定ロジック (ReActループ版)
+# コア: Master Agent 意思決定ロジック 
 # ---------------------------------------------------------
 async def run_master_agent_flow(session_id: str, user_message: str):
     """
     ReAct (Reason+Act) パターンによる自律エージェントループを実行します。
     """
+
+    # リクエスト単位（セッション単位）でログキューを生成、複数クライアント間でのログ混線を防止する
+    session_log_queue = asyncio.Queue()
+
+
     MAX_TURNS = 5  # 無限ループ防止のための最大ターン数
 
     # 1. セッション管理
@@ -274,41 +293,56 @@ async def run_master_agent_flow(session_id: str, user_message: str):
     あなたはB2B顧客開拓の専門家です。
     ユーザー（売り手）の入力から、最適な「ターゲット企業（買い手）」を特定し（中国範囲内のみ）、スクリーニングを行うのが任務です。
 
-    **【思考プロセス】**
+    **【インタラクション・フロー】**
+    1. ユーザーのニーズを分析します。
     回答する前に、以下の手順でJSONの `thought` フィールドに思考を出力してください：
-    1. **Subject Analysis**: ユーザーは何を売っている企業か？（Supply）
-    2. **Target Analysis**: それを必要とするのはどんな業種の企業か？（Demand）
-    3. **Gap Analysis**: ターゲットを検索するために「地域（例：上海、广东）」や「具体的な業種キーワード」は揃っているか？
-       - 業界知識が不足している -> `consult_knowledge_base`
-       - 情報は揃った -> `run_qcc_tool`
-       - 地域が決まっていない -> ユーザーへ質問（`response_to_user`）
+        a. **Subject Analysis**: ユーザーは何を売っている企業か？（Supply）
+        b. **Target Analysis**: それを必要とするのはどんな業種の企業か？（Demand）
+        c. **Gap Analysis**: ターゲットを特定するための情報は十分か？
+        - ユーザーが特定の「業界」や「製品」に言及した場合 -> **即座に** `consult_knowledge_base` を使用し、その業界のサプライチェーン、商流、主要プレイヤー情報を取得してターゲットの解像度を高める。
+        - 地域が決まっていない -> ユーザーへ質問（`response_to_user`）
+    2. 外部検索ツール（`run_qcc_tool`）を実行する前に、必ず `propose_screening_condition` を呼び出して、ユーザーに検索条件の提案・確認を行ってください。
+    3. ユーザーから明確な承認（「確認」「OK」の発言、または確認ボタンの押下）が得られた場合のみ、`run_qcc_tool` を実行します。
+    4. ユーザーから修正の指示があった場合は、パラメータを修正して再度 `propose_screening_condition` を呼び出してください。
 
     **【利用可能なアクション】**
-    1. `consult_knowledge_base`: 業界知識（サプライチェーン、関連業種）を検索。
-    2. `run_qcc_tool`: 企業スクリーニングを実行（条件が揃った場合のみ）。
-    3. `response_to_user`: ユーザーに追加質問をする、または回答する。
+    1. `consult_knowledge_base`: ユーザーが特定の業界・製品に言及した際に**最優先で**使用します。知識不足の補完だけでなく、サプライチェーン構造を正確に把握し、より精度の高いターゲット選定を行うために積極的に検索を行ってください。
+    2. `propose_screening_condition`: 検索条件の提案。ターゲット画像が固まったら、まずこれを使用します。
+       params: { "guidance_text": "...", "keywords": "...", "regions": [...] }
+    3. `run_qcc_tool`: ユーザー承認後に実行するスクリーニング。
+       **params (必須):**
+       - `guidance_text`: **必須**。`propose_screening_condition` で提案した内容（ターゲット定義）をそのまま転記すること。これが空だと検索できません。
+       - `keywords`: **必須**。提案したキーワード。
+       - `regions`: **必須**。提案した地域リスト。
+    4. `response_to_user`: ユーザーに追加質問をする、または回答する。
+
 
     **【出力フォーマット】**
     必ず以下のJSON形式のみを出力してください。Markdownは不要です。
 
+    例：業界への言及があるため、まずナレッジベースを確認する場合
     ```json
     {
-        "thought": "ユーザーは自動車ガラスメーカー。顧客は自動車組立工場(OEM)や修理工場だ。地域が指定されていないため、まずは一般的な顧客層をナレッジベースで確認しよう。",
+        "thought": "ユーザーは「自動車ガラス」という特定の製品に言及している。ターゲット企業の解像度を高めるため、まずはナレッジベースで自動車ガラス業界のサプライチェーンや、主要な納入先（OEMメーカー等）を検索して確認する必要がある。",
         "action": "consult_knowledge_base",
         "params": {
-            "query": "汽车玻璃 主要客户 供应链"  <-- 注意：検索効率のため、ここは必ず中国語で入力すること。
+            "query": "汽车玻璃 供应链 主要客户"  <-- 注意：検索効率のため、ここは必ず中国語で入力すること。
         }
     }
     ```
     
     または
     
+    ユーザー：「広東省のガラス工場を探して」
+    AI回答：
     ```json
     {
-        "thought": "地域は上海と指定された。ターゲットは自動車OEM工場。条件は揃った。",
-        "action": "run_qcc_tool",
+        "thought": "ナレッジベースでの確認が完了し、検索条件は明確になった。実行前にユーザーに条件案を提示して確認をとる。",
+        "action": "propose_screening_condition",
         "params": {
-            "guidance_text": "検索対象：自動車組立工場。\nキーワード（中国語で記入）：汽车制造、汽车零部件加工。\n地域：上海。\n除外：ガラス製造（競合のため）。"
+            "guidance_text": "ターゲット：広東省エリアのガラス製造・加工企業",
+            "regions": ["広東省"],
+            "keywords": "ガラス製造、深加工"
         }
     }
     ```
@@ -317,13 +351,67 @@ async def run_master_agent_flow(session_id: str, user_message: str):
     
     ```json
     {
-        "thought": "ナレッジベースでターゲットは判明したが、地域が不明だ。ユーザーに聞く必要がある。",
+        "thought": "ターゲットは判明したが、地域が不明だ。ユーザーに聞く必要がある。",
         "action": "response_to_user",
         "params": {
-            "text": "ターゲットとして自動車組立工場が考えられます。スクリーニングを行いたい「地域」（例：関東、中国・広東省など）を教えていただけますか？"
+            "text": "ターゲットとして自動車組立工場が考えられます。スクリーニングを行いたい「地域」（例：中国・広東省など）を教えていただけますか？"
         }
     }
     ```
+
+
+    承認後のツール実行の場合
+    ユーザー：「確認しました。開始してください。」
+    AI回答：
+    ```json
+    {
+        "thought": "ユーザーの承認が得られた。提案時の条件（guidance_text含む）をパラメータに設定してツールを実行する。",
+        "action": "run_qcc_tool",
+        "params": {
+            "guidance_text": "ターゲット：広東省のガラス深加工企業および自動車部品メーカー",
+            "regions": ["広東省"],
+            "keywords": "ガラス加工、自動車部品"
+        }
+    }
+    ```
+
+    一方で、あなたは高度なデータアナリストでもあります。
+    ユーザーから社内データに関する質問があった場合は、社内データベースの分析を行ってください。
+
+    **【社内データベース情報 (PostgreSQL)】**
+    そのような場合には、以下に示すテーブル構造およびサンプルデータを十分に理解したうえで、適切な SQL を作成してください。
+    データは複数のテーブルに分かれている可能性があります。
+    必要な情報は `JOIN` を使用して結合し取得すること。
+
+    --- Database Schema Cache ---
+    {db_schema_context}
+    -----------------------------
+
+    **【利用可能なアクション (search_internal_crm)】**
+    ユーザーが社内データに関する質問をした場合は、このツールを使用してください。
+    **params:**
+    - `sql_query`: PostgreSQL互換の実行可能なSELECT文。Markdownのコードブロックは不要です。
+    
+    **重要: SQL生成のルール**
+    1. 取得するカラムには、内容がわかりやすいエイリアス(AS)を付けてください（例: `company_name`, `deal_status`, `contact_person` など）。
+    2. ユーザーの質問に答えるために必要なカラムのみを選択してください（`SELECT *` は避けること）。
+    3. 複数のテーブルに同名のカラムがある場合は、必ずテーブル修飾子（例: `c.name`, `s.status`）を使用してください。
+
+    **【出力フォーマット】**
+    必ずJSON形式のみを出力してください。
+    
+    例: 「上海にある商談中の企業と担当者を教えて」
+    ```json
+    {{
+        "thought": "ユーザーは上海の商談中企業を探している。companiesテーブルとsales_records, contactsテーブルをJOINし、企業名・担当者・ステータス等の主要情報を取得する。",
+        "action": "search_internal_crm",
+        "params": {{
+            "sql_query": "SELECT c.name AS company_name, c.industry, s.status AS deal_status, ct.name AS contact_person, s.sales_amount, s.last_contact_date FROM companies c JOIN sales_records s ON c.id = s.company_id LEFT JOIN contacts ct ON c.id = ct.company_id WHERE c.region = '上海' AND s.status = '商談中'"
+        }}
+    }}
+    ```
+
+    回答テキストには、「*」の記号を含めないようにしてください。
     """
 
     yield f"data: [Thinking] エージェントが思考を開始しました...\n\n"
@@ -376,7 +464,18 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             query = params.get("query", "")
             yield f"data: [STATUS_MSG]ナレッジベース検索中: {query}...\n\n"
 
-            rag_result = await asyncio.to_thread(query_knowledge_base, rag_index, query)
+            rag_result, hit_files = await asyncio.to_thread(query_knowledge_base, rag_index, query)
+            
+            if hit_files:
+                for fname in hit_files:
+                    # [RAG_HIT] を使うと App.jsx 側で success-note (少し強調されたスタイル) になります
+                    msg = f"関連ドキュメントを検出しました【{fname}】"
+                    yield f"data: [RAG_HIT]{msg}\n\n"
+            else:
+                 yield f"data: [STATUS_MSG]関連するドキュメントは見つかりませんでした。\n\n"
+            
+            
+            logger.info(f"🔍 RAG Tool Output (Length: {len(rag_result)}): {rag_result[:3000]}...") 
 
             # 結果を履歴に追加（Tool Role）
             tool_msg = f"【Tool: Knowledge Base Result】\n{rag_result}"
@@ -387,23 +486,78 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
         # CASE 3: スクリーニングツール実行
         elif action == "run_qcc_tool":
-            guidance_text = params.get("guidance_text", "")
+            # 1. まず現在のパラメータを取得
+            p_guidance = params.get("guidance_text", "")
+            p_regions = params.get("regions", [])
+            p_keywords = params.get("keywords", "")
 
-            # 意図を記録
-            # 注: historyへの追加は上記でLLMレスポンス全体を追加済みだが、明確化のため補足情報を入れることも可能
-            # ここではLLMの判断結果として処理を進める
+            # ------------------------------------------------------------------
+            # 履歴からの強制復元ロジック (History Hydration)
+            # ------------------------------------------------------------------
+            # パラメータが不足している場合、履歴から「提案データ」を復元する
+            if not p_guidance:
+                logger.info("⚠️ Action params empty. Retrieving from history...")
+                for msg in reversed(history):
+                    content = msg.get("content", "")
+                    if msg.get("role") == "tool" and content.startswith("PROPOSAL_SAVED_DATA:"):
+                        try:
+                            # JSONを取り出す
+                            json_str = content.replace("PROPOSAL_SAVED_DATA: ", "").strip()
+                            data = json.loads(json_str)
+                            
+                            # 復元
+                            p_guidance = data.get("guidance", "")
+                            p_regions = data.get("regions", [])
+                            p_keywords = data.get("keywords", "")
+                            
+                            logger.info(f"✅ Restored full params from history.")
+                            break
+                        except Exception as e:
+                            logger.error(f"Failed to parse history data: {e}")
 
-            # --- Playwright 実行準備 ---
-            playwright_test.LLM_GUIDANCE_TEXT = guidance_text
-            logger_instance = PlaywrightLogger(log_queue)
+            # ------------------------------------------------------------------
+            # Playwright用プロンプトの統合 (Prompt Injection)
+            # Guidance, Regions, Keywords を一つのテキストに統合し、
+            # Playwright側のLLMが「何を入力し、何を選択すべきか」を迷わないようにする
+            # ------------------------------------------------------------------
+            
+            # キーワードの整形
+            if isinstance(p_keywords, list):
+                kw_str = "、".join(p_keywords)
+            else:
+                kw_str = str(p_keywords)
 
-            # 実行タスク
+            # 地域の整形
+            if isinstance(p_regions, list):
+                reg_str = "、".join(p_regions)
+            else:
+                reg_str = str(p_regions)
+
+            # 統合ガイダンステキストの作成
+            # Playwright内のLLMはこのテキストを見て行動を決定します
+            rich_guidance_text = f"""
+            【スクリーニング目標】
+            {p_guidance}
+
+            【制約条件】
+            以下の条件を参考にして、フィルタリングを行ってください：
+            1. 検索キーワード: 「{kw_str}」
+            2. 地域(省・エリア): 「{reg_str}」
+            """
+
+            logger.info(f"🚀 Starting Playwright with RICH GUIDANCE:\n{rich_guidance_text}")
+
+            # 変数にセット
+            playwright_test.LLM_GUIDANCE_TEXT = rich_guidance_text
+            logger_instance = PlaywrightLogger(session_log_queue)
+
+            # 実行タスク (以下変更なし)
             def _sync_run():
                 if sys.platform == "win32":
                     asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
                 try:
                     asyncio.run(
-                        playwright_test.test_qcc_llm_interaction_with_playwright(logger_instance, guidance_text))
+                        playwright_test.test_qcc_llm_interaction_with_playwright(logger_instance, rich_guidance_text))
                 except Exception as e:
                     error_msg = traceback.format_exc()
                     logger_instance.log_to_frontend(f"❌ Error: {error_msg}")
@@ -416,7 +570,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
             # ストリーミングループ
             while True:
-                queue_task = asyncio.create_task(log_queue.get())
+                queue_task = asyncio.create_task(session_log_queue.get())
                 done, _ = await asyncio.wait({queue_task, task}, return_when=asyncio.FIRST_COMPLETED)
 
                 if queue_task in done:
@@ -432,9 +586,9 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                     break
 
             # 残りのログ排出
-            while not log_queue.empty():
+            while not session_log_queue.empty():
                 try:
-                    msg = log_queue.get_nowait()
+                    msg = session_log_queue.get_nowait()
                     if "[FINAL_REPORT]" in msg:
                         final_report_content = msg.replace("data: ", "").replace("[FINAL_REPORT]", "").strip()
                     yield msg
@@ -454,12 +608,103 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             yield "data: ---END_OF_STREAM---\n\n"
             return  # ツール実行完了で終了
 
-        else:
-            # 未知のアクション
-            err_msg = f"Unknown action: {action}"
-            logger.error(err_msg)
-            history.append({"role": "tool", "content": f"Error: {err_msg}"})
+        # CASE 4: 社内データベース検索
+        elif action == "search_internal_crm":
+            sql_query = params.get("sql_query", "")
+            
+            # --- スキーマ確認クエリかどうかの判定 ---
+            # information_schema や pg_catalog を含むクエリは「内部確認」とみなす
+            is_schema_check = "information_schema" in sql_query.lower() or "pg_catalog" in sql_query.lower()
+
+            if is_schema_check:
+                # ユーザーには「内部確認中」とだけ伝える
+                yield f"data: [STATUS_MSG]データベースの構造を再確認しています...\n\n"
+            else:
+                # 通常の検索
+                yield f"data: [STATUS_MSG]条件に基づいて社内データベースを検索中...\n\n"
+            
+            yield f"data: [Thinking] Database Querying...\n\n"
+
+            # SQL実行
+            db_results = await execute_raw_sql(sql_query)
+
+            # エラーハンドリング
+            if isinstance(db_results, dict) and "error" in db_results:
+                error_msg = db_results["error"]
+                tool_msg = f"【System Error】SQL Execution Failed:\n{error_msg}\nPlease correct your SQL and try again."
+                history.append({"role": "tool", "content": tool_msg})
+                continue
+
+            # 成功時の処理
+            if db_results:
+                # --- ここで分岐: スキーマ確認ならフロントエンドには表示しない ---
+                if is_schema_check:
+                    # LLMには結果を見せる（学習させるため）が、ユーザーには見せない
+                    result_preview = json.dumps(db_results[:10], ensure_ascii=False, default=str)
+                    tool_msg = f"【System Info】Table Schema/Structure:\n{result_preview}\n(User did not see this. Now please construct the correct SQL for the user's request.)"
+                    
+                    # 履歴に追加するだけ
+                    history.append({"role": "tool", "content": tool_msg})
+                    logger.info("Schema check executed. Result hidden from frontend.")
+                    continue  # continueして、LLMに次の正しいSQLを作らせる
+
+                # --- 通常のデータ検索の場合 ---
+
+                card_payload = json.dumps(db_results, ensure_ascii=False, default=str)
+                yield f"data: [DB_CARD_DATA]{card_payload}\n\n"
+                
+                # LLM用コンテキスト
+                result_count = len(db_results)
+                preview_data = db_results[:5]
+                tool_msg = f"""【Tool Result】
+SQL Query executed successfully.
+Total Records: {result_count}
+First 5 rows preview:
+{json.dumps(preview_data, ensure_ascii=False, default=str)}
+"""
+            else:
+                tool_msg = f"【Tool Result】Query executed successfully but returned 0 records."
+
+            history.append({"role": "tool", "content": tool_msg})
             continue
+        # CASE 5: スクリーニング条件の提案 
+        elif action == "propose_screening_condition":
+            # パラメータの抽出
+            p_guidance = params.get("guidance_text", "")
+            p_regions = params.get("regions", [])
+            p_keywords = params.get("keywords", "")
+            
+            # キーワードがリストの場合は文字列に結合
+            if isinstance(p_keywords, list):
+                p_keywords = "、".join(p_keywords)
+
+            # 1. フロントエンド用データペイロードの作成
+            proposal_data = {
+                "guidance": p_guidance,
+                "regions": p_regions,
+                "keywords": p_keywords
+            }
+            
+
+            payload = json.dumps(proposal_data, ensure_ascii=False)
+            
+            # 2. フロントエンドへ提案カードデータを送信
+            yield f"data: [PROPOSAL_DATA]{payload}\n\n"
+
+            # 3. 履歴に記録し、LLMにはユーザーの応答を待つよう指示
+            tool_msg_content = f"PROPOSAL_SAVED_DATA: {payload}" 
+            history.append({"role": "tool", "content": tool_msg_content})
+            follow_up_text = (
+                "予備的な顧客ターゲット画像を作成しました。\n"
+                "条件に問題がなければ「検索開始」、修正が必要な場合は具体的な指示（例：「地域を上海に変更」）を入力してください。"
+            )
+            yield f"data: [TEXT_RESPONSE]{follow_up_text.replace('\n', '\\n')}\n\n"
+            
+            # LLMの履歴にも自身が発言したこととして記録（一貫性維持のため）
+            history.append({"role": "assistant", "content": follow_up_text})
+            # ここで一旦ストリームを終了し、ユーザーの入力を待つ
+            yield "data: ---END_OF_STREAM---\n\n"
+            return
 
     # ループ上限到達
     yield f"data: [TEXT_RESPONSE]処理が複雑すぎるため、一旦停止しました。条件を絞って再度入力してください。\n\n"

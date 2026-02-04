@@ -1,0 +1,280 @@
+🚀 Agent ReAct ロジック評価を開始します (全 25 ケース)
+============================================================
+
+[1/25] テスト実行中: case_kb_01
+📝 概要: 基础知识：供应链结构查询
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (5.87s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "汽车玻璃 供应链 主要供应商" }
+
+[2/25] テスト実行中: case_kb_02
+📝 概要: 专业术语/特定组件查询
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (6.75s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "IGBT模块 中国 主要制造商 供应链" }
+
+[3/25] テスト実行中: case_kb_03_adjusted
+📝 概要: 政策影响 -> 实际上AI倾向于查CRM的行业报告（合理）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (4.83s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "中国 碳中和 钢铁行业 影响 政策" }
+   ⚠️ Reason   : アクション不一致 (期待: search_internal_crm, 実際: consult_knowledge_base)
+      Expected Keys: ['鉄鋼', 'カーボンニュートラル']
+
+[4/25] テスト実行中: case_proposal_01
+📝 概要: 明确提案：地域+行业
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.29s)
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：広東省エリアのガラス深加工企業", "regions": [ "広東省" ], "keywords": "ガラス深加工、加工 製造" }
+
+[5/25] テスト実行中: case_proposal_02_adjusted
+📝 概要: 华东地区 -> AI优先查KB确认产业链（合理行为）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (5.34s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "半导体封装 供应链 主要企业" }
+
+[6/25] テスト実行中: case_proposal_03_adjusted
+📝 概要: 白物家电 -> AI优先查KB（合理行为）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.40s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "白色家电 供应链 安徽省 主要企业" }      
+
+[7/25] テスト実行中: case_proposal_04
+📝 概要: 条件修改
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.55s)
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：四川省内におけるド ローン関連企業（製造・開発・販売など）", "regions": [ "四川省" ], "keywords": "ドローン" }
+
+[8/25] テスト実行中: case_proposal_05
+📝 概要: 高精度筛选
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.80s)
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：北京市内で登録資本 金が1億元以上の人工知能（AI）関連企業", "regions": [ "北京市" ], "keywords": "AI, 人工智能, 機械学習, データ分析" }
+
+[9/25] テスト実行中: case_execution_01
+📝 概要: 正常执行
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.06s)
+   🎬 [Action] : run_qcc_tool
+   ⚙️  [Params] : { "guidance_text": "ターゲット：広東省のガラス製造 企業", "regions": [ "広東省" ], "keywords": "ガラス、製造" }
+
+[10/25] テスト実行中: case_execution_02
+📝 概要: 隐式确认
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (5.06s)
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：湖北省・武漢市にお ける自動車部品製造企業", "regions": [ "湖北省" ], "keywords": "汽车零部 件" }
+   ⚠️ Reason   : アクション不一致 (期待: run_qcc_tool, 実際: propose_sscreening_condition)
+      Expected : {'regions': ['湖北省']}
+
+[11/25] テスト実行中: case_execution_03
+📝 概要: 带修正的执行
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (4.61s)
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：江蘇省・蘇州市エリ アの物流企業", "regions": [ "江蘇省・蘇州市" ], "keywords": "物流" }    
+   ⚠️ Reason   : パラメータ不一致
+      Expected : {'regions': ['江蘇省'], 'keywords': ['物流']}        
+
+[12/25] テスト実行中: case_crm_01
+📝 概要: CRM查询：基础
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.82s)
+   🎬 [Action] : search_internal_crm
+   ⚙️  [SQL]    : SELECT c.name AS company_name, c.industry, s.status  AS deal_status, ct.name AS contact_person, s.sales_amount, s.last_contact_date FROM companies c JOIN sales_records s ON c.id = s.company_id LEFT JOIN contacts ct ON c.id = ct.company_id WHERE c.region = '上海' AND s.status = '商談中'
+
+[13/25] テスト実行中: case_crm_02
+📝 概要: CRM查询：金额
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (5.44s)
+   🎬 [Action] : search_internal_crm
+   ⚙️  [SQL]    : SELECT c.name AS company_name, c.industry, s.status  AS deal_status, s.sales_amount, s.contract_date FROM companies c JOIN sales_records s ON c.id = s.company_id WHERE s.status = '契約済み' AND s.sales_amount >= 100000
+
+[14/25] テスト実行中: case_crm_03
+📝 概要: CRM查询：联系人
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (5.86s)
+   🎬 [Action] : search_internal_crm
+   ⚙️  [SQL]    : SELECT c.name AS company_name, ct.name AS contact_peerson, ct.email AS contact_email FROM companies c JOIN contacts ct ON c.id = ct.company_id WHERE c.name = 'ABC Tech'
+
+[15/25] テスト実行中: case_crm_04
+📝 概要: CRM查询：时间
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (4.05s)
+   🎬 [Action] : search_internal_crm
+   ⚙️  [SQL]    : SELECT id, name AS company_name, industry, region, rregistration_date FROM companies WHERE region = '広東省' AND registration_date >= '2023-01-01'
+   ⚠️ Reason   : SQLクエリに必要なキーワード不足
+      Expected Keys: ['created_at', '2023-01-01', 'region', '広東省'] 
+
+[16/25] テスト実行中: case_crm_05
+📝 概要: CRM查询：复杂组合
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.84s)
+   🎬 [Action] : search_internal_crm
+   ⚙️  [SQL]    : SELECT c.name AS company_name, c.industry, s.status  AS deal_status, ct.name AS contact_person, c.region FROM companies c LEFT JOIN sales_records s ON c.id = s.company_id LEFT JOIN contacts ct ON c.id = ct.company_id WHERE c.region = '浙江省' AND (s.status IS NULL OR s.status = '未接触') AND c.industry = '製造業'
+
+[17/25] テスト実行中: case_missing_info_01_adjusted
+📝 概要: 信息缺失 -> AI优先查KB（合理）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (3.26s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "汽车零部件 供应链 主要制造商" }
+
+[18/25] テスト実行中: case_missing_info_02
+📝 概要: 信息极度缺失
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.34s)
+   🎬 [Action] : response_to_user
+   ⚙️  [Params] : { "text": "ターゲットとなる業種（例：ガラス加工、自  動車部品など）と、対象とする地域（例：広東省、江蘇省など）を教えていただけますか？" }
+
+[19/25] テスト実行中: case_chat_01
+📝 概要: 闲聊
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (3.11s)
+   🎬 [Action] : response_to_user
+   ⚙️  [Params] : { "text": "こんにちは！B2B顧客開拓のご支援をさせて いただきます。まずは、あなたが提供している製品・サービスや、ターゲットとする業界などをお聞かせください。" }
+
+[20/25] テスト実行中: case_chat_02
+📝 概要: 能力询问
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (3.45s)
+   🎬 [Action] : response_to_user
+   ⚙️  [Params] : { "text": "具体的にどのような製品やサービスをお持ち  ですか？また、ターゲットとなる業界や地域は決まっていますか？" }       
+   ⚠️ Reason   : 回答キーワード不足
+      Expected Keys: ['B2B', '企業', 'データベース']
+
+[21/25] テスト実行中: case_chat_03
+📝 概要: 越界指令
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (2.98s)
+   🎬 [Action] : response_to_user
+   ⚙️  [Params] : { "text": "ご質問は夕食のレシピに関するもので、B2B 顧客開拓の範囲外です。私にできるサポートが必要であれば、お知らせください。" }
+
+[22/25] テスト実行中: case_mixed_01
+📝 概要: 混合意图 -> KB
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (2.67s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "FPC 供应链 主要制造商 深圳" }
+
+📝 概要: 混合意图 -> AI倾向于KB（合理）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.41s)
+📝 概要: 混合意图 -> AI倾向于KB（合理）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.41s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "MEMS传感器 封装 供应链 主要厂商" }
+
+[24/25] テスト実行中: case_history_01
+📝 概要: 历史回顾
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (2.69s)
+   🎬 [Action] : None
+   ⚙️  [Params] : {}
+   ⚠️ Reason   : アクション不一致 (期待: response_to_user, 実際: None)
+📝 概要: 混合意图 -> AI倾向于KB（合理）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.41s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "MEMS传感器 封装 供应链 主要厂商" }
+
+[24/25] テスト実行中: case_history_01
+📝 概要: 历史回顾
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (2.69s)
+📝 概要: 混合意图 -> AI倾向于KB（合理）
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (4.41s)
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "MEMS传感器 封装 供应链 主要厂商" }
+
+[24/25] テスト実行中: case_history_01
+📝 概要: 历史回顾
+   🎬 [Action] : consult_knowledge_base
+   ⚙️  [Params] : { "query": "MEMS传感器 封装 供应链 主要厂商" }
+
+[24/25] テスト実行中: case_history_01
+📝 概要: 历史回顾
+
+[24/25] テスト実行中: case_history_01
+📝 概要: 历史回顾
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (2.69s)
+   🎬 [Action] : None
+   ⚙️  [Params] : {}
+[24/25] テスト実行中: case_history_01
+📝 概要: 历史回顾
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (2.69s)
+   🎬 [Action] : None
+   ⚙️  [Params] : {}
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+❌ FAIL (2.69s)
+   🎬 [Action] : None
+   ⚙️  [Params] : {}
+   ⚠️ Reason   : アクション不一致 (期待: response_to_user, 実際: None)
+      Expected Keys: ['回答', 'お役', '嬉しい']
+
+[25/25] テスト実行中: case_proposal_negative
+   🎬 [Action] : None
+   ⚙️  [Params] : {}
+   ⚠️ Reason   : アクション不一致 (期待: response_to_user, 実際: None)
+      Expected Keys: ['回答', 'お役', '嬉しい']
+
+[25/25] テスト実行中: case_proposal_negative
+   ⚠️ Reason   : アクション不一致 (期待: response_to_user, 実際: None)
+      Expected Keys: ['回答', 'お役', '嬉しい']
+
+[25/25] テスト実行中: case_proposal_negative
+📝 概要: 负面筛选
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+
+[25/25] テスト実行中: case_proposal_negative
+📝 概要: 负面筛选
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+📝 概要: 负面筛选
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (5.31s)
+   🎬 [Action] : propose_screening_condition
+INFO:httpx:HTTP Request: POST https://api-inference.modelscope.cn/v1/chat/completions "HTTP/1.1 200 OK"
+✅ PASS (5.31s)
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：山東省内で営業活動中のタイヤ製造企業（行政処罰歴なし）", "regions": [ "山東省" ], "keywords": "タイヤ製造、無処罰" }
+
+✅ PASS (5.31s)
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：山東省内で営業活動中のタイヤ製造企業（行政処罰歴なし）", "regions": [ "山東省" ], "keywords": "タイヤ製造、無処罰" }
+
+   🎬 [Action] : propose_screening_condition
+   ⚙️  [Params] : { "guidance_text": "ターゲット：山東省内で営業活動中のタイヤ製造企業（行政処罰歴なし）", "regions": [ "山東省" ], "keywords": "タイヤ製造、無処罰" }
+
+   ⚙️  [Params] : { "guidance_text": "ターゲット：山東省内で営業活動中のタイヤ製造企業（行政処罰歴なし）", "regions": [ "山東省" ], "keywords": "タイヤ製造、無処罰" }
+
+============================================================
+
+============================================================
+============================================================
+📊 評価完了レポート
+📊 評価完了レポート
+   合計ケース数: 25
+   成功: 19
+   成功: 19
+   失敗: 6
+   精度 (Accuracy): 76.0%
+============================================================
+⚠️ 失敗したケースID一覧:
+   - case_kb_03_adjusted: アクション不一致 (期待: search_internal_crm, 実際: consult_knowledge_base)
+   - case_execution_02: アクション不一致 (期待: run_qcc_tool, 実際: propose_screening_condition)
+   - case_execution_03: パラメータ不一致
+   - case_crm_04: SQLクエリに必要なキーワード不足
+   - case_chat_02: 回答キーワード不足
+   - case_history_01: アクション不一致 (期待: response_to_user, 実際: None)

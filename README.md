@@ -1,5 +1,3 @@
-
-
 <div align="center">
 
 [**🇯🇵 日本語 (Japanese)**](#jp) | [**🇺🇸 English**](#en)
@@ -10,296 +8,246 @@
 
 <div id="jp"></div>
 
-# 自然言語駆動型 B2Bターゲット検索エージェント (Agentic RAG / Playwright)
+# 自然言語駆動型 B2Bターゲット検索 & CRM分析エージェント
 
 ## 概要
-**「広東省にある、資本金1億以上の自動車ガラスメーカーを探したい」**
+**「広東省のガラス工場を探して」** という外部検索の要望から、**「先月の上海での商談状況はどうだった？」** という社内データの問い合わせまで。
 
-営業担当者が入力するこのような抽象的な自然言語の要望を解析し、複雑な企業データベースサイト（SaaS/検索ポータル）の「詳細検索フォーム」へ自動的に条件をマッピング・入力・実行する自律型AIエージェントです。
+本プロジェクトは、営業担当者の自然言語入力を解析し、**外部Web検索（Playwright）** と **社内CRMデータベース（Text-to-SQL）** を使い分ける自律型AIエージェントです。また、非構造化データ（PDF/Excel/画像）を含む社内ナレッジベース（RAG）とも統合され、多角的な情報支援を行います。
 
-従来のルールベースのRPAとは異なり、LLM（大規模言語モデル）を用いたAgentic RAG（自律的検索拡張生成）アーキテクチャを採用することで、未知の検索条件や揺らぎのある表現にも柔軟に対応します。
+単なるデモに留まらず、**エージェントの判断ロジックを定量的に評価するテストパイプライン**を実装し、実用性と信頼性を重視した設計となっています。
 
 ## 主な機能と特徴
 
-### 1. 自律的な意思決定 (ReAct Agent Pattern)
-バックエンド（`backend_app.py`）では、ユーザーの入力をそのまま検索に使うのではなく、エージェントが「思考・行動・観察」のループを実行します。
-*   **思考**: ユーザーの要望に対し、情報が不足していないか判断。
-*   **行動**: 知識不足なら「社内ナレッジベース(RAG)」を検索、情報が揃えば「ブラウザ操作ツール」を実行、不明点があれば「ユーザーに逆質問」を行います。
+### 1. ReAct型 自律エージェント (Agentic Decision Making)
+ユーザーの意図を以下の3つのアクションに分類し、最適なツールを自律的に選択・実行します。
+*   **Web Scraper**: Playwrightを用いた動的Webサイト（企業DB）のスクリーニング。
+*   **Internal CRM Analyst**: 自然言語をSQLに変換し、社内データベースを分析。
+*   **Knowledge Base (RAG)**: 業界レポートや過去の議事録など、非構造化データを検索。
 
-### 2. 高度なDOM解析とコスト削減 (LLM x Playwright)
-Webページ全体を単純にLLMに渡すのではなく、Playwrightを用いてDOM構造を解析し、**「意味のある選択肢（チェックボックスやドロップダウン）」のみを抽出して軽量なJSON形式**でLLMに提示します（`playwright_test.py`）。
-*   **効果**: 画像認識や全文解析に比べ、**トークン消費量を約90%削減**しつつ、推論精度を向上させました。
-*   **複雑なUI対応**: 深い階層構造を持つ「業界分類ツリー」も、DFS（深さ優先探索）アルゴリズムで自動展開し、最適なカテゴリを特定します。
+### 2. Agentic Data QA (Text-to-SQL & Schema Awareness)
+`database.py` および `backend_app.py` に実装された機能により、エージェントはDBスキーマを動的に理解します。
+*   **Text-to-SQL**: 「売上10万以上の商談」のような自然言語を、適切な `JOIN` を含むSQLクエリに変換し実行します。
+*   **Security**: 生成されたSQLは読み取り専用（READ ONLY）トランザクションで実行され、データの破壊を防ぎます。
 
-### 3. リアルタイム・ストリーミングUI
-ReactフロントエンドとFastAPIバックエンドをSSE (Server-Sent Events) で接続。
-*   AIの「思考プロセス（Thinking...）」
-*   ブラウザ操作の「リアルタイムスクリーンショット」
-*   操作完了後の「実行レポート」
-をチャット形式で可視化し、ユーザーに安心感を与えるUXを実現しました。
+### 3. マルチフォーマット対応 RAG (Azure AI Integration)
+`rag_utils.py` では、Azure AI Document Intelligence と Pandas を組み合わせ、多様な社内ドキュメントをインデックス化しています。
+*   **対応フォーマット**: PDF, Word, PowerPoint, 画像 (JPG/PNG) に加え、**Excel (.xlsx)** のMarkdown変換にも対応。
+*   **ハイブリッド解析**: 画像化された図表はAzureのOCRで、構造化された表データはPandasで解析し、LLMが理解しやすい形式（Markdown）に変換して検索精度を向上させています。
+
+### 4. エージェント評価システム (Quantitative Evaluation)
+**「AIが正しくツールを選べているか？」** を定量的に測定するため、`run_agent_eval.py` による評価パイプラインを構築しました。
+*   **シナリオベース評価**: 30件以上の想定シナリオ（`agent_react_scenarios.json`）に対し、エージェントの「思考（Thought）」と「行動（Action）」、および「抽出パラメータ」が期待値と一致するかを自動テストします。
+*   **精度算出**: Actionの一致率やSQL生成に必要なキーワード含有率などを判定し、エージェントの改修前後でのリグレッションを防ぎます。
+
+### 5. 高度なWeb操作 (LLM x Playwright)
+Webページ全体ではなく、DOM構造を解析して「意味のある選択肢」のみを抽出・JSON化してLLMに渡すことで、トークン消費を抑えつつ複雑なフォーム操作（業界ツリーの展開など）を実現しています。
 
 ## 技術スタック
 
 | カテゴリ | 技術・ツール | 用途 |
 | --- | --- | --- |
-| **Frontend** | React, CSS (Custom) | チャットUI、ログ可視化、SSE受信 |
+| **Frontend** | React, SSE (Server-Sent Events) | チャットUI、ストリーミング表示 |
 | **Backend** | Python, FastAPI | 非同期APIサーバー、エージェント制御 |
-| **LLM / AI** | OpenAI SDK (ModelScope/Qwen), Gemini API | 推論、コード生成、JSON解析 |
-| **RAG** | LlamaIndex, HuggingFace Embeddings | 業界知識（サプライチェーン等）の検索 |
-| **Automation** | Playwright (Async API) | ヘッドレスブラウザ操作、DOM解析 |
-| **Infra/Others** | SSE (Server-Sent Events) | ストリーミング通信 |
+| **Database** | PostgreSQL, SQLAlchemy (Async) | CRMデータ管理、非同期クエリ実行 |
+| **LLM / AI** | OpenAI SDK (ModelScope/Qwen), Gemini | 推論、SQL生成、JSON解析 |
+| **RAG / ETL** | LlamaIndex, Azure Document Intelligence, Pandas | マルチモーダルドキュメント解析 |
+| **Automation** | Playwright | ヘッドレスブラウザ操作 |
+| **Evaluation** | Custom Eval Script (`run_agent_eval.py`) | エージェント判断ロジックの定量評価 |
+| **Infra** | Docker, Docker Compose | DB環境の構築 |
 
 ## アーキテクチャ図
 
 <img src="./assets/architecture.png" alt="Architecture Diagram" width="500">
 
-## プロジェクト構造 (主要ファイル抜粋)
+## 評価パイプラインについて
 
+本プロジェクトでは、LLMアプリケーションの品質担保のため、開発プロセスに評価（Evaluation）を組み込んでいます。
+
+*   **データセット**: `agent_react_scenarios.json`
+    *   KB検索、Web検索提案、CRM分析、雑談など、多様なユーザーインテントを定義。
+*   **評価スクリプト**: `run_agent_eval.py`
+    *   エージェントを実行し、出力された JSON（Action, Params）と正解データを比較。
+    *   パラメータの一致（許容範囲内の揺らぎを含む）や、SQLクエリの妥当性を検証。
+
+**実行結果例:**
 ```text
-.
-├── backend_app.py       # FastAPIアプリケーションエントリポイント (ReAct Agent実装)
-├── playwright_test.py   # ブラウザ操作ロジック (LLM x Playwright連携)
-├── rag_utils.py         # LlamaIndexを用いたナレッジベース検索ロジック
-├── requirements.txt     # バックエンド用依存ライブラリ
-├── knowledge_docs/      # RAG用の業界知識ドキュメント格納フォルダ
-└── frontend/            # フロントエンドプロジェクト
-    └── src/
-        ├── App.jsx      # メインのチャットUIとログ表示コンポーネント
-        ├── App.css      # チャット画面のスタイリング
-        ├── main.jsx     # Reactのエントリポイント
-        └── assets/      # 静的リソースフォルダ
+[1/30] テスト実行中: case_crm_01
+📝 概要: CRM查询：基础 (上海の商談中企業)
+✅ PASS (2.14s)
+   🎬 [Action] : search_internal_crm
+   ⚙️ [SQL]    : SELECT c.name ... FROM companies c JOIN sales_records ...
 ```
-
-## 工夫した点（技術的ハイライト）
-
-### 排他制御と論理的推論の組み合わせ
-業界分類ツリーの選択において、「親カテゴリ」と「子カテゴリ」が同時に選択された場合、より具体的な「子カテゴリ」を優先して親の選択を解除する**排他制御ロジック**をPython側で実装し、検索ノイズを減らしました。
-
-### エラーハンドリングと自己修復
-LLMが生成するJSON形式が崩れていた場合、正規表現を用いて自動修復するロジック（`extract_json_from_text`）を実装し、システムの実用的な安定性を高めています。
-
-### ハイブリッドLLM構成
-推論コストと精度のバランスを取るため、メインの推論には「Gemini Flash」、サブタスクやバックアップには「Qwen (ModelScope)」を切り替えて使用できる設計にしています。
-
 
 ## セットアップと実行
 
-本プロジェクトは、Backend（Python/FastAPI）とFrontend（React）を別々のターミナルで起動して連携させます。
+### 1. 環境構築
 
-### 1. 環境構築 (初回のみ)
-
-プロジェクトのルートディレクトリで以下のコマンドを実行し、仮想環境を作成・有効化した後、依存ライブラリをインストールします。
-
-**Windows (PowerShell)**
 ```powershell
-# 仮想環境の作成
-python -m venv venv
+# リポジトリのクローン
+git clone [repo_url]
+cd [repo_name]
 
-# 仮想環境の有効化
+# 仮想環境作成
+python -m venv venv
 .\venv\Scripts\Activate.ps1
 
-# バックエンド依存ライブラリのインストール
+# 依存関係インストール
 pip install -r requirements.txt
-
-# Playwright用ブラウザバイナリのダウンロード（必須）
 playwright install
 ```
 
-### 2. Backend の起動
+### 2. データベースの起動 (Docker)
 
-仮想環境が有効な状態で、以下のコマンドを実行してAPIサーバーを立ち上げます。
+CRMデータ分析機能を有効にするため、PostgreSQLコンテナを起動します。
 
 ```powershell
-# 仮想環境が未有効の場合は先に実行: .\venv\Scripts\Activate.ps1
-
-# ローカル開発用（自分だけがアクセスする場合）
-uvicorn backend_app:app --reload --port 8000
-
-# 【オプション】同一LAN内のスマホ等からアクセスする場合
-# uvicorn backend_app:app --reload --host 0.0.0.0 --port 8000
+docker-compose up -d
 ```
-*   起動成功後、コンソールに `Uvicorn running on ...` と表示されます。
+*   `init_db.sql` により、企業・担当者・商談履歴のサンプルデータが自動的に投入されます。
 
-### 3. Frontend の起動
+### 3. Backend / Frontend の起動
 
-別のターミナルを開き、フロントエンドディレクトリへ移動して起動します。
+**Backend:**
+```powershell
+# 環境変数の設定 (api_keys.json または .env)
+uvicorn backend_app:app --reload
+```
 
+**Frontend:**
 ```powershell
 cd frontend
-
-# 初回のみ依存パッケージをインストール
 npm install
-
-# 開発サーバーを起動
 npm run dev
 ```
-*   ブラウザで `http://localhost:5173`（または表示されたURL）にアクセスしてチャット画面を開きます。
-*   バックエンドをLAN公開モード（`0.0.0.0`）で起動した場合、スマホからは `http://[PCのIPアドレス]:5173` でアクセスしてください（※Viteの設定で `--host` が必要な場合があります）。
 
+### 4. 評価スクリプトの実行
 
-## 今後の展望 (Future Improvements)
-
-現在のプロトタイプは単一サーバー（Monolithic）構成で動作していますが、本番環境での大規模並列利用を見据え、以下のアーキテクチャ刷新と機能拡張を計画しています。
-
-### 1. アーキテクチャの非同期マイクロサービス化 (Scalability)
-現在の構成ではAPIサーバーとブラウザ実行プロセスが同居しているため、多重アクセス時にリソース枯渇（OOM）のリスクがあります。これを解決するため、**Producer-Consumerパターン**への移行を予定しています。
-*   **API Gateway / Reasoning Agent**: LLM推論とタスク生成のみを担当する軽量コンテナ。
-*   **Task Queue (Redis)**: 実行ジョブをバッファリングし、流量制御を行う。
-*   **Browser Workers**: Playwrightを実行する独立したコンテナ群。負荷に応じて水平スケール（Horizontal Scaling）可能にする。
-
-### 2. ブラウザ実行環境のリモート化 (Remote Browser Isolation)
-アプリケーションサーバーのリソース負荷を最小化するため、ローカルでのブラウザ起動を廃止し、**CDP (Chrome DevTools Protocol)** を介して外部のブラウザクラスター（例: Browserless, Selenium Grid）に接続する構成へ変更します。これにより、実行環境のサンドボックス化と安定性を向上させます。
-
-### 3. セッション管理の永続化と分析 (Observability)
-現在はオンメモリで管理しているチャットセッションや実行ログを、**Redis** や **PostgreSQL** に永続化します。これにより、サーバー再起動後もコンテキストを維持できるようにすると同時に、ユーザーがどのような検索キーワードで失敗したかを分析し、RAGの検索精度向上に役立てます。
-
-### 4. Human-in-the-loop (HITL) の強化
-エージェントが生成した検索条件に対し、実行前にユーザーが修正・承認できるインタラクションフローを追加します。ユーザーの修正操作をフィードバックデータとして蓄積し、次回の推論精度を向上させる仕組みを構築します。
+エージェントのロジックを変更した際は、以下のコマンドでリグレッションテストを行います。
+```powershell
+python run_agent_eval.py
+```
 
 ---
 
 <div id="en"></div>
 
-# Agentic Web Automation for B2B Search (Agentic RAG / Playwright)
+# Agentic B2B Search & CRM Analysis System
 
 ## Overview
-**"I want to find auto glass manufacturers in Guangdong province with a capital of over 100 million."**
+**From "Find glass factories in Guangdong" to "How were our sales in Shanghai last month?"**
 
-This is an autonomous AI agent designed to parse such abstract natural language requests from sales representatives. It automatically maps, inputs, and executes search conditions on complex corporate database websites (SaaS/Search Portals) through their "Advanced Search" forms.
+This project is an autonomous AI agent designed to bridge the gap between external market intelligence and internal business data. It interprets natural language requests from sales representatives and intelligently switches between **External Web Scraping (Playwright)** and **Internal CRM Database Analysis (Text-to-SQL)**. Additionally, it integrates with an internal Knowledge Base (RAG) capable of handling unstructured data like PDFs, Excel, and Images.
 
-Unlike traditional rule-based RPA, this system adopts an **Agentic RAG (Retrieval-Augmented Generation)** architecture powered by LLMs. This allows it to flexibly handle unknown search criteria and ambiguous expressions.
+Going beyond a simple demo, this project features a **Quantitative Evaluation Pipeline** to test the agent's decision-making logic, ensuring reliability and accuracy in a business context.
 
 ## Key Features
 
-### 1. Autonomous Decision Making (ReAct Agent Pattern)
-The backend (`backend_app.py`) doesn't just feed user input directly into a search. Instead, the agent executes a "Thought-Act-Observe" loop.
-*   **Thought**: Analyzes the user's request to determine if there is sufficient information.
-*   **Act**: If knowledge is lacking, it searches the "Internal Knowledge Base (RAG)". If information is sufficient, it executes the "Browser Automation Tool". If there are ambiguities, it "Asks the User for clarification".
+### 1. ReAct Autonomous Agent (Agentic Decision Making)
+The agent classifies user intent into three core actions and executes the appropriate tools autonomously:
+*   **Web Scraper**: Screens corporate databases via Playwright automation.
+*   **Internal CRM Analyst**: Converts natural language into SQL to query internal PostgreSQL databases.
+*   **Knowledge Base (RAG)**: Retrieves unstructured data from industry reports and meeting notes.
 
-### 2. Advanced DOM Parsing & Cost Reduction (LLM x Playwright)
-Instead of passing the entire web page HTML to the LLM, the system uses Playwright to parse the DOM structure. It **extracts only meaningful elements (checkboxes, dropdowns) into a lightweight JSON format** for the LLM to process (`playwright_test.py`).
-*   **Effect**: Reduces **token consumption by approximately 90%** compared to image recognition or full-text parsing, while improving inference accuracy.
-*   **Complex UI Handling**: Supports complex structures like "Industry Classification Trees" by automatically expanding them using a DFS (Depth-First Search) algorithm to identify the optimal categories.
+### 2. Agentic Data QA (Text-to-SQL & Schema Awareness)
+Implemented in `database.py` and `backend_app.py`, the agent dynamically understands the DB schema.
+*   **Text-to-SQL**: Translates complex queries like "Deals with sales over 100k" into correct SQL queries with `JOIN` operations.
+*   **Security**: All SQL queries are executed within `READ ONLY` transactions to prevent data alteration.
 
-### 3. Real-time Streaming UI
-The React frontend and FastAPI backend are connected via SSE (Server-Sent Events).
-*   AI's "Thinking Process"
-*   Real-time "Screenshots" of browser operations
-*   Post-execution "Result Reports"
-These are visualized in a chat format, providing a transparent and reassuring UX for the user.
+### 3. Multi-Format RAG (Azure AI Integration)
+`rag_utils.py` leverages Azure AI Document Intelligence and Pandas to index diverse internal documents.
+*   **Supported Formats**: PDF, Word, PowerPoint, Images (JPG/PNG), and specifically **Excel (.xlsx)** via Markdown conversion.
+*   **Hybrid Parsing**: Uses Azure OCR for images/diagrams and Pandas for structured tables, converting everything into LLM-friendly Markdown for higher retrieval accuracy.
+
+### 4. Agent Evaluation System (Quantitative Evaluation)
+To answer **"Is the AI choosing the right tools?"**, I built an evaluation pipeline using `run_agent_eval.py`.
+*   **Scenario-based Testing**: Validates the agent's "Thought", "Action", and "Extracted Params" against 30+ defined scenarios (`agent_react_scenarios.json`).
+*   **Accuracy Metrics**: Checks action matching rates and keyword inclusion in generated SQL queries to prevent regressions during development.
+
+### 5. Advanced Web Automation (LLM x Playwright)
+Instead of processing raw HTML, the system parses the DOM structure to extract only "meaningful interactive elements" into JSON. This allows the LLM to handle complex UIs (like nested industry trees) efficiently while reducing token usage.
 
 ## Tech Stack
 
 | Category | Technology/Tool | Usage |
 | --- | --- | --- |
-| **Frontend** | React, CSS (Custom) | Chat UI, Log Visualization, SSE Receiver |
+| **Frontend** | React, SSE | Chat UI, Real-time Streaming |
 | **Backend** | Python, FastAPI | Async API Server, Agent Control |
-| **LLM / AI** | OpenAI SDK (ModelScope/Qwen), Gemini API | Inference, Code Generation, JSON Parsing |
-| **RAG** | LlamaIndex, HuggingFace Embeddings | Searching Industry Knowledge (Supply Chains, etc.) |
-| **Automation** | Playwright (Async API) | Headless Browser Control, DOM Parsing |
-| **Infra/Others** | SSE (Server-Sent Events) | Streaming Communication |
+| **Database** | PostgreSQL, SQLAlchemy (Async) | CRM Data, Async Query Execution |
+| **LLM / AI** | OpenAI SDK (ModelScope/Qwen), Gemini | Inference, Text-to-SQL, JSON Parsing |
+| **RAG / ETL** | LlamaIndex, Azure Doc Intel, Pandas | Multi-modal Document Parsing |
+| **Automation** | Playwright | Headless Browser Automation |
+| **Evaluation** | Custom Eval Script (`run_agent_eval.py`) | Quantitative Logic Testing |
+| **Infra** | Docker, Docker Compose | Database Environment |
 
 ## Architecture Diagram
 
 <img src="./assets/architecture.png" alt="Architecture Diagram" width="500">
 
-## Project Structure (Key Files)
+## Evaluation Pipeline
 
+To ensure quality in LLM application development, an evaluation process is integrated.
+
+*   **Dataset**: `agent_react_scenarios.json`
+    *   Defines intents for KB search, Web search proposals, CRM analysis, and chit-chat.
+*   **Script**: `run_agent_eval.py`
+    *   Runs the agent against scenarios and compares the JSON output (Action, Params) with ground truth.
+    *   Validates parameter extraction accuracy and SQL query validity.
+
+**Example Output:**
 ```text
-.
-├── backend_app.py       # FastAPI Entry Point (ReAct Agent Implementation)
-├── playwright_test.py   # Browser Logic (LLM x Playwright Integration)
-├── rag_utils.py         # Knowledge Base Search Logic using LlamaIndex
-├── requirements.txt     # Backend Dependencies
-├── knowledge_docs/      # Document Folder for RAG (Industry Knowledge)
-└── frontend/            # Frontend Project
-    └── src/
-        ├── App.jsx      # Main Chat UI & Log Component
-        ├── App.css      # Chat Styling
-        ├── main.jsx     # React Entry Point
-        └── assets/      # Static Resources
+[1/30] Testing: case_crm_01
+📝 Description: CRM Query: Basic (Deals in Shanghai)
+✅ PASS (2.14s)
+   🎬 [Action] : search_internal_crm
+   ⚙️ [SQL]    : SELECT c.name ... FROM companies c JOIN sales_records ...
 ```
-
-## Technical Highlights
-
-### Logic for Mutual Exclusion & Reasoning
-When selecting from the industry classification tree, if both a "Parent Category" and a "Child Category" are selected simultaneously, I implemented a **mutual exclusion logic** in Python to prioritize the more specific "Child Category" and deselect the parent. This reduces search noise.
-
-### Error Handling & Self-Correction
-To handle cases where the LLM generates broken JSON, I implemented a self-correction logic (`extract_json_from_text`) using regular expressions to repair the output, significantly improving system stability.
-
-### Hybrid LLM Configuration
-To balance inference cost and accuracy, the system is designed to switch between models: "Gemini Flash" for main inference tasks and "Qwen (ModelScope)" for sub-tasks or as a backup.
 
 ## Setup & Execution
 
-This project requires running the Backend (Python/FastAPI) and Frontend (React) in separate terminals.
+### 1. Environment Setup
 
-### 1. Environment Setup (First Time Only)
-
-Run the following commands in the project root directory to create/activate a virtual environment and install dependencies.
-
-**Windows (PowerShell)**
 ```powershell
-# Create Virtual Environment
-python -m venv venv
+# Clone Repo
+git clone [repo_url]
+cd [repo_name]
 
-# Activate Virtual Environment
+# Create Venv
+python -m venv venv
 .\venv\Scripts\Activate.ps1
 
-# Install Backend Dependencies
+# Install Dependencies
 pip install -r requirements.txt
-
-# Download Playwright Browser Binaries (Required)
 playwright install
 ```
 
-### 2. Start Backend
+### 2. Start Database (Docker)
 
-With the virtual environment activated, run the following command to start the API server.
+Start the PostgreSQL container to enable CRM analysis features.
 
 ```powershell
-# Ensure venv is activated: .\venv\Scripts\Activate.ps1
-
-# For Local Development (Access only from your machine)
-uvicorn backend_app:app --reload --port 8000
-
-# [Option] To allow access from other devices (e.g., Mobile) on the same LAN
-# uvicorn backend_app:app --reload --host 0.0.0.0 --port 8000
+docker-compose up -d
 ```
-*   Upon success, `Uvicorn running on ...` will appear in the console.
+*   `init_db.sql` will automatically populate sample data for companies, contacts, and sales records.
 
-### 3. Start Frontend
+### 3. Start Backend / Frontend
 
-Open a new terminal, navigate to the frontend directory, and start the application.
+**Backend:**
+```powershell
+# Ensure API Keys are set
+uvicorn backend_app:app --reload
+```
 
+**Frontend:**
 ```powershell
 cd frontend
-
-# Install Dependencies (First Time Only)
 npm install
-
-# Start Development Server
 npm run dev
 ```
-*   Open `http://localhost:5173` (or the URL shown) in your browser to access the chat interface.
-*   If you started the backend in LAN mode (`0.0.0.0`), access via mobile using `http://[YOUR_PC_IP]:5173`. Note: You may need to configure Vite with `--host`.
 
-## Future Improvements
+### 4. Run Evaluation
 
-The current prototype operates as a monolithic application. To support large-scale parallel usage in a production environment, I plan to refresh the architecture and expand features as follows:
-
-### 1. Microservices Architecture (Scalability)
-Since the API server and browser processes currently share resources, there is a risk of OOM (Out Of Memory) errors during concurrent access. I plan to migrate to a **Producer-Consumer Pattern**:
-*   **API Gateway / Reasoning Agent**: A lightweight container responsible only for LLM inference and task generation.
-*   **Task Queue (Redis)**: Buffers execution jobs and controls flow rate.
-*   **Browser Workers**: Independent containers running Playwright, capable of **Horizontal Scaling** based on load.
-
-### 2. Remote Browser Isolation
-To minimize resource load on the application server, local browser instances will be replaced with a connection to an external browser cluster (e.g., Browserless, Selenium Grid) via **CDP (Chrome DevTools Protocol)**. This improves security (sandboxing) and stability.
-
-### 3. Session Persistence & Observability
-Currently, chat sessions and execution logs are managed in-memory. I will persist these to **Redis** or **PostgreSQL**. This ensures context is maintained after server restarts and allows for analysis of failed search keywords to improve RAG accuracy.
-
-### 4. Human-in-the-loop (HITL)
-I will add an interaction flow where users can review, modify, and approve the search conditions generated by the agent before execution. User modifications will be collected as feedback data to fine-tune future inference accuracy.
+Run regression tests whenever agent logic is modified.
+```powershell
+python run_agent_eval.py
+```

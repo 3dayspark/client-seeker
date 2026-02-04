@@ -406,14 +406,20 @@ function App() {
     if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages, aiState]);
 
-  const handleSendMessage = async () => {
-    if (!userInput.trim()) return;
-
-    const promptText = userInput;
+  const handleSendMessage = async (overrideText = null) => {
+    // ボタンからテキストが渡された場合はそれを使用、なければ入力欄を使用
+    const promptText = (typeof overrideText === 'string') ? overrideText : userInput;
+    
+    if (!promptText.trim()) return;
     const userMessage = { sender: USER_NAME, text: promptText, type: 'text' };
     
     setMessages((prev) => [...prev, userMessage]);
-    setUserInput(''); 
+    
+    // 入力欄からの送信の場合のみ、入力をクリア
+    if (!overrideText) {
+      setUserInput(''); 
+    }
+
     setIsLoading(true);
     setAiState('thinking'); // 思考状態へ移行
 
@@ -474,6 +480,40 @@ function App() {
                 // RAGヒット時はsystem_noteとして表示
                 setMessages(prev => [...prev, { type: 'system_note', text: hitText, isSuccess: true }]);
                 continue;
+            }
+
+
+            // --- 提案カードデータの解析ロジック---
+            if (logLine.startsWith('[PROPOSAL_DATA]')) {
+              const jsonStr = logLine.replace('[PROPOSAL_DATA]', '');
+              try {
+                  const data = JSON.parse(jsonStr);
+                  setMessages(prev => [...prev, { 
+                      sender: AI_ASSISTANT_NAME, 
+                      type: 'proposal_card',
+                      data: data 
+                  }]);
+              } catch (e) {
+                  console.error("Proposal JSON Error", e);
+              }
+              continue;
+            }
+
+            // --- CRMカードの処理 ---
+            if (logLine.startsWith('[DB_CARD_DATA]')) {
+              const jsonStr = logLine.replace('[DB_CARD_DATA]', '');
+              try {
+                  const cardData = JSON.parse(jsonStr);
+ 
+                  setMessages(prev => [...prev, { 
+                      sender: AI_ASSISTANT_NAME, 
+                      type: 'crm_card_list', 
+                      data: cardData 
+                  }]);
+              } catch (e) {
+                  console.error("DB Card JSON Error", e);
+              }
+              continue;
             }
 
             // --- 特殊制御マーカーの処理 ---
@@ -554,6 +594,63 @@ function App() {
 
   const closePreview = () => setPreviewImage(null);
 
+// 値のフォーマット（金額などを整形）
+const formatValue = (key, value) => {
+  if (value === null || value === undefined) return '-';
+  // 金額っぽいキーの場合、カンマ区切りにする
+  if (/amount|sales|price|売上|金額/.test(key.toLowerCase()) && !isNaN(value)) {
+      return `¥${Number(value).toLocaleString()}`;
+  }
+  return value;
+};
+
+// ステータスに応じたクラス名を返す（CSSで色を制御するため）
+const getStatusClass = (status) => {
+  if (!status) return 'gray';
+  if (/契約|成約|已签约/.test(status)) return 'green';
+  if (/商談|交渉|進行/.test(status)) return 'blue';
+  if (/失注|失敗/.test(status)) return 'red';
+  return 'gray';
+};
+
+
+// --- データベース項目名 日本語マッピング定義 ---
+const FIELD_MAPPING = {
+  // 企業情報
+  "id": "ID",
+  "name": "企業名",
+  "company_name": "企業名",
+  "industry": "業種",
+  "region": "地域",
+  "established_year": "設立年",
+  
+  // 担当者情報
+  "contact_person": "担当者名",
+  "pic": "担当者名", // 旧互換
+  "position": "役職",
+  "email": "メールアドレス",
+  "phone": "電話番号",
+  
+  // 商談・売上情報
+  "status": "商談状況",
+  "deal_status": "商談状況",
+  "sales_amount": "商談金額",
+  "amount": "金額",
+  "last_contact_date": "最終接触日",
+  "last_contact": "最終接触日",
+  "product_category": "製品カテゴリ",
+  
+  // その他システム系
+  "created_at": "登録日時",
+  "updated_at": "更新日時"
+};
+
+// ラベル取得ヘルパー関数
+const getLabel = (key) => {
+  return FIELD_MAPPING[key] || key; // マッピングがなければそのまま英語キーを表示
+};
+
+
   return (
     <div className="chat-container">
       {/* プレビューモーダル */}
@@ -589,8 +686,199 @@ function App() {
                               {msg.text}
                           </span>
                       </div>
-                  ) : (
-                      /* 分岐2: 通常メッセージ (アバター + 吹き出し) */
+                  ) : 
+                  /* 分岐2: CRM カードリストのレンダリング */
+                  msg.type === 'crm_card_list' ? (
+                    <div className="message-row ai" style={{width: '100%', display: 'flex', gap: '12px'}}>
+                        <div className="avatar" style={{ backgroundImage: `url(${AI_AVATAR})` }}></div>
+                        <div className="message-content" style={{width: '100%'}}>
+                            <div className="sender-name">{msg.sender}</div>
+                            
+                            {/* --- データ表示ロジック開始 --- */}
+                            {(() => {
+                                const dataList = msg.data || [];
+                                if (dataList.length === 0) return <div>データがありません</div>;
+
+                                // 1. フィールド情報の解析
+                                const allKeys = Object.keys(dataList[0]);
+                                
+                                // プライマリキー（タイトル/左端にする項目）の推定ロジック
+                                // 'name', 'company', 'id' 等が含まれるキーを優先
+                                const primaryKey = allKeys.find(k => /name|company|title|社名|企業名/.test(k.toLowerCase())) 
+                                                || allKeys.find(k => /id|no|code/.test(k.toLowerCase())) 
+                                                || allKeys[0];
+
+                                // ステータスキーの推定（色分け用）
+                                const statusKey = allKeys.find(k => /status|state|状況|状態/.test(k.toLowerCase()));
+
+                                // 表示から除外するキー（プライマリキーやステータスは別途扱うため）
+                                const bodyKeys = allKeys.filter(k => k !== primaryKey && k !== statusKey);
+
+                                // --- A. テーブル表示モード (データが3件以上の場合) ---
+                                if (dataList.length > 2) {
+                                  return (
+                                      <div className="crm-table-wrapper">
+                                          <table className="crm-table">
+                                              <thead>
+                                                  <tr>
+                                                      {/* 修正: key を getLabel(key) に変更 */}
+                                                      <th className="fixed-col">{getLabel(primaryKey)}</th>
+                                                      {statusKey && <th>{getLabel(statusKey)}</th>}
+                                                      {bodyKeys.map(key => <th key={key}>{getLabel(key)}</th>)}
+                                                  </tr>
+                                              </thead>
+                                              {/* tbody は変更なし（データの中身はそのまま表示するため） */}
+                                              <tbody>
+                                                  {dataList.map((item, i) => (
+                                                      <tr key={i}>
+                                                          <td className="primary-cell">{item[primaryKey]}</td>
+                                                          {statusKey && (
+                                                              <td>
+                                                                  <span className={`status-tag table-tag ${getStatusClass(item[statusKey])}`}>
+                                                                      {item[statusKey]}
+                                                                  </span>
+                                                              </td>
+                                                          )}
+                                                          {bodyKeys.map(key => (
+                                                              <td key={key}>{formatValue(key, item[key])}</td>
+                                                          ))}
+                                                      </tr>
+                                                  ))}
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  );
+                              }
+
+                                // --- B. カード表示モード (データが4件以下の場合) ---
+                                return (
+                                    <div className="crm-list-container">
+                                        {dataList.map((item, i) => {
+                                            const statusVal = statusKey ? item[statusKey] : null;
+                                            
+                                            // ステータスに応じた色設定（ヘルパー関数化してもよいが、ここではインラインで定義）
+                                            let statusColor = '#cbd5e0'; 
+                                            if (statusVal) {
+                                                if (/契約|成約|已签约/.test(statusVal)) statusColor = '#38a169'; // 緑
+                                                else if (/商談|交渉|進行/.test(statusVal)) statusColor = '#3182ce'; // 青
+                                                else if (/失注|失敗/.test(statusVal)) statusColor = '#e53e3e'; // 赤
+                                            }
+
+                                            return (
+                                                <div key={i} className="crm-list-item">
+                                                    {/* 左側のアクセントバー */}
+                                                    <div className="crm-status-bar" style={{backgroundColor: statusColor}}></div>
+
+                                                    {/* ヘッダー：企業名とバッジ */}
+                                                    <div className="crm-item-header">
+                                                        <span className="crm-company-name">{item[primaryKey]}</span>
+                                                        {statusVal && (
+                                                            <span className={`crm-status-badge ${getStatusClass(statusVal)}`}>
+                                                                {statusVal}
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    {/* ボディ：動的グリッド */}
+                                                    <div className="crm-item-body">
+                                                        {bodyKeys.map((key) => (
+                                                            <div key={key} className="crm-info-row">
+                                                                <span className="crm-label">{getLabel(key)}</span>
+                                                                <span className="crm-value">
+                                                                    {formatValue(key, item[key])}
+                                                                </span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            })()}
+                            {/* --- データ表示ロジック終了 --- */}
+
+                            <div style={{fontSize: '0.8em', color: '#999', marginTop: '8px', textAlign: 'right'}}>
+                                検索結果: {msg.data.length} 件
+                            </div>
+                        </div>
+                    </div>
+                ) :
+                /* 分岐3: 提案カード */
+                msg.type === 'proposal_card' ? (
+                  <div className="message-row ai" style={{width: '100%'}}>
+                      <div className="avatar" style={{ backgroundImage: `url(${AI_AVATAR})` }}></div>
+                      <div className="message-content">
+                          <div className="proposal-card-container">
+                              {/* ヘッダー：アイコンを変更し、よりレポートらしく */}
+                              <div className="proposal-header">
+                                  <span>スクリーニング条件の提案</span>
+                              </div>
+
+                              {/* ボディ */}
+                              <div className="proposal-body">
+                                  
+                                  {/* ターゲット定義ブロック：図2の「判断根拠」風スタイル */}
+                                  <div className="proposal-section">
+                                      <div className="proposal-label">
+                                          ターゲット定義
+                                      </div>
+                                      <div className="proposal-guidance-box">
+                                          {msg.data.guidance}
+                                      </div>
+                                  </div>
+
+                                  {/* 地域タグ */}
+                                  <div className="proposal-section">
+                                      <div className="proposal-label">地域指定</div>
+                                      <div className="proposal-tags-wrapper">
+                                          {msg.data.regions && msg.data.regions.length > 0 ? (
+                                              msg.data.regions.map((region, idx) => (
+                                                  <span key={idx} className="proposal-tag region">{region}</span>
+                                              ))
+                                          ) : (
+                                              <span className="proposal-tag region">全国</span>
+                                          )}
+                                      </div>
+                                  </div>
+
+                                  {/* キーワードタグ */}
+                                  <div className="proposal-section">
+                                      <div className="proposal-label">抽出キーワード</div>
+                                      <div className="proposal-tags-wrapper">
+                                          {/* キーワード文字列を配列に分割してタグ表示 */}
+                                          {(msg.data.keywords || '自動生成').split(/[,、]/).map((kw, idx) => {
+                                              const cleanKw = kw.trim();
+                                              if(!cleanKw) return null;
+                                              return <span key={idx} className="proposal-tag keyword">{cleanKw}</span>;
+                                          })}
+                                      </div>
+                                  </div>
+
+                                  {/* 注釈 */}
+                                  <div className="proposal-note">
+                                      ※ 条件を変更したい場合は、チャットで直接指示してください（例：「地域を上海に変更して」）。
+                                  </div>
+
+                                  {/* 実行ボタン */}
+                                  <button 
+                                      className="proposal-btn"
+                                      onClick={() => handleSendMessage("条件を確認しました。高度なスクリーニングを開始してください。")}
+                                      disabled={isLoading}
+                                  >
+                                      条件を確定して検索開始
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              ) :
+                
+                
+                
+                (
+                  
+                      /* 分岐4: 通常メッセージ (アバター + 吹き出し) */
                       <>
                           <div className="avatar" style={{ backgroundImage: `url(${isUser ? USER_AVATAR : AI_AVATAR})` }}></div>
                           <div className="message-content">
