@@ -420,13 +420,25 @@ body {
 
 /* レポートヘッダー */
 .report-header {
+  background-color: #f6f8fa;
+  padding: 12px 16px;
+  border-bottom: 1px solid #d1d5da;
+  font-weight: 700;
+  color: #24292e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95em;
+}
+
+/* .report-header {
   background: linear-gradient(135deg, #007bff 0%, #0062cc 100%);
   color: white;
   padding: 14px 20px;
   font-weight: 700;
   font-size: 1.05em;
   letter-spacing: 1px;
-}
+} */
 
 /* レポート本文 */
 .report-body {
@@ -1418,4 +1430,81 @@ body {
   min-width: 80px;
   margin-right: 8px;
   width: auto;
+}
+
+
+/* ==========================================================================
+   引用（Citation）ツールチップスタイル - 脚注版
+   ========================================================================== */
+
+/* 1. ラッパー */
+.citation-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 1px; /* 隙間を詰める */
+  vertical-align: baseline;
+  cursor: help;
+}
+
+/* 2. トリガー: [1], [2] のスタイル */
+.citation-trigger {
+  font-size: 0.8em; /* 本文より少し小さく */
+  color: #007bff;   /* リンク色 */
+  font-weight: 700;
+  padding: 0 2px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  user-select: none;
+  
+  /* 上付き文字のような配置調整 */
+  position: relative;
+  top: -4px; 
+}
+
+.citation-trigger:hover {
+  color: #0056b3;
+  background-color: rgba(0, 123, 255, 0.1); /* ホバー時のみ薄い背景 */
+  text-decoration: underline;
+}
+
+/* 3. ツールチップ (確認用) */
+.citation-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 140%; /* 少し高めに表示 */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222; /* より濃い黒 */
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: opacity 0.2s, bottom 0.2s;
+  pointer-events: none;
+  min-width: max-content; /* 内容に合わせて幅確保 */
+}
+
+/* ツールチップの矢印 */
+.citation-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #222 transparent transparent transparent;
+}
+
+/* ホバー時の動作 */
+.citation-wrapper:hover .citation-tooltip {
+  visibility: visible;
+  opacity: 1;
+  bottom: 150%;
 }

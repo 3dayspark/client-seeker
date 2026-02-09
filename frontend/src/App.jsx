@@ -284,7 +284,7 @@ const StructuredReport = ({ text }) => {
 
   return (
     <div className="report-card">
-      <div className="report-header">📋 スクリーニング条件の提案</div>
+      <div className="report-header">スクリーニング条件の提案</div>
       <div className="report-body">
         {blocks.map((block, index) => {
           
@@ -369,6 +369,55 @@ const StructuredReport = ({ text }) => {
   );
 };
 
+
+
+/**
+ * 引用表示コンポーネント
+ * 文中には小さな [1] マークのみを表示し、ホバー時に詳細を表示します。
+ */
+const MessageWithCitations = ({ text }) => {
+  if (!text) return null;
+
+  // 正規表現: 
+  // 1. [ ... p.数字 ... ] : ページ番号付き引用
+  // 2. [ ... .pdf/jpg ... ] : 拡張子付きファイル名引用（ページ番号なし）
+  // ※ jpg を追加済み
+  const regex = /(\[[^\]]+? p\.[\d,\s]+\]|\[[^\]]+?\.(?:pdf|xlsx|xls|docx|doc|pptx|ppt|txt|csv|jpg)\])/gi;
+
+  const parts = text.split(regex);
+  
+  // 引用番号のカウンタを初期化
+  let citationCount = 0;
+
+  return (
+    <span>
+      {parts.map((part, index) => {
+        if (part.match(regex)) {
+          // マッチした場合のみカウントアップ
+          citationCount++;
+          
+          // ブラケットを除去して中身だけにする (例: "report.pdf p.12")
+          const content = part.replace(/[\[\]]/g, '');
+          
+          return (
+            <span key={index} className="citation-wrapper">
+              {/* 番号を表示 */}
+              <span className="citation-trigger footnote">
+                [{citationCount}]
+              </span>
+              
+              {/* ツールチップ */}
+              <span className="citation-tooltip">
+                {content}
+              </span>
+            </span>
+          );
+        }
+        return part;
+      })}
+    </span>
+  );
+};
 
 // --- App メインコンポーネント ---
 function App() {
@@ -903,7 +952,7 @@ const getLabel = (key) => {
                                      {isReportMsg ? (
                                         <StructuredReport text={msg.text} />
                                      ) : (
-                                        <span>{msg.text}</span>
+                                        <MessageWithCitations text={msg.text} />
                                      )}
                                 </div>
                               )}

@@ -18,7 +18,7 @@ import requests  # Gemini API用
 from openai import OpenAI  # ModelScope API用
 
 # 独自のRAGユーティリティをインポート
-from rag_utils import build_or_load_index, query_knowledge_base
+from rag_utils import build_or_load_index, query_knowledge_base, get_all_indexed_filenames
 # データベース接続をインポート
 from database import get_database_schema_info, execute_raw_sql
 
@@ -73,7 +73,7 @@ modelscope_client = None
 gemini_api_key_pool = None
 gemini_base_headers = {"Content-Type": "application/json"}
 rag_index = None
-
+VALID_FILENAMES = set() 
 
 # チャット履歴管理
 # 本番環境ではRedisやDBへの移行を推奨
@@ -115,39 +115,111 @@ rag_index = build_or_load_index()
 # ---------------------------------------------------------
 def extract_json_from_text(text: str) -> Dict[str, Any]:
     """
-    LLMの回答からJSONブロックを抽出し、構文エラー（特に改行コード）を自動修復してパースします。
+    LLMの回答からJSONブロックを抽出し、構文エラー（特に改行コード）を強力に自動修復してパースします。
     """
     try:
         # 1. Markdownのコードブロック記法を除去
         text = re.sub(r'```json\s*', '', text)
         text = re.sub(r'```', '', text)
+        text = text.strip()
 
         # 2. 最初に見つかった { ... } のペアを探す (最長一致)
-        match = re.search(r'(\{[\s\S]*\})', text)
-        if match:
-            json_str = match.group(1)
+        # 単純なregexではなく、ネストに対応した簡易抽出、または単純に { で始まり } で終わる範囲を探す
+        start_idx = text.find('{')
+        end_idx = text.rfind('}')
+        
+        if start_idx != -1 and end_idx != -1:
+            json_str = text[start_idx : end_idx + 1]
         else:
             json_str = text
 
-        # 3. JSON文字列内の改行コード処理
-        # LLMがJSON文字列内部で改行し、パースエラーになるケースを防ぐため、
-        # ダブルクォート内の改行を \n に置換する。
-        def replace_newlines_in_quotes(m):
-            content = m.group(0)
-            return content.replace('\n', '\\n')
-
-        # ダブルクォート内の内容にマッチさせ、改行をエスケープ
-        json_str_clean = re.sub(r'"((?:[^"\\]|\\.)*)"', replace_newlines_in_quotes, json_str, flags=re.DOTALL)
+        # 3. JSON文字列内の「不正な改行」を「\\n」に置換する処理
+        # JSONの仕様では、ダブルクォートで囲まれた文字列の中で生の改行は許されないため、
+        # これを検知してエスケープします。
+        
+        new_chars = []
+        in_string = False
+        escape = False
+        
+        for char in json_str:
+            if char == '"' and not escape:
+                in_string = not in_string
+                new_chars.append(char)
+            elif char == '\\' and not escape:
+                escape = True
+                new_chars.append(char)
+            elif in_string and char == '\n':
+                # 文字列内部の改行はエスケープする
+                new_chars.append('\\n')
+                escape = False
+            elif in_string and char == '\r':
+                # \r は無視するかスペースにする
+                pass 
+                escape = False
+            elif in_string and char == '\t':
+                new_chars.append('\\t')
+                escape = False
+            else:
+                new_chars.append(char)
+                if escape:
+                    escape = False
+        
+        json_str_clean = "".join(new_chars)
 
         return json.loads(json_str_clean)
 
     except json.JSONDecodeError as e:
-        logger.warning(f"JSON Parse Error: {e} | Raw: {text}")
+        logger.warning(f"JSON Parse Error: {e} | Raw: {text[:100]}...")
+        # 最後の手段：改行をすべて消してトライしてみる（整形崩れるが動作優先）
+        try:
+             # 簡易的な修復：制御文字を削除
+             simple_clean = re.sub(r'[\x00-\x1f]', ' ', text)
+             match = re.search(r'(\{[\s\S]*\})', simple_clean)
+             if match:
+                 return json.loads(match.group(1))
+        except:
+            pass
         return None
     except Exception as e:
         logger.error(f"Extract Error: {e}")
         return None
 
+
+def sanitize_citations(text: str) -> str:
+    """
+    テキスト内の引用タグ [filename p.x] を検査し、
+    実在しないファイル名のタグを削除します。
+    """
+    if not text:
+        return ""
+        
+    # 正規表現: [任意のファイル名 p.数字] または [任意のファイル名]
+    # キャプチャグループ1: ファイル名部分
+    # キャプチャグループ2: (オプション) ページ番号部分
+    # 例: [test.pdf p.1] -> group1="test.pdf"
+    pattern = r'\[(.*?)(?: p\.[\d,\s]+)?\]'
+    
+    def validator(match):
+        full_tag = match.group(0) # [test.pdf p.1]
+        filename = match.group(1).strip() # test.pdf
+        
+        # 1. 完全一致チェック
+        if filename in VALID_FILENAMES:
+            return full_tag
+            
+        # 2. パスが含まれる場合の揺らぎ吸収 (例: knowledge_docs/test.pdf -> test.pdf)
+        # RAGのインデックスには相対パスで入っている可能性があるため、末尾一致も確認
+        for valid_name in VALID_FILENAMES:
+            if filename.endswith(valid_name) or valid_name.endswith(filename):
+                return full_tag
+        
+        # 検証に失敗した場合、タグを削除（空文字を返す）
+        # ※ ログに残すとデバッグしやすい
+        logger.warning(f"🚫 Removing hallucinated citation: {full_tag}")
+        return ""
+
+    # 置換実行
+    return re.sub(pattern, validator, text)
 
 # --- 補助関数: LLM 呼び出し (Master Brain) ---
 async def _call_master_llm(prompt: str, history: List[Dict[str, str]]) -> str:
@@ -260,10 +332,15 @@ db_schema_context = ""
 
 @app.on_event("startup")
 async def startup_event():
-    global db_schema_context
+    global db_schema_context, VALID_FILENAMES
     # 起動時にスキーマ情報を取得・キャッシュ
     db_schema_context = await get_database_schema_info()
     logger.info("System Context: DB Schema loaded.")
+
+    #RAGインデックスからファイル名リストをキャッシュ
+    if rag_index:
+        VALID_FILENAMES = get_all_indexed_filenames(rag_index)
+        logger.info(f"System Context: Loaded {len(VALID_FILENAMES)} valid filenames from RAG index.")
 
 
 # ---------------------------------------------------------
@@ -314,7 +391,15 @@ async def run_master_agent_flow(session_id: str, user_message: str):
        - `guidance_text`: **必須**。`propose_screening_condition` で提案した内容（ターゲット定義）をそのまま転記すること。これが空だと検索できません。
        - `keywords`: **必須**。提案したキーワード。
        - `regions`: **必須**。提案した地域リスト。
+       - `reasoning`: **(必須)** なぜこの条件（キーワードや地域）を選定したのかの理由説明。**ここにRAGの検索結果に基づいた根拠と引用タグ（例: [report.pdf p.12]）を必ず含めること。**
     4. `response_to_user`: ユーザーに追加質問をする、または回答する。
+
+    【ナレッジベース利用時の重要ルール: 引用の義務】
+    ナレッジベース検索(`consult_knowledge_base`)の結果を利用して発言する場合は、必ず情報の出典元を明記してください。
+    提供されるテキストには `[ファイル名 p.ページ番号]` という形式のタグが含まれています。
+    回答文や提案理由の、該当する事実の直後にこのタグをそのまま付記してください。
+    提供されたタグにページ番号が含まれていない場合（例: `[file.pdf]`）、決して勝手にページ番号を捏造しないでください。その場合は `[file.pdf]` とだけ記述してください。
+    
 
 
     **【出力フォーマット】**
@@ -326,23 +411,26 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         "thought": "ユーザーは「自動車ガラス」という特定の製品に言及している。ターゲット企業の解像度を高めるため、まずはナレッジベースで自動車ガラス業界のサプライチェーンや、主要な納入先（OEMメーカー等）を検索して確認する必要がある。",
         "action": "consult_knowledge_base",
         "params": {
-            "query": "汽车玻璃 供应链 主要客户"  <-- 注意：検索効率のため、ここは必ず中国語で入力すること。
+            "query": "汽车玻璃 供应链 主要客户"
         }
     }
     ```
+
+
     
     または
     
-    ユーザー：「広東省のガラス工場を探して」
+    例: 条件提案時
     AI回答：
     ```json
     {
-        "thought": "ナレッジベースでの確認が完了し、検索条件は明確になった。実行前にユーザーに条件案を提示して確認をとる。",
+        "thought": "自動車ガラス業界のレポートによると、福耀ガラスが主要プレイヤーであるため、その周辺サプライヤーを狙うべきだ。",
         "action": "propose_screening_condition",
         "params": {
-            "guidance_text": "ターゲット：広東省エリアのガラス製造・加工企業",
-            "regions": ["広東省"],
-            "keywords": "ガラス製造、深加工"
+            "guidance_text": "ターゲット：自動車ガラス製造に関連するサプライヤーおよび加工業者",
+            "regions": ["福建省", "上海市"],
+            "keywords": "自動車ガラス、PVB膜、ケイ砂",
+            "reasoning": "業界レポートによると、福耀ガラスの主要工場は福建省と上海に集中しています [AutoGlass_Report_2024.pdf p.15]。また、原材料としてPVB膜の需要が急増しているとの記述があります [Market_Analysis.xlsx]。"
         }
     }
     ```
@@ -374,6 +462,11 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         }
     }
     ```
+
+
+    
+
+
 
     一方で、あなたは高度なデータアナリストでもあります。
     ユーザーから社内データに関する質問があった場合は、社内データベースの分析を行ってください。
@@ -454,8 +547,12 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             resp_text = params.get("text", "")
             # 既にhistoryにはLLMの全出力が入っているが、整合性のため簡潔な応答も入れておくか検討可能
             # ここでは二重登録を防ぐため、Assistantの思考プロセスとしての履歴のみとする（仕様依存）
+            
+            # フィルタリング適用
+            clean_text = sanitize_citations(resp_text)
+
             # フロントエンドへの表示用
-            yield f"data: [TEXT_RESPONSE]{resp_text.replace('\n', '\\n')}\n\n"
+            yield f"data: [TEXT_RESPONSE]{clean_text.replace('\n', '\\n')}\n\n"
             yield "data: ---END_OF_STREAM---\n\n"
             return  # ユーザー入力待ちへ
 
@@ -673,6 +770,7 @@ First 5 rows preview:
             p_guidance = params.get("guidance_text", "")
             p_regions = params.get("regions", [])
             p_keywords = params.get("keywords", "")
+            p_reasoning = params.get("reasoning", "")
             
             # キーワードがリストの場合は文字列に結合
             if isinstance(p_keywords, list):
@@ -695,13 +793,18 @@ First 5 rows preview:
             tool_msg_content = f"PROPOSAL_SAVED_DATA: {payload}" 
             history.append({"role": "tool", "content": tool_msg_content})
             follow_up_text = (
-                "予備的な顧客ターゲット画像を作成しました。\n"
-                "条件に問題がなければ「検索開始」、修正が必要な場合は具体的な指示（例：「地域を上海に変更」）を入力してください。"
+                f"{p_reasoning}\n\n"
+                "--- \n"
+                "上記に基づき、ターゲット条件案を作成しました。\n"
+                "条件に問題がなければ「検索開始」、修正が必要な場合は指示を入力してください。"
             )
-            yield f"data: [TEXT_RESPONSE]{follow_up_text.replace('\n', '\\n')}\n\n"
+            # フィルタリング適用
+            clean_follow_up = sanitize_citations(follow_up_text)
+            
+            yield f"data: [TEXT_RESPONSE]{clean_follow_up.replace('\n', '\\n')}\n\n"
             
             # LLMの履歴にも自身が発言したこととして記録（一貫性維持のため）
-            history.append({"role": "assistant", "content": follow_up_text})
+            history.append({"role": "assistant", "content": clean_follow_up})
             # ここで一旦ストリームを終了し、ユーザーの入力を待つ
             yield "data: ---END_OF_STREAM---\n\n"
             return

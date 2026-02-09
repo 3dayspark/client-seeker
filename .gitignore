@@ -8,6 +8,7 @@ api_keys.json
 __pycache__/
 *.pyc
 venv/
+.venv_py310/
 
 # Frontend specific files and directories
 frontend/node_modules/
@@ -28,6 +29,7 @@ storage_index/
 test.txt
 db_schema_cache.txt
 test_pdf.py
+compile_test.py
 
 # Exclude root level temporary files
 /*.txt
