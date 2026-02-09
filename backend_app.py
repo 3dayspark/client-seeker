@@ -561,7 +561,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             query = params.get("query", "")
             yield f"data: [STATUS_MSG]ナレッジベース検索中: {query}...\n\n"
 
-            rag_result, hit_files = await asyncio.to_thread(query_knowledge_base, rag_index, query)
+            rag_result, hit_files, *_ = await asyncio.to_thread(query_knowledge_base, rag_index, query)
             
             if hit_files:
                 for fname in hit_files:

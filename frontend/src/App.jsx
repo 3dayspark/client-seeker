@@ -457,15 +457,17 @@ function App() {
 
   const handleSendMessage = async (overrideText = null) => {
     // ボタンからテキストが渡された場合はそれを使用、なければ入力欄を使用
-    const promptText = (typeof overrideText === 'string') ? overrideText : userInput;
+    const isStringOverride = typeof overrideText === 'string';
+  
+    const promptText = isStringOverride ? overrideText : userInput;
     
     if (!promptText.trim()) return;
     const userMessage = { sender: USER_NAME, text: promptText, type: 'text' };
     
     setMessages((prev) => [...prev, userMessage]);
     
-    // 入力欄からの送信の場合のみ、入力をクリア
-    if (!overrideText) {
+    
+    if (!isStringOverride) {
       setUserInput(''); 
     }
 
