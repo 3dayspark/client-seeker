@@ -19,6 +19,7 @@ frontend/dist/
 chroma_db/
 my_filters_database.db
 pgdata/
+pgdata_vector/
 
 # Cache and temporary directories/files
 *.log

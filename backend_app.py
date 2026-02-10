@@ -20,7 +20,14 @@ from openai import OpenAI  # ModelScope API用
 # 独自のRAGユーティリティをインポート
 from rag_utils import build_or_load_index, query_knowledge_base, get_all_indexed_filenames
 # データベース接続をインポート
-from database import get_database_schema_info, execute_raw_sql
+from database import (
+    get_database_schema_info, 
+    execute_raw_sql, 
+    get_table_schema_sync,     
+    search_column_values,      
+    vectorize_database,        
+    search_table_semantically  
+)
 
 # ログ設定
 logging.basicConfig(
@@ -342,6 +349,8 @@ async def startup_event():
         VALID_FILENAMES = get_all_indexed_filenames(rag_index)
         logger.info(f"System Context: Loaded {len(VALID_FILENAMES)} valid filenames from RAG index.")
 
+    asyncio.create_task(vectorize_database())
+
 
 # ---------------------------------------------------------
 # コア: Master Agent 意思決定ロジック 
@@ -375,7 +384,6 @@ async def run_master_agent_flow(session_id: str, user_message: str):
     回答する前に、以下の手順でJSONの `thought` フィールドに思考を出力してください：
         a. **Subject Analysis**: ユーザーは何を売っている企業か？（Supply）
         b. **Target Analysis**: それを必要とするのはどんな業種の企業か？（Demand）
-        c. **Gap Analysis**: ターゲットを特定するための情報は十分か？
         - ユーザーが特定の「業界」や「製品」に言及した場合 -> **即座に** `consult_knowledge_base` を使用し、その業界のサプライチェーン、商流、主要プレイヤー情報を取得してターゲットの解像度を高める。
         - 地域が決まっていない -> ユーザーへ質問（`response_to_user`）
     2. 外部検索ツール（`run_qcc_tool`）を実行する前に、必ず `propose_screening_condition` を呼び出して、ユーザーに検索条件の提案・確認を行ってください。
@@ -393,14 +401,14 @@ async def run_master_agent_flow(session_id: str, user_message: str):
        - `regions`: **必須**。提案した地域リスト。
        - `reasoning`: **(必須)** なぜこの条件（キーワードや地域）を選定したのかの理由説明。**ここにRAGの検索結果に基づいた根拠と引用タグ（例: [report.pdf p.12]）を必ず含めること。**
     4. `response_to_user`: ユーザーに追加質問をする、または回答する。
+        - `text`: **必須**。回答テキスト。
 
     【ナレッジベース利用時の重要ルール: 引用の義務】
     ナレッジベース検索(`consult_knowledge_base`)の結果を利用して発言する場合は、必ず情報の出典元を明記してください。
     提供されるテキストには `[ファイル名 p.ページ番号]` という形式のタグが含まれています。
     回答文や提案理由の、該当する事実の直後にこのタグをそのまま付記してください。
-    提供されたタグにページ番号が含まれていない場合（例: `[file.pdf]`）、決して勝手にページ番号を捏造しないでください。その場合は `[file.pdf]` とだけ記述してください。
+    提供されたタグにページ番号が含まれていない場合（例: `[file.pdf]`）、`[file.pdf]` とだけ記述してください。
     
-
 
     **【出力フォーマット】**
     必ず以下のJSON形式のみを出力してください。Markdownは不要です。
@@ -415,9 +423,6 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         }
     }
     ```
-
-
-    
     または
     
     例: 条件提案時
@@ -434,20 +439,6 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         }
     }
     ```
-
-    または
-    
-    ```json
-    {
-        "thought": "ターゲットは判明したが、地域が不明だ。ユーザーに聞く必要がある。",
-        "action": "response_to_user",
-        "params": {
-            "text": "ターゲットとして自動車組立工場が考えられます。スクリーニングを行いたい「地域」（例：中国・広東省など）を教えていただけますか？"
-        }
-    }
-    ```
-
-
     承認後のツール実行の場合
     ユーザー：「確認しました。開始してください。」
     AI回答：
@@ -462,17 +453,11 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         }
     }
     ```
-
-
-    
-
-
-
     一方で、あなたは高度なデータアナリストでもあります。
     ユーザーから社内データに関する質問があった場合は、社内データベースの分析を行ってください。
 
     **【社内データベース情報 (PostgreSQL)】**
-    そのような場合には、以下に示すテーブル構造およびサンプルデータを十分に理解したうえで、適切な SQL を作成してください。
+    そのような場合には、以下に示すテーブル構造およびサンプルデータを十分に理解したうえで、データベースの分析を行います。
     データは複数のテーブルに分かれている可能性があります。
     必要な情報は `JOIN` を使用して結合し取得すること。
 
@@ -480,15 +465,24 @@ async def run_master_agent_flow(session_id: str, user_message: str):
     {db_schema_context}
     -----------------------------
 
-    **【利用可能なアクション (search_internal_crm)】**
-    ユーザーが社内データに関する質問をした場合は、このツールを使用してください。
-    **params:**
-    - `sql_query`: PostgreSQL互換の実行可能なSELECT文。Markdownのコードブロックは不要です。
+    **【利用可能なアクション】**
+    1.`semantic_search`: 
+       SQLの「完全一致」や「ILIKE」では検索しきれない、曖昧な条件や定性的な表現（例：「このプロファイルに当てはまりそうな顧客」「環境に優しい企業」「物流関連の担当者」）で検索したい場合に使用します。
+       システムは自動的にベクトル類似度計算を行います。
+       **params:**
+       - `table_name`: (str) 必填。検索対象のテーブル名 (例: 'companies', 'contacts')。
+       - `query_text`: (str) 必填。自然言語による検索クエリ。
+    2.`inspect_database_values`: SQLを書く前に、カラムに入っている具体的な値（文字列）を確認するためのツール。
+       **params:**
+       - `table_name`: (str) 確認したいテーブル名 (例: 'companies')
+       - `column_name`: (str) 確認したいカラム名 (例: 'industry', 'status')
+       - `keyword`: (str, optional) 検索したいキーワード。指定しない場合は頻出する値を返します。
+    3. `search_internal_crm`: ユーザーが社内データに関する質問をした場合は、このツールを使用してください。
+     (注意: 曖昧な検索をする際は、必ず `ILIKE` 演算子を使用するか、事前に `inspect_database_values` で値を確認してください)
+        **params:**
+        - `sql_query`: PostgreSQL互換の実行可能なSELECT文。Markdownのコードブロックは不要です。
     
-    **重要: SQL生成のルール**
-    1. 取得するカラムには、内容がわかりやすいエイリアス(AS)を付けてください（例: `company_name`, `deal_status`, `contact_person` など）。
-    2. ユーザーの質問に答えるために必要なカラムのみを選択してください（`SELECT *` は避けること）。
-    3. 複数のテーブルに同名のカラムがある場合は、必ずテーブル修飾子（例: `c.name`, `s.status`）を使用してください。
+    
 
     **【出力フォーマット】**
     必ずJSON形式のみを出力してください。
@@ -705,7 +699,50 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             yield "data: ---END_OF_STREAM---\n\n"
             return  # ツール実行完了で終了
 
-        # CASE 4: 社内データベース検索
+       # CASE 4: データベースの値確認
+        elif action == "inspect_database_values":
+            t_name = params.get("table_name")
+            c_name = params.get("column_name")
+            kw = params.get("keyword")
+            
+            yield f"data: [STATUS_MSG]データベース内の「{c_name}」に関する登録状況を確認中...\n\n"
+            
+            # database.py からインポートした関数を呼び出す
+            from database import search_column_values 
+            val_result = await search_column_values(t_name, c_name, kw)
+            
+            tool_msg = f"【Tool: Value Inspection Result】\n{json.dumps(val_result, ensure_ascii=False)}\n\n" \
+                       f"これらはDBに実在する値です。ユーザーの意図に最も近いものを選択し、次のステップで正確なSQLを作成してください。"
+            
+            history.append({"role": "tool", "content": tool_msg})
+            
+            # 結果を表示しつつ、ループを継続してAgentに次の判断(SQL作成)をさせる
+            yield f"data: [Thinking] 値を確認しました。これに基づいてSQLを作成します...\n\n"
+            continue
+   
+        # CASE 5: semantic_search
+        elif action == "semantic_search":
+            table_name = params.get("table_name", "companies")
+            query_text = params.get("query_text", "")
+            
+            yield f"data: [STATUS_MSG]「{table_name}」テーブルから「{query_text}」を意味検索中...\n\n"
+            
+            # database.py からインポートした関数を使用
+            results = await search_table_semantically(table_name, query_text)
+            
+            if results:
+                card_payload = json.dumps(results, ensure_ascii=False, default=str)
+                yield f"data: [DB_CARD_DATA]{card_payload}\n\n"
+                
+                tool_msg = f"【Tool: Semantic Search Result ({table_name})】\nFound {len(results)} matches:\n{json.dumps(results, ensure_ascii=False, default=str)}\n"
+            else:
+                tool_msg = f"【Tool Result】No semantic matches found in table '{table_name}'."
+            
+            history.append({"role": "tool", "content": tool_msg})
+            continue
+        
+        
+        # CASE 6: 社内データベース検索
         elif action == "search_internal_crm":
             sql_query = params.get("sql_query", "")
             
@@ -725,10 +762,28 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             # SQL実行
             db_results = await execute_raw_sql(sql_query)
 
-            # エラーハンドリング
+            #  エラーハンドリングの強化 
             if isinstance(db_results, dict) and "error" in db_results:
                 error_msg = db_results["error"]
-                tool_msg = f"【System Error】SQL Execution Failed:\n{error_msg}\nPlease correct your SQL and try again."
+                
+                # エラーメッセージからテーブル名を推測し、正しいスキーマを添付する
+                # LLMが幻覚（存在しないカラム）を見ている場合の特効薬
+                hint_schema = ""
+                
+                # SQL内のテーブル名を簡易抽出（正規表現で "FROM table" や "JOIN table" を探す）
+                found_tables = re.findall(r'(?:FROM|JOIN)\s+([a-zA-Z0-9_]+)', sql_query, re.IGNORECASE)
+                if found_tables:
+                    hint_schema = "\n\n【Hint: Correct Schema Definition】\n"
+                    for t in set(found_tables):
+                        hint_schema += get_table_schema_sync(t) + "\n"
+
+                tool_msg = (
+                    f"【System Error】SQL Execution Failed:\n{error_msg}\n"
+                    f"{hint_schema}\n"
+                    f"Please correct your SQL based on the schema above and try again."
+                )
+                
+                logger.warning(f"SQL Failed. Providing hint to LLM: {hint_schema[:100]}...")
                 history.append({"role": "tool", "content": tool_msg})
                 continue
 
