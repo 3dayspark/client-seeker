@@ -228,6 +228,103 @@ def sanitize_citations(text: str) -> str:
     # 置換実行
     return re.sub(pattern, validator, text)
 
+
+# ---------------------------------------------------------
+# ファイル選択用 LLM 呼び出し
+# ---------------------------------------------------------
+async def _select_relevant_files_with_llm(query: str, all_filenames: list) -> list[str]:
+    """
+    ユーザーのクエリと全ファイルリストをLLMに渡し、関連しそうなファイル名のみを抽出させる。
+    """
+    if not all_filenames:
+        return []
+    
+    # ファイルリストを文字列化
+    files_str = "\n".join([f"- {name}" for name in all_filenames])
+    
+    prompt = f"""
+    あなたはナレッジベースの司書です。
+    ユーザーの質問に答えるために、どのドキュメントを参照すべきか判断してください。
+
+    【ユーザーの質問】
+    {query}
+
+    【利用可能なファイル一覧】
+    {files_str}
+
+    【指示】
+    - 質問に関連する可能性が高いファイル名をリストアップしてください。
+    - ファイル名から判断して、全く関係のないファイルは除外してください。
+    - 迷った場合は、そのファイルを含めてください。
+    - 結果は必ず以下のJSONフォーマットのみで出力してください。
+
+    ```json
+    {{
+        "selected_files": ["file1.pdf", "file2.xlsx"]
+    }}
+    ```
+    """
+
+    # 既存の _call_master_llm を再利用（historyは空で単発実行）
+    # ※ 本番では軽量モデルを使うなどの最適化が可能
+    response = await _call_master_llm(prompt, [])
+    
+    data = extract_json_from_text(response)
+    if data and "selected_files" in data:
+        selected = data["selected_files"]
+        logger.info(f"📂 LLM Selected Files: {selected}")
+        
+        # 実在チェック (LLMが幻覚で変な名前を返さないようにフィルタ)
+        valid_selected = [f for f in selected if f in VALID_FILENAMES]
+        
+        # 揺らぎ対応 (パス除去など)
+        if not valid_selected and selected:
+             for s in selected:
+                 for v in VALID_FILENAMES:
+                     if s in v or v in s:
+                         valid_selected.append(v)
+        
+        return list(set(valid_selected))
+    
+    return []
+
+
+async def _verify_rag_result(query: str, rag_text: str) -> dict:
+    """
+    RAGの結果が質問に関連しているか検証し、無関係な場合は除外すべきファイル名を特定する。
+    """
+    
+    if not rag_text or "関連ドキュメント" in rag_text and "見つかりませんでした" in rag_text:
+        return {"is_relevant": False, "bad_files": []}
+
+    prompt = f"""
+    あなたは検索結果の品質評価者です。
+    ユーザーの質問に対して、RAG（検索システム）が返したテキストが「答えを含んでいる」か、あるいは「役に立たない/無関係」かを判定してください。
+
+    【ユーザーの質問】
+    {query}
+
+    【RAG検索結果】
+    {rag_text}
+
+    【判定基準】
+    1. 検索結果が質問の意図（具体的な製品、数値、企業名など）に答えている、または関連する手がかりを含んでいる場合は `is_relevant: true` としてください。
+    2. 検索結果が具体的な質問内容と無関係な場合は `is_relevant: false` としてください。
+    3. `is_relevant: false` の場合、そのノイズ情報の出典元ファイル名（例: [file.pdf]）を抽出して `bad_files` リストに入れてください。
+
+    出力は以下のJSON形式のみです：
+    ```json
+    {{
+        "is_relevant": false,
+        "bad_files": ["全球产业链百科全书.pdf"]
+    }}
+    ```
+    """
+
+    resp = await _call_master_llm(prompt, [])
+    return extract_json_from_text(resp)
+
+
 # --- 補助関数: LLM 呼び出し (Master Brain) ---
 async def _call_master_llm(prompt: str, history: List[Dict[str, str]]) -> str:
     """
@@ -419,7 +516,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         "thought": "ユーザーは「自動車ガラス」という特定の製品に言及している。ターゲット企業の解像度を高めるため、まずはナレッジベースで自動車ガラス業界のサプライチェーンや、主要な納入先（OEMメーカー等）を検索して確認する必要がある。",
         "action": "consult_knowledge_base",
         "params": {
-            "query": "汽车玻璃 供应链 主要客户"
+            "query": "汽车玻璃在它的供应链中可能有哪些主要客户？"
         }
     }
     ```
@@ -553,26 +650,101 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         # CASE 2: ナレッジベース検索
         elif action == "consult_knowledge_base":
             query = params.get("query", "")
-            yield f"data: [STATUS_MSG]ナレッジベース検索中: {query}...\n\n"
-
-            rag_result, hit_files, *_ = await asyncio.to_thread(query_knowledge_base, rag_index, query)
             
-            if hit_files:
-                for fname in hit_files:
-                    # [RAG_HIT] を使うと App.jsx 側で success-note (少し強調されたスタイル) になります
-                    msg = f"関連ドキュメントを検出しました【{fname}】"
+            # 1. 初期ファイル選定
+            yield f"data: [Thinking] 質問に関連するドキュメントを選定しています...\n\n"
+            all_files_list = list(VALID_FILENAMES)
+            # 初始筛选
+            target_files = await _select_relevant_files_with_llm(query, all_files_list)
+            
+            if not target_files:
+                yield f"data: [STATUS_MSG]関連しそうなファイルが見つかりませんでした。\n\n"
+                history.append({"role": "tool", "content": "関連ファイルなし"})
+                continue
+
+            # --- 2. リトライループ  ---
+            max_retries = 2  
+            attempt = 0
+            final_rag_result = ""
+            final_hit_files = []
+            
+            # 除外リスト（最初は空）
+            excluded_files = set()
+
+            while attempt <= max_retries:
+                attempt += 1
+                
+                
+                current_search_files = [f for f in target_files if f not in excluded_files]
+                
+                if not current_search_files:
+                    yield f"data: [STATUS_MSG]すべての候補ファイルが除外されました。\n\n"
+                    final_rag_result = "（有効な情報が見つかりませんでした）"
+                    break
+
+                yield f"data: [STATUS_MSG]関連ファイル {len(current_search_files)}個 を検索中...\n\n"
+                
+                # 検索実行
+                rag_result, hit_files, *_ = await asyncio.to_thread(
+                    query_knowledge_base, 
+                    rag_index, 
+                    query, 
+                    target_filenames=current_search_files
+                )
+
+                # 結果が空なら終了
+                if not hit_files:
+                    final_rag_result = rag_result
+                    break
+
+                # --- 3. 結果の検証 (Verify) ---
+                # LLMに「この結果は役に立つか？」と聞く
+                verification = await _verify_rag_result(query, rag_result)
+                
+                if verification and verification.get("is_relevant") is True:
+                    # 役に立つならループ終了
+                    final_rag_result = rag_result
+                    final_hit_files = hit_files
+                    logger.info("✅ RAG result verified as relevant.")
+                    break
+                else:
+                    # 役に立たない場合
+                    bad_files = verification.get("bad_files", []) if verification else []
+                    
+                    # ログ出力
+                    logger.warning(f"❌ RAG result judged irrelevant. Bad files: {bad_files}")
+                    
+                    if not bad_files:
+                         # 役に立たないが、犯人が特定できない場合は諦めてそのまま返す（または全ヒットを除外）
+                         # ここでは安全のため、ヒットしたファイルをすべて除外候補にするなどの戦略も可能
+                         bad_files = hit_files 
+
+                    # 除外リストに追加
+                    for bf in bad_files:
+                        # [filename] のような形式からファイル名だけ抽出する処理が必要な場合もあるが、
+                        # _verify_rag_result のプロンプトでファイル名だけ返すように指示している
+                        # 念のため揺らぎ吸収
+                        cleaned_bf = bf.strip()
+                        # 実在するファイル名とマッチング
+                        for valid_f in VALID_FILENAMES:
+                            if valid_f in cleaned_bf or cleaned_bf in valid_f:
+                                excluded_files.add(valid_f)
+                    
+                    yield f"data: [Thinking] 検索結果に関連情報が含まれていませんでした（{', '.join(bad_files)} を除外して再検索します）...\n\n"
+                    
+                    # 次のループへ (target_files から excluded_files が引かれて再検索される)
+
+            # --- ループ終了後の処理 ---
+            if final_hit_files:
+                for fname in final_hit_files:
+                    msg = f"関連ファイル 読み込み完了[{fname}]"
                     yield f"data: [RAG_HIT]{msg}\n\n"
             else:
-                 yield f"data: [STATUS_MSG]関連するドキュメントは見つかりませんでした。\n\n"
+                 yield f"data: [STATUS_MSG]最終的に有用な情報は得られませんでした。\n\n"
             
-            
-            logger.info(f"🔍 RAG Tool Output (Length: {len(rag_result)}): {rag_result[:3000]}...") 
-
-            # 結果を履歴に追加（Tool Role）
-            tool_msg = f"【Tool: Knowledge Base Result】\n{rag_result}"
+            # 結果を履歴に追加
+            tool_msg = f"【Tool: Knowledge Base Result】\nResult: {final_rag_result}"
             history.append({"role": "tool", "content": tool_msg})
-
-            # 情報を保持したまま次のループへ（continue）
             continue
 
         # CASE 3: スクリーニングツール実行
@@ -725,7 +897,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             table_name = params.get("table_name", "companies")
             query_text = params.get("query_text", "")
             
-            yield f"data: [STATUS_MSG]「{table_name}」テーブルから「{query_text}」を意味検索中...\n\n"
+            yield f"data: [STATUS_MSG]「{table_name}」テーブルから「{query_text}」をセマンティック検索中...\n\n"
             
             # database.py からインポートした関数を使用
             results = await search_table_semantically(table_name, query_text)
