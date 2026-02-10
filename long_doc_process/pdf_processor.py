@@ -19,7 +19,7 @@ TEMP_DIR = os.path.join(SCRIPT_DIR, "temp_split_files") # 一時ファイル置�
 
 # 処理する最大ページ数（ここを10や20に変更可能）
 # None にすると全ページを処理しますが、時間がかかります。
-TARGET_MAX_PAGES = 50
+TARGET_MAX_PAGES = 230
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 

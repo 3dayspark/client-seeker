@@ -25,6 +25,8 @@ from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.postprocessor.types import BaseNodePostprocessor
 
 # --- Hybrid Search & Embedding ---
+import jieba
+from transformers import AutoTokenizer
 from llama_index.retrievers.bm25 import BM25Retriever
 from llama_index.core.retrievers import QueryFusionRetriever
 
@@ -52,6 +54,7 @@ API_KEYS_FILE = "api_keys.json"
 Settings.llm = None
 Settings.embed_model = HuggingFaceEmbedding(model_name=EMBED_MODEL_NAME)
 
+_BERT_TOKENIZER = AutoTokenizer.from_pretrained("BAAI/bge-m3")
 
 # ==========================================
 # 0. デバッグ用ヘルパー関数
@@ -278,7 +281,7 @@ def build_or_load_index() -> Optional[VectorStoreIndex]:
 
         try:
             # インデックス構築
-            index = VectorStoreIndex.from_documents(all_documents)
+            index = VectorStoreIndex.from_documents(all_documents, show_progress=True)
             index.storage_context.persist(persist_dir=PERSIST_DIR)
             logger.info(f"💾 インデックスを保存しました: {PERSIST_DIR}")
             return index
@@ -295,6 +298,15 @@ def build_or_load_index() -> Optional[VectorStoreIndex]:
         except Exception as e:
             logger.error(f"インデックスロードエラー: {e}")
             return None
+
+def chinese_tokenizer(text: str) -> list[str]:
+    tokens = jieba.lcut_for_search(text)
+    return [t for t in tokens if len(t.strip()) > 0]
+
+def bge_tokenizer(text: str) -> list[str]:
+    # BERT tokenizer 
+    return _BERT_TOKENIZER.tokenize(text)
+
 
 def query_knowledge_base(
     index: Optional[VectorStoreIndex], 
@@ -401,7 +413,11 @@ def query_knowledge_base(
         # BM25は通常MetadataFilterをネイティブサポートしていないため、全検索後にPython側でフィルタします
         bm25_retriever = BM25Retriever.from_defaults(
             docstore=index.docstore,
-            similarity_top_k=top_k_retrieval * 2 # フィルタされる分多めに取得
+            similarity_top_k=top_k_retrieval * 2, # フィルタされる分多めに取得
+            #tokenizer=bge_tokenizer
+            tokenizer=chinese_tokenizer,
+            stemmer=None,
+            language="zh"
         )
 
         # 詳細ログ出力セクション

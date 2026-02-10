@@ -682,7 +682,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                     final_rag_result = "（有効な情報が見つかりませんでした）"
                     break
 
-                yield f"data: [STATUS_MSG]関連ファイル {len(current_search_files)}個 を検索中...\n\n"
+                yield f"data: [STATUS_MSG]関連ファイル {len(current_search_files)}件 を検索中...\n\n"
                 
                 # 検索実行
                 rag_result, hit_files, *_ = await asyncio.to_thread(
