@@ -296,8 +296,8 @@ def query_knowledge_base(
     index: Optional[VectorStoreIndex], 
     query_text: str, 
     target_filenames: Optional[List[str]] = None,
-    top_k_retrieval: int = 10, 
-    top_k_final: int = 3,      
+    top_k_retrieval: int = 30, 
+    top_k_final: int = 7,      
     bm25_weight: float = 0.5,
     debug_mode: bool = True
 ) -> Tuple[str, List[str], List[str]]:

@@ -46,7 +46,7 @@ _loaded_gemini_keys, _loaded_ms_key = load_api_keys()
 # --- ModelScope 設定 ---
 MODEL_SCOPE_API_KEY = _loaded_ms_key 
 MODEL_SCOPE_BASE_URL = 'https://api-inference.modelscope.cn/v1'
-MODEL_SCOPE_MODEL_ID = 'Qwen/Qwen3-32B' 
+MODEL_SCOPE_MODEL_ID = 'Qwen/Qwen3-235B-A22B-Instruct-2507'  #Qwen/Qwen3-32B   #Qwen/Qwen3-235B-A22B-Instruct-2507
 
 # --- Gemini API 設定 ---
 GEMINI_API_KEYS = _loaded_gemini_keys

@@ -75,6 +75,16 @@ GEMINI_API_KEYS = playwright_test.GEMINI_API_KEYS
 GEMINI_API_URL = playwright_test.GEMINI_API_URL
 USE_GEMINI_AS_LLM = False
 
+# --- RAG制御用グローバルスイッチ ---
+
+# True: LLMがファイル名から推測して絞り込む（高速だが漏れのリスクあり）
+# False: 全ファイルを対象に検索する（低速だが確実、Recall重視）
+ENABLE_AGENTIC_FILE_SELECTION = True 
+
+# True: LLMが検索結果を読んで「関連なし」と判断したら捨てる（Precision重視だが誤判定リスクあり）
+# False: 検索でヒットしたものは全てコンテキストとして採用する（Recall重視、幻覚防止）
+ENABLE_AGENTIC_RESULT_VERIFICATION = True
+
 # --- グローバル変数 ---
 modelscope_client = None
 gemini_api_key_pool = None
@@ -654,98 +664,115 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         elif action == "consult_knowledge_base":
             query = params.get("query", "")
             
-            # 1. 初期ファイル選定
-            yield f"data: [Thinking] 質問に関連するドキュメントを選定しています...\n\n"
-            all_files_list = list(VALID_FILENAMES)
-            # 初始筛选
-            target_files = await _select_relevant_files_with_llm(query, all_files_list)
-            
-            if not target_files:
-                yield f"data: [STATUS_MSG]関連しそうなファイルが見つかりませんでした。\n\n"
-                history.append({"role": "tool", "content": "関連ファイルなし"})
-                continue
+            # --- 1. 検索対象ファイルの決定 (Targeting) ---
+            target_files = None # デフォルトは None (全検索)
 
-            # --- 2. リトライループ  ---
-            max_retries = 2  
-            attempt = 0
+            if ENABLE_AGENTIC_FILE_SELECTION:
+                yield f"data: [Thinking] 質問に関連するドキュメントを選定しています (Agentic Selection)...\n\n"
+                all_files_list = list(VALID_FILENAMES)
+                
+                # LLMによる推論
+                selected_files = await _select_relevant_files_with_llm(query, all_files_list)
+                
+                if selected_files:
+                    target_files = selected_files
+                    yield f"data: [STATUS_MSG]対象ファイルを {len(target_files)} 件に絞り込みました。\n\n"
+                else:
+                    # 選択に失敗した場合は、安全のため全検索にフォールバック
+                    yield f"data: [STATUS_MSG]関連ファイルの特定に迷ったため、全ファイルを対象に検索します。\n\n"
+                    target_files = None
+            else:
+                # 安全重視：最初から全件検索
+                yield f"data: [Thinking] ナレッジベース全体を対象に、確実な検索を実行します (Global Search)...\n\n"
+                target_files = None
+
+            
+            # --- 2. 検索実行と検証 (Execution & Verification) ---
             final_rag_result = ""
             final_hit_files = []
+
+            # A. 検証モード (Agentic Loop)
+            if ENABLE_AGENTIC_RESULT_VERIFICATION:
+                # 既存の「検索 -> 検証 -> 除外 -> 再検索」ループロジック
+                max_retries = 2  
+                attempt = 0
+                excluded_files = set()
+                
+                # target_files が None の場合は全ファイルリストを展開して管理する必要がある
+                current_search_scope = target_files if target_files else list(VALID_FILENAMES)
+
+                while attempt <= max_retries:
+                    attempt += 1
+                    
+                    # 除外ファイルをフィルタリング
+                    effective_search_files = [f for f in current_search_scope if f not in excluded_files]
+                    
+                    if not effective_search_files:
+                        yield f"data: [STATUS_MSG]検索候補がすべて除外されました。\n\n"
+                        final_rag_result = "（有効な情報が見つかりませんでした）"
+                        break
+
+                    yield f"data: [STATUS_MSG]現在検索中…{attempt}回目の試行です。お待ちください。\n\n"
+                    
+                    # 検索実行
+                    rag_result, hit_files, *_ = await asyncio.to_thread(
+                        query_knowledge_base, 
+                        rag_index, 
+                        query, 
+                        target_filenames=effective_search_files if ENABLE_AGENTIC_FILE_SELECTION else None 
+                    )
+
+                    # 結果が空なら終了
+                    if not hit_files:
+                        final_rag_result = rag_result
+                        break
+
+                    # LLMによる検証
+                    verification = await _verify_rag_result(query, rag_result)
+                    
+                    if verification and verification.get("is_relevant") is True:
+                        # 承認
+                        final_rag_result = rag_result
+                        final_hit_files = hit_files
+                        logger.info("✅ RAG result verified as relevant.")
+                        break
+                    else:
+                        # 拒否 -> 除外リストへ
+                        bad_files = verification.get("bad_files", []) if verification else []
+                        if not bad_files: bad_files = hit_files 
+
+                        logger.warning(f"🗑️ [Agentic Verify] REJECTED. Removing noise files: {bad_files}")
+
+                        for bf in bad_files:
+                            cleaned_bf = bf.strip()
+                            for valid_f in VALID_FILENAMES:
+                                if valid_f in cleaned_bf or cleaned_bf in valid_f:
+                                    excluded_files.add(valid_f)
+                        
+              
+                        yield f"data: [Thinking] 検索結果に関連性が低い情報が含まれていたため、ノイズを除去して再検索します...\n\n"
             
-            # 除外リスト（最初は空）
-            excluded_files = set()
-
-            while attempt <= max_retries:
-                attempt += 1
-                
-                
-                current_search_files = [f for f in target_files if f not in excluded_files]
-                
-                if not current_search_files:
-                    yield f"data: [STATUS_MSG]すべての候補ファイルが除外されました。\n\n"
-                    final_rag_result = "（有効な情報が見つかりませんでした）"
-                    break
-
-                yield f"data: [STATUS_MSG]関連ファイル {len(current_search_files)}件 を検索中...\n\n"
-                
-                # 検索実行
+            # B. 標準モード (Standard Global Search) 
+            else:
+                # 1回だけ実行し、結果をそのまま受け入れる
                 rag_result, hit_files, *_ = await asyncio.to_thread(
                     query_knowledge_base, 
                     rag_index, 
                     query, 
-                    target_filenames=current_search_files
+                    target_filenames=target_files
                 )
+                final_rag_result = rag_result
+                final_hit_files = hit_files
 
-                # 結果が空なら終了
-                if not hit_files:
-                    final_rag_result = rag_result
-                    break
-
-                # --- 3. 結果の検証 (Verify) ---
-                # LLMに「この結果は役に立つか？」と聞く
-                verification = await _verify_rag_result(query, rag_result)
-                
-                if verification and verification.get("is_relevant") is True:
-                    # 役に立つならループ終了
-                    final_rag_result = rag_result
-                    final_hit_files = hit_files
-                    logger.info("✅ RAG result verified as relevant.")
-                    break
-                else:
-                    # 役に立たない場合
-                    bad_files = verification.get("bad_files", []) if verification else []
-                    
-                    # ログ出力
-                    logger.warning(f"❌ RAG result judged irrelevant. Bad files: {bad_files}")
-                    
-                    if not bad_files:
-                         # 役に立たないが、犯人が特定できない場合は諦めてそのまま返す（または全ヒットを除外）
-                         # ここでは安全のため、ヒットしたファイルをすべて除外候補にするなどの戦略も可能
-                         bad_files = hit_files 
-
-                    # 除外リストに追加
-                    for bf in bad_files:
-                        # [filename] のような形式からファイル名だけ抽出する処理が必要な場合もあるが、
-                        # _verify_rag_result のプロンプトでファイル名だけ返すように指示している
-                        # 念のため揺らぎ吸収
-                        cleaned_bf = bf.strip()
-                        # 実在するファイル名とマッチング
-                        for valid_f in VALID_FILENAMES:
-                            if valid_f in cleaned_bf or cleaned_bf in valid_f:
-                                excluded_files.add(valid_f)
-                    
-                    yield f"data: [Thinking] 検索結果に関連情報が含まれていませんでした（{', '.join(bad_files)} を除外して再検索します）...\n\n"
-                    
-                    # 次のループへ (target_files から excluded_files が引かれて再検索される)
-
-            # --- ループ終了後の処理 ---
+            # --- 3. 結果の出力と履歴保存 (Output) ---
             if final_hit_files:
                 for fname in final_hit_files:
-                    msg = f"関連ファイル 読み込み完了[{fname}]"
+                    msg = f"参照ファイル: {fname}"
                     yield f"data: [RAG_HIT]{msg}\n\n"
             else:
-                 yield f"data: [STATUS_MSG]最終的に有用な情報は得られませんでした。\n\n"
+                 yield f"data: [STATUS_MSG]ドキュメント内に関連情報が見つかりませんでした。\n\n"
             
-            # 結果を履歴に追加
+            # 履歴に追加
             tool_msg = f"【Tool: Knowledge Base Result】\nResult: {final_rag_result}"
             history.append({"role": "tool", "content": tool_msg})
             continue
