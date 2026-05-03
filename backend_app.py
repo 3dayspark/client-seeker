@@ -649,9 +649,10 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
         # CASE 1: ユーザーへの返答
         if action == "response_to_user":
-            resp_text = params.get("text", "")
-            # 既にhistoryにはLLMの全出力が入っているが、整合性のため簡潔な応答も入れておくか検討可能
-            # ここでは二重登録を防ぐため、Assistantの思考プロセスとしての履歴のみとする（仕様依存）
+            resp_text = params.get("text") or params.get("message") or params.get("response") or params.get("content") or ""
+            
+            if not resp_text:
+                resp_text = str(params) if params else "申し訳ありません。回答のフォーマットに一時的な異常が発生しました。"
             
             # フィルタリング適用
             clean_text = sanitize_citations(resp_text)
