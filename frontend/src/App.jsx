@@ -678,6 +678,17 @@ function App() {
       }
 
     } catch (error) {
+
+      if (error.message.includes('Failed to fetch') || error.message.includes('401')) {
+        localStorage.removeItem('app_password'); 
+        setIsAuthenticated(false);               
+        setLoginError('認証エラー：パスワードが無効です。再度入力してください。');
+        setIsLoading(false);
+        setAiState('idle');
+        return;
+      }
+
+
       setMessages(prev => [...prev, { sender: AI_ASSISTANT_NAME, text: `エラーが発生しました: ${error.message}`, type: 'text' }]);
     } finally {
       setIsLoading(false);
