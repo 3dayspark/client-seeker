@@ -11,7 +11,7 @@ import traceback
 import uuid
 from typing import List, Dict, Any
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 import requests  # Gemini API用
@@ -55,7 +55,8 @@ origins = [
     "http://localhost:5173",
     "http://localhost:8000",
     "http://192.168.1.41:5173",
-    "*"
+    "https://d3h1t8qwipl5h7.cloudfront.net",
+    "http://client-finder-frontend-bucket.s3-website.us-east-2.amazonaws.com"
 ]
 
 app.add_middleware(
@@ -1073,12 +1074,22 @@ First 5 rows preview:
 
 # --- API エンドポイント ---
 
+SECRET_PASSWORD = os.getenv("APP_PASSWORD", "local_dev_password")
+
+
+@app.get("/verify-password")
+async def verify_password(x_api_key: str = Header(None)):
+    if x_api_key != SECRET_PASSWORD:
+        raise HTTPException(status_code=401, detail="Invalid Password")
+    return {"status": "ok"}
+
+
 @app.post("/chat")
-async def chat_endpoint(request: Request):
-    """
-    チャットインターフェース
-    Request JSON: { "message": "...", "session_id": "..." }
-    """
+async def chat_endpoint(request: Request, x_api_key: str = Header(None)):
+    
+
+    if x_api_key != SECRET_PASSWORD:
+        raise HTTPException(status_code=401, detail="Invalid Password")
     data = await request.json()
     user_message = data.get("message", "")
     session_id = data.get("session_id")

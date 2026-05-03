@@ -8,11 +8,8 @@ const USER_NAME = "自分";
 const AI_AVATAR = `https://ui-avatars.com/api/?name=AI&background=0D8ABC&color=fff&size=128`;
 const USER_AVATAR = `https://ui-avatars.com/api/?name=User&background=333&color=fff&size=128`;
 
-// APIエンドポイントの設定（開発環境用）
-// 本番環境へデプロイする際は、適切なドメインに変更してください
-const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? 'http://localhost:8000'
-  : `http://${window.location.hostname}:8000`;
+// APIエンドポイントの設定
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 const API_ENDPOINT = `${API_BASE_URL}/chat`;
 /**
@@ -421,6 +418,11 @@ const MessageWithCitations = ({ text }) => {
 
 // --- App メインコンポーネント ---
 function App() {
+
+  const [password, setPassword] = useState(localStorage.getItem('app_password') || '');
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('app_password'));
+  const[loginError, setLoginError] = useState('');
+
   const [messages, setMessages] = useState([]); 
   const [userInput, setUserInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -455,6 +457,35 @@ function App() {
     if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages, aiState]);
 
+
+
+  const handleLogin = async () => {
+    if (!password.trim()) {
+        setLoginError('パスワードを入力してください。');
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/verify-password`, {
+            method: 'GET',
+            headers: { 
+                'x-api-key': password 
+            }
+        });
+
+        if (response.ok) {
+            localStorage.setItem('app_password', password);
+            setIsAuthenticated(true);
+            setLoginError('');
+        } else {
+            setLoginError('パスワードが間違っています / Invalid Password');
+        }
+    } catch (error) {
+        setLoginError('サーバーに接続できません / Server Error');
+    }
+};
+
+
   const handleSendMessage = async (overrideText = null) => {
     // ボタンからテキストが渡された場合はそれを使用、なければ入力欄を使用
     const isStringOverride = typeof overrideText === 'string';
@@ -482,12 +513,27 @@ function App() {
     try {
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            'x-api-key': password
+        },
         body: JSON.stringify({ 
             message: promptText,
             session_id: sessionId 
         }),
       });
+
+
+
+      if (response.status === 401) {
+        localStorage.removeItem('app_password'); 
+        setIsAuthenticated(false);               
+        setLoginError('パスワードが間違っています / Invalid Password');
+        setIsLoading(false);
+        setAiState('idle');
+        return;
+      }
+
 
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -700,6 +746,44 @@ const FIELD_MAPPING = {
 const getLabel = (key) => {
   return FIELD_MAPPING[key] || key; // マッピングがなければそのまま英語キーを表示
 };
+
+
+if (!isAuthenticated) {
+  return (
+      <div className="login-overlay">
+          <div className="login-card">
+              <h2>アクセス認証</h2>
+             
+
+              <input 
+                  type="password" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="パスワード / Password"
+                  className="login-input"
+                  onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                          handleLogin();
+                      }
+                  }}
+              />
+              <br />
+
+
+              <button 
+                  className="login-btn"
+                  onClick={handleLogin} 
+              >
+                  ログイン / Login
+              </button>
+              
+              {loginError && <div className="login-error">{loginError}</div>}
+          </div>
+      </div>
+  );
+}
+
+
 
 
   return (

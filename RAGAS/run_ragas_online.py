@@ -191,7 +191,7 @@ async def run_evaluation():
 
     # 評価用モデルの初期化
     judge_llm = ModelScopeLLM()
-    embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-m3")
+    embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh-v1.5")
     
     metrics = [
         ContextPrecision(),

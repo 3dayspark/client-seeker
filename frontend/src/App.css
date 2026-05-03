@@ -1508,3 +1508,99 @@ body {
   opacity: 1;
   bottom: 150%;
 }
+
+
+/* ==========================================================================
+   10. ログイン画面 (Login Overlay)
+   ========================================================================== */
+
+   .login-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f0f2f5; /* 全局背景色统一 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+  }
+  
+  .login-card {
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* 更柔和的高级阴影 */
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid #eaeaea;
+  }
+  
+  .login-card h2 {
+    color: #333333; /* 强制深灰文字，解决白字问题 */
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+  
+  .login-card p {
+    color: #666666; /* 辅助说明用浅灰文字 */
+    font-size: 0.95em;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  
+  .login-input {
+    padding: 14px 16px;
+    width: 80%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    background-color: #f8f9fa; /* 强制浅色背景，解决黑框问题 */
+    color: #333333; /* 强制深色输入文字 */
+    font-size: 1em;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box; /* 确保 padding 不会撑破宽度 */
+  }
+  
+  .login-input:focus {
+    background-color: #ffffff;
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15); /* 漂亮的蓝色光晕聚焦效果 */
+  }
+  
+  .login-btn {
+    padding: 14px 24px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.05em;
+    width: 80%;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+  }
+  
+  .login-error {
+    color: #dc3545;
+    margin-top: 16px;
+    font-size: 0.85em;
+    font-weight: 500;
+    background-color: #fff5f5;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #fed7d7;
+  }

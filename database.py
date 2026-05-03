@@ -34,7 +34,7 @@ try:
     # モデルが未ロードならここでロード（rag_utilsの実装に依存）
     if Settings.embed_model is None:
         from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-        Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-m3")
+        Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-zh-v1.5")
     logger.info("✅ Embedding model loaded from rag_utils.")
 except ImportError:
     logger.warning("⚠️ rag_utils not found. Semantic search will return zero vectors.")
