@@ -509,6 +509,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
        - `regions`: **必須**。提案した地域リスト。
        - `reasoning`: **(必須)** なぜこの条件（キーワードや地域）を選定したのかの理由説明。**ここにRAGの検索結果に基づいた根拠と引用タグ（例: [report.pdf p.12]）を必ず含めること。**
     4. `response_to_user`: ユーザーに追加質問をする、または回答する。
+        **params:**
         - `text`: **必須**。回答テキスト。
 
     【ナレッジベース利用時の重要ルール: 引用の義務】
@@ -649,7 +650,18 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
         # CASE 1: ユーザーへの返答
         if action == "response_to_user":
-            resp_text = params.get("text") or params.get("message") or params.get("response") or params.get("content") or ""
+            
+            resp_text = (
+                params.get("text")
+                or params.get("message")
+                or params.get("response")
+                or params.get("content")
+                or data.get("text")
+                or data.get("message")
+                or data.get("response")
+                or data.get("content")
+                or ""
+            )
             
             if not resp_text:
                 resp_text = str(params) if params else "申し訳ありません。回答のフォーマットに一時的な異常が発生しました。"
