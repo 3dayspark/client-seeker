@@ -15,11 +15,11 @@ const USER_AVATAR = `https://ui-avatars.com/api/?name=User&background=333&color=
 
 // 【カスタマイズ: 機能紹介アイコン】
 // ウェルカム画面の3つの機能アイコン用画像URL
-const ICON_PROFILE = `https://img.icons8.com/?size=100&id=108652&format=png&color=007bff`; // 顧客プロファイリング用
-const ICON_SEARCH = `https://img.icons8.com/?size=100&id=132&format=png&color=007bff`;    // スクリーニング用
-const ICON_ANALYZE = `https://img.icons8.com/?size=100&id=119290&format=png&color=007bff`; // データ分析用
+const ICON_PROFILE = `https://img.icons8.com/?size=100&id=44859&format=png&color=007bff`; // 顧客プロファイリング用
+const ICON_SEARCH = `https://img.icons8.com/?size=100&id=44045&format=png&color=007bff`;    // スクリーニング用
+const ICON_ANALYZE = `https://img.icons8.com/?size=100&id=48296&format=png&color=007bff`; // データ分析用
 
-const SYSTEM_NOTICE = "【お知らせ】コスト削減のため、AIバックエンドサービスは日本時間 平日 9:00 〜 18:00 の間のみ稼働しております。ご不便をおかけしますが、ご理解の程よろしくお願いいたします。";
+const SYSTEM_NOTICE = "【お知らせ】AIバックエンドサービスは日本時間 平日 7:30 〜 21:30 の間のみ稼働しております。ご不便をおかけしますが、ご理解の程よろしくお願いいたします。";
 
 const QUICK_PROMPTS =[
   { label: "強化ガラスの顧客開拓", text: "こんにちは。当社は高品質な強化ガラスを製造しており、取引先となる優良企業を探しています。" },
@@ -857,6 +857,19 @@ const hasEmptySession = sessions.some(s => !s.messages || s.messages.length === 
 
 if (!isAuthenticated) {
   return (
+
+    <>
+
+    {showNotice && (
+      <div className="top-notification-bar" style={{ position: 'fixed', top: 0, width: '100%', zIndex: 3000 }}>
+        <span className="notification-icon">⚠️</span>
+        <span className="notification-text">{SYSTEM_NOTICE}</span>
+        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>確認</span>
+      </div>
+    )}
+
+
+
       <div className="login-overlay">
           <div className="login-card">
               <h2>アクセス認証</h2>
@@ -872,6 +885,7 @@ if (!isAuthenticated) {
               {loginError && <div className="login-error">{loginError}</div>}
           </div>
       </div>
+      </>
   );
 }
 
@@ -1269,7 +1283,22 @@ return (
       </div> 
 
     </div> 
+
   </div> 
+
+
+
+{previewImage && (
+        <div className="image-modal-overlay" onClick={closePreview}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close-button" onClick={closePreview}>&times;</span>
+            <img src={`data:image/png;base64,${previewImage}`} alt="Enlarged Screenshot" />
+          </div>
+        </div>
+      )}
+
+
+
 </div> 
   );
 }

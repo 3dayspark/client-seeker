@@ -10,6 +10,7 @@ import itertools
 import requests
 from typing import List, Dict, Any, Optional, Set
 from playwright.async_api import async_playwright, Page, Browser, Locator, ElementHandle
+from playwright_stealth import stealth_async
 from openai import OpenAI
 
 # 標準ロガーの設定（スクリプト初期化時のエラー出力用）
@@ -67,17 +68,6 @@ gemini_base_headers = {
     "Content-Type": "application/json",
 }
 
-# --- LLM 意思決定ガイダンス ---
-LLM_GUIDANCE_TEXT = "広東省の経営が良好で、規模の大きい海鮮市場を探したい"
-
-EXECUTION_SUMMARY = {
-    "keywords": [],
-    "regions": [],
-    "checkboxes": {}, # {"大分類": ["選択肢1", "選択肢2"]}
-    "dropdowns": {},  # {"大分類": {"メニュー名": ["選択肢"]}}
-    "industry_tree": [],
-    "reasons": {}
-}
 
 # --- キャッシュ設定 ---
 ENABLE_CACHE = True
@@ -106,32 +96,32 @@ async def _capture_and_send_screenshot(Logger, page: Page, caption: str = ""):
     except Exception as e:
         Logger.log_to_frontend(f"スクリーンショットの撮影に失敗しました: {e}")
 
-def _generate_final_report():
+def _generate_final_report(summary):
     """
     実行結果のサマリーレポートを生成します。
     """
     lines = []
-    reasons = EXECUTION_SUMMARY.get("reasons", {})
+    reasons = summary.get("reasons", {})
     
     # 1. 検索キーワード
-    if EXECUTION_SUMMARY.get("keywords"):
-        kws = "、".join([f'“{k}”' for k in EXECUTION_SUMMARY["keywords"]])
+    if summary.get("keywords"):
+        kws = "、".join([f'“{k}”' for k in summary["keywords"]])
         current_line = f"検索キーワード：{kws}"
         if "keywords" in reasons and reasons["keywords"]:
             current_line += f"||REASON||{reasons['keywords']}"
         lines.append(current_line)
     
     # 2. 省・地域
-    if EXECUTION_SUMMARY.get("regions"):
-        regs = "、".join([f'“{r}”' for r in EXECUTION_SUMMARY["regions"]])
+    if summary.get("regions"):
+        regs = "、".join([f'“{r}”' for r in summary["regions"]])
         current_line = f"省・地域：{regs}"
         if "regions" in reasons and reasons["regions"]:
             current_line += f"||REASON||{reasons['regions']}"
         lines.append(current_line)
         
     # 3. Checkbox (大分類1タイトル)
-    if EXECUTION_SUMMARY.get("checkboxes"):
-        for category, options in EXECUTION_SUMMARY["checkboxes"].items():
+    if summary.get("checkboxes"):
+        for category, options in summary["checkboxes"].items():
             valid_opts = [o for o in options if o and "取得できません" not in o]
             if valid_opts:
                 opts_str = "、".join([f'“{o}”' for o in valid_opts])
@@ -141,8 +131,8 @@ def _generate_final_report():
             lines.append(f"||REASON||{reasons['checkboxes']}")
 
     # 4. Dropdowns (大分類2/3タイトル)
-    if EXECUTION_SUMMARY.get("dropdowns"):
-        dropdown_data = EXECUTION_SUMMARY["dropdowns"]
+    if summary.get("dropdowns"):
+        dropdown_data = summary["dropdowns"]
         clean_dropdowns = {} 
         dirty_keys = ["normal_dropdown_selections", "radio_dropdown_selections"]
         
@@ -193,7 +183,7 @@ def _generate_final_report():
                 lines.append(f"||REASON||{reasons['dropdowns']}")
 
     # 5. 業界選択
-    industry_nodes = EXECUTION_SUMMARY.get("industry_tree", [])
+    industry_nodes = summary.get("industry_tree", [])
     
     if industry_nodes:
         nodes_str = "、".join([f'“{n}”' for n in industry_nodes])
@@ -543,7 +533,7 @@ async def _collect_targeted_input_element_data(Logger, page: Page, target_placeh
     return input_details
 
 
-async def _handle_region_selection(Logger, page: Page):
+async def _handle_region_selection(Logger, page: Page, summary: dict, client_description: str):
     """
     LLM に特定の地域を検索するかどうかを決定させ、自動的に「省・地域」フィルターを操作します。
     """
@@ -553,7 +543,7 @@ async def _handle_region_selection(Logger, page: Page):
     region_prompt = f"""
     你是一个专业的企业搜索助手。请根据目标企业画像，判断是否需要限定具体的中国行政区域（省份、直辖市）。
     
-    **目标企业画像:** "{LLM_GUIDANCE_TEXT}"
+    **目标企业画像:** "{client_description}"
     
     请返回如下 JSON 格式：
     {{
@@ -569,10 +559,10 @@ async def _handle_region_selection(Logger, page: Page):
     target_regions = []
     if result_json and isinstance(result_json, dict):
         target_regions = result_json.get("regions", [])
-        EXECUTION_SUMMARY["reasons"]["regions"] = result_json.get("reason", "理由なし")
+        summary["reasons"]["regions"] = result_json.get("reason", "理由なし")
 
     if target_regions:
-        EXECUTION_SUMMARY["regions"] = target_regions
+        summary["regions"] = target_regions
 
     if not target_regions or not isinstance(target_regions, list) or len(target_regions) == 0:
         Logger.log_to_frontend("  - 地域指定は不要と判断されました。スキップします。")
@@ -1101,7 +1091,7 @@ def _format_structured_data_for_llm(data: Dict[str, List[Dict[str, Any]]]) -> st
     return text_format.strip()
 
 
-async def _batch_check_form_checkboxes(Logger, page: Page, check_decisions: Dict[str, List[str]], container_locator: Locator) -> int:
+async def _batch_check_form_checkboxes(Logger, page: Page, check_decisions: Dict[str, List[str]], container_locator: Locator, summary: dict) -> int:
     """
     LLM の判定に基づき、チェックボックスを一括操作します。
     """
@@ -1113,7 +1103,7 @@ async def _batch_check_form_checkboxes(Logger, page: Page, check_decisions: Dict
             items_to_check_keys.add(f'{category}|{item_text}')
 
     if check_decisions:
-        EXECUTION_SUMMARY["checkboxes"].update(check_decisions)
+        summary["checkboxes"].update(check_decisions)
 
     if not items_to_check_keys:
         Logger.log_to_frontend("  - 警告: チェックすべき項目がありません。")
@@ -1283,7 +1273,7 @@ async def _collect_dropdown_options_after_hover(Logger, page: Page, selector: st
         return result
 
 
-async def _prompt_llm_for_dropdown_selection(Logger, dropdown_data: List[Dict[str, Any]]) -> Dict[str, Any]:
+async def _prompt_llm_for_dropdown_selection(Logger, dropdown_data: List[Dict[str, Any]], summary: dict, client_description: str) -> Dict[str, Any]:
     """
     収集されたドロップダウンメニュー情報をLLMに提供し、選択すべき項目を決定させます。
     """
@@ -1306,7 +1296,7 @@ async def _prompt_llm_for_dropdown_selection(Logger, dropdown_data: List[Dict[st
     你是一个专业的网页自动化助手兼企业画像专家。你的任务是根据提供的企业筛选条件表单信息和目标指导文本（企业画像），识别出所有需要选择的选项（符合这个企业画像的筛选条件），
     并生成一个有效的 JSON 对象，该对象应包含你决定选择的所有下拉菜单选项。
 
-    **目标指导文本（企业画像）:** "{LLM_GUIDANCE_TEXT}"
+    **目标指导文本（企业画像）:** "{client_description}"
 
 下面是下拉菜单列表（每个 radio 选项包含 group_index 和 choice_index）：
 {json.dumps(data_for_llm, ensure_ascii=False, indent=2)}
@@ -1341,7 +1331,7 @@ async def _prompt_llm_for_dropdown_selection(Logger, dropdown_data: List[Dict[st
         return {"normal_dropdown_selections": [], "radio_dropdown_selections": []}
 
     if raw and isinstance(raw, dict):
-        EXECUTION_SUMMARY["reasons"]["dropdowns"] = raw.get("reason", "理由なし")
+        summary["reasons"]["dropdowns"] = raw.get("reason", "理由なし")
         return raw
     
     if isinstance(raw, dict):
@@ -1363,7 +1353,7 @@ async def _prompt_llm_for_dropdown_selection(Logger, dropdown_data: List[Dict[st
     return {"normal_dropdown_selections": [], "radio_dropdown_selections": []}
 
 
-async def _apply_dropdown_selection(Logger, page: Page, llm_decision: Dict[str, Any]):
+async def _apply_dropdown_selection(Logger, page: Page, llm_decision: Dict[str, Any], summary: dict):
     """
     LLM の決定を適用し、ドロップダウンメニューの選択を実行します。
     """
@@ -1469,13 +1459,13 @@ async def _apply_dropdown_selection(Logger, page: Page, llm_decision: Dict[str, 
                                             selected_values.append(s.get('choice', ''))
                                 
                                 if selected_values:
-                                    if "dropdowns" not in EXECUTION_SUMMARY: EXECUTION_SUMMARY["dropdowns"] = {}
+                                    if "dropdowns" not in summary: summary["dropdowns"] = {}
                                     
                                     cat_key = "詳細オプション" 
-                                    if cat_key not in EXECUTION_SUMMARY["dropdowns"]:
-                                        EXECUTION_SUMMARY["dropdowns"][cat_key] = {}
+                                    if cat_key not in summary["dropdowns"]:
+                                        summary["dropdowns"][cat_key] = {}
                                         
-                                    EXECUTION_SUMMARY["dropdowns"][cat_key][menu_name] = selected_values
+                                    summary["dropdowns"][cat_key][menu_name] = selected_values
 
                             else:
                                 Logger.log_to_frontend(f"  - オプションが見つからないかクリックに失敗しました: {selected_text}")
@@ -1535,7 +1525,7 @@ async def _apply_dropdown_selection(Logger, page: Page, llm_decision: Dict[str, 
     await page.wait_for_timeout(300)
 
 
-async def _collect_and_apply_dropdown_filters(Logger, page: Page):
+async def _collect_and_apply_dropdown_filters(Logger, page: Page, summary: dict, client_description: str):
     """
     ドロップダウンメニューフィルタを収集、判定、適用します（キャッシュ対応）。
     """
@@ -1580,8 +1570,8 @@ async def _collect_and_apply_dropdown_filters(Logger, page: Page):
         Logger.log_to_frontend(" - 有効なドロップダウン情報がありません。スキップします。")
         return
 
-    llm_decision = await _prompt_llm_for_dropdown_selection(Logger, complete_dropdown_data)
-    await _apply_dropdown_selection(Logger, page, llm_decision)
+    llm_decision = await _prompt_llm_for_dropdown_selection(Logger, complete_dropdown_data, summary, client_description)
+    await _apply_dropdown_selection(Logger, page, llm_decision, summary)
 
 
 async def _collect_special_multi_select_data(Logger, page: Page) -> List[Dict[str, Any]]:
@@ -1680,7 +1670,7 @@ async def _collect_special_multi_select_data(Logger, page: Page) -> List[Dict[st
     return results
 
 
-async def _apply_special_multi_select_decisions(Logger, page: Page, data: List[Dict[str, Any]]):
+async def _apply_special_multi_select_decisions(Logger, page: Page, data: List[Dict[str, Any]], summary: dict, client_description: str):
     """
     LLM に特殊多肢選択メニューの判定を行わせ、操作を実行します。
     """
@@ -1697,7 +1687,7 @@ async def _apply_special_multi_select_decisions(Logger, page: Page, data: List[D
     llm_prompt = f"""
     你是一个企业筛选专家。请根据目标企业画像，从以下多选下拉菜单中选择需要勾选的选项。
     
-    **目标企业画像:** "{LLM_GUIDANCE_TEXT}"
+    **目标企业画像:** "{client_description}"
     
     **待选菜单列表:**
     {prompt_data_str}
@@ -1830,13 +1820,13 @@ async def _apply_special_multi_select_decisions(Logger, page: Page, data: List[D
         category_title = menu_info.get("category_title", "その他")
         dropdown_title = menu_info.get("dropdown_title", "不明なメニュー")
         
-        if "dropdowns" not in EXECUTION_SUMMARY:
-            EXECUTION_SUMMARY["dropdowns"] = {}
+        if "dropdowns" not in summary:
+            summary["dropdowns"] = {}
             
-        if category_title not in EXECUTION_SUMMARY["dropdowns"]:
-            EXECUTION_SUMMARY["dropdowns"][category_title] = {} 
+        if category_title not in summary["dropdowns"]:
+            summary["dropdowns"][category_title] = {} 
 
-        EXECUTION_SUMMARY["dropdowns"][category_title][dropdown_title] = targets
+        summary["dropdowns"][category_title][dropdown_title] = targets
 
         Logger.log_to_frontend("  - ✅ 特殊多肢選択メニュー操作完了。")
 
@@ -1845,21 +1835,39 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
     """
     Playwright と LLM を連携させた自動化テストのメインフローです。
     """
-    global EXECUTION_SUMMARY
-    EXECUTION_SUMMARY = {
-        "keywords": [],
-        "regions": [],
+
+    local_summary = {
+        "keywords":[],
+        "regions":[],
         "checkboxes": {}, 
         "dropdowns": {},
-        "industry_tree": [],
+        "industry_tree":[],
         "reasons": {}
     }
 
     Logger.log_to_frontend("🚀 クラウドブラウザを起動中...")
     
     p = await async_playwright().start() 
-    browser: Browser = await p.chromium.launch(headless=True)
-    page: Page = await browser.new_page()
+
+    browser: Browser = await p.chromium.launch(
+        headless=False, 
+        args=[
+            '--disable-blink-features=AutomationControlled', # 隐藏自动化特征
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+        ]
+    )
+    
+
+    context = await browser.new_context(
+        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        viewport={"width": 1920, "height": 1080}
+    )
+    
+    page: Page = await context.new_page()
+    
+
+    await stealth_async(page)
 
     target_url = "https://www.qcc.com/web/search/advance?hasState=true"
     Logger.log_to_frontend(f"  - ナビゲート先: {target_url}")
@@ -1918,7 +1926,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
             你是一个专业的网页表单填充助手。你的任务是根据提供的目标指导文本，生成3-10个最相关的关键词，并解释原因。
             这个关键词将用于填充网页上 `placeholder="输入关键词"` 且 `class="qccd-input"` 的输入框。
 
-            **目标指导文本:** "{LLM_GUIDANCE_TEXT}"
+            **目标指导文本:** "{client_description}"
 
             请返回如下 JSON 格式：
             {{
@@ -1935,7 +1943,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
             keyword_to_fill = ""
             if keyword_result and isinstance(keyword_result, dict):
                 keyword_to_fill = keyword_result.get("keywords", "").strip()
-                EXECUTION_SUMMARY["reasons"]["keywords"] = keyword_result.get("reason", "理由なし")
+                local_summary["reasons"]["keywords"] = keyword_result.get("reason", "理由なし")
                 if keyword_to_fill:
                     try:
                         target_input = page.locator(target_input_selector)
@@ -1952,7 +1960,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
 
 
     if keyword_to_fill:
-        EXECUTION_SUMMARY["keywords"] = [keyword_to_fill]
+        local_summary["keywords"] = [keyword_to_fill]
         await _capture_and_send_screenshot(Logger, page, "キーワード入力完了")
 
     Logger.log_to_frontend("  - ログインポップアップの再確認...")
@@ -1966,7 +1974,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
         Logger.log_to_frontend("  - ポップアップなし。")
 
     # --- フェーズ 1.5: 地域選択 ---
-    await _handle_region_selection(Logger, page) 
+    await _handle_region_selection(Logger, page,local_summary, client_description) 
 
     # --- フェーズ 2: チェックボックス選択 ---
     Logger.log_to_frontend("\n🔍 **フェーズ 2: チェックボックスのLLM決定と一括適用**")
@@ -1988,7 +1996,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
         checkbox_decision_prompt = f"""
         你是一个专业的网页自动化助手兼企业画像专家。你的任务是根据提供的企业筛选条件表单信息和目标指导文本（企业画像），识别出所有需要勾选的复选框（符合这个企业画像的筛选条件）。
         
-        **目标指导文本（企业画像）:** "{LLM_GUIDANCE_TEXT}"
+        **目标指导文本（企业画像）:** "{client_description}"
         
         **以下是企业筛选条件的表单信息，包含大类和其下的所有可选项:**
         {formatted_checkbox_data}
@@ -2015,7 +2023,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
         llm_check_decisions = {}
         if result_json and isinstance(result_json, dict):
             llm_check_decisions = result_json.get("decision", {})
-            EXECUTION_SUMMARY["reasons"]["checkboxes"] = result_json.get("reason", "理由なし")    
+            local_summary["reasons"]["checkboxes"] = result_json.get("reason", "理由なし")    
 
         if llm_check_decisions and isinstance(llm_check_decisions, dict):
             try:
@@ -2025,7 +2033,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
                 Logger.log_to_frontend(f"  - 警告: ログ保存エラー: {e}")
 
             Logger.log_to_frontend(f"  - 一括チェックを開始します...")
-            await _batch_check_form_checkboxes(Logger, page, llm_check_decisions, advance_filters_container)
+            await _batch_check_form_checkboxes(Logger, page, llm_check_decisions, advance_filters_container,local_summary)
             await _capture_and_send_screenshot(Logger, page, "チェックボックスフィルタ完了")
         else:
             Logger.log_to_frontend("  - 有効な決定が得られませんでした。スキップします。")
@@ -2043,13 +2051,13 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
             _save_to_cache(Logger, special_multi_cache_file, special_multi_data)
     
     if special_multi_data:
-        await _apply_special_multi_select_decisions(Logger, page, special_multi_data)
+        await _apply_special_multi_select_decisions(Logger, page, special_multi_data, local_summary, client_description)
         await _capture_and_send_screenshot(Logger, page, "ドロップダウンメニューフィルタ完了")
     else:
         Logger.log_to_frontend("  - 特殊多肢選択メニューが見つかりません。")
 
     # --- フェーズ 3.5: ドロップダウン一括操作 ---
-    await _collect_and_apply_dropdown_filters(Logger, page)
+    await _collect_and_apply_dropdown_filters(Logger, page, local_summary, client_description)
     await _capture_and_send_screenshot(Logger, page, "ドロップダウンメニューフィルタ完了")
 
     # --- フェーズ 4: 業界フィルタ ---
@@ -2109,7 +2117,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
     top_level_prompt = f"""
     你是一个企业画像分析专家。请根据目标企业画像，从以下【行业大类】列表中，筛选出**最可能包含目标企业**的大类。
     
-    **目标企业画像:** "{LLM_GUIDANCE_TEXT}"
+    **目标企业画像:** "{client_description}"
     
     **行业大类列表:**
     {json.dumps(top_level_cats, ensure_ascii=False)}
@@ -2129,7 +2137,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
         reason = top_level_result.get("reason", "")
         Logger.log_to_frontend(f"  - 第1次結果: {len(target_categories)} 大分類を選択。理由: {reason}")
         if reason:
-             EXECUTION_SUMMARY["reasons"]["industry_top_level"] = reason
+             local_summary["reasons"]["industry_top_level"] = reason
     else:
         Logger.log_to_frontend("  - 有効な結果が得られませんでした。")
 
@@ -2169,7 +2177,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
                 detail_prompt = f"""
                 你是一个行业细分专家。目标是在大类“{cat}”下，精确勾选符合画像的细分行业。
                 
-                **目标企业画像:** "{LLM_GUIDANCE_TEXT}"
+                **目标企业画像:** "{client_description}"
                 
                 **待选细分行业列表:**
                 {prompt_options_str}
@@ -2190,8 +2198,8 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
                     
                     if res.get("reason"):
                         key = f"industry_{cat}"
-                        prev = EXECUTION_SUMMARY["reasons"].get(key, "")
-                        EXECUTION_SUMMARY["reasons"][key] = (prev + " " + res.get("reason")).strip()
+                        prev = local_summary["reasons"].get(key, "")
+                        local_summary["reasons"][key] = (prev + " " + res.get("reason")).strip()
                         
                     Logger.log_to_frontend(f"    - バッチ {i+1}/{num_chunks}: {len(valid_selected)} 件選択。")
                 
@@ -2208,7 +2216,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
         final_nodes_to_check_text = list(set(final_nodes_to_check_text))
         Logger.log_to_frontend(f"\n⚙️ **ステップ D: 一括チェック実行 (計 {len(final_nodes_to_check_text)} 項目)...**")
         
-        EXECUTION_SUMMARY["industry_tree"] = final_nodes_to_check_text
+        local_summary["industry_tree"] = final_nodes_to_check_text
         
         await _batch_check_nodes(Logger, page, tree_container, final_nodes_to_check_text)
         await _capture_and_send_screenshot(Logger, page, "業界選択完了")
@@ -2242,7 +2250,7 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
     except Exception as e:
         Logger.log_to_frontend(f"スクリーンショット生成失敗: {e}")
 
-    final_text_report = _generate_final_report()
+    final_text_report = _generate_final_report(local_summary)
     Logger.log_to_frontend(f"[FINAL_REPORT]{final_text_report}")
     
     Logger.log_to_frontend("✅ テストケースの実行が完了しました。")
