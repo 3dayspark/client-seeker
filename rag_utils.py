@@ -48,7 +48,7 @@ logging.getLogger("urllib3").setLevel(logging.WARNING)
 DOCS_DIR = "knowledge_docs"
 LONG_DOC_OUTPUT_DIR = os.path.join("long_doc_process", "data_output")
 PERSIST_DIR = "storage_index"
-EMBED_MODEL_NAME = "BAAI/bge-small-zh-v1.5"
+EMBED_MODEL_NAME = "BAAI/BAAI/bge-m3"
 RERANK_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 API_KEYS_FILE = "api_keys.json"
 
@@ -56,7 +56,7 @@ API_KEYS_FILE = "api_keys.json"
 Settings.llm = None
 Settings.embed_model = HuggingFaceEmbedding(model_name=EMBED_MODEL_NAME)
 
-_BERT_TOKENIZER = AutoTokenizer.from_pretrained("BAAI/bge-small-zh-v1.5")
+_BERT_TOKENIZER = AutoTokenizer.from_pretrained("BAAI/BAAI/bge-m3")
 
 
 # ==========================================
