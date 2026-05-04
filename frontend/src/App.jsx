@@ -405,6 +405,7 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
   const [currentSessionId, setCurrentSessionId] = useState(null);
+  const [prevSessionId, setPrevSessionId] = useState(null);
   const [messages, setMessages] = useState([]); 
   
   const [userInput, setUserInput] = useState('');
@@ -448,16 +449,35 @@ function App() {
 
 // スクロール制御を高度化（最初の一言でトップにジャンプし、以降は自動追従）
 useEffect(() => {
-  if (messages.length === 1 && aiState === 'thinking') {
-    // 最初のメッセージ送信時：メッセージリストの先頭へスクロールし、Hero UIを画面外へ押し出す
-    setTimeout(() => {
-      messagesStartRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 50);
-  } else if (messagesEndRef.current) {
-    // 通常時：メッセージが画面下部を越えた場合のみ、最低限のスクロールで追従 (nearest)
-    messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (currentSessionId !== prevSessionId) {
+    // セッションが切り替わった場合（過去の履歴を開いた、または新規作成）
+    setPrevSessionId(currentSessionId);
+    
+    if (messages.length > 0) {
+      // 履歴がある場合は、最初のメッセージが上部（padding付）にくるように即座にスクロール
+      setTimeout(() => {
+        messagesStartRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }, 10);
+    } else {
+      // 新規セッションの場合は一番上（Hero UI）へ
+      const area = document.querySelector('.messages-area');
+      if (area) area.scrollTop = 0;
+    }
+  } else {
+    // 同じセッション内でのメッセージ追加やAIの思考状態の変化
+    if (messages.length === 1 && aiState === 'thinking') {
+      // 最初のメッセージ送信時：Hero UIを画面外へ押し出すようにスクロール
+      setTimeout(() => {
+        messagesStartRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    } else if (messages.length > 0) {
+      // 通常時：メッセージが追加されたら下へ追従
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
   }
-}, [messages, aiState]);
+}, [messages, aiState, currentSessionId, prevSessionId]);
 
 
 
@@ -507,9 +527,7 @@ useEffect(() => {
     }
   };
 
-  useEffect(() => {
-    if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [messages, aiState]);
+
 
   const handleLogin = async () => {
     if (!password.trim()) {
@@ -924,7 +942,6 @@ return (
         </div>
 
         <div className="messages-area">
-        {messages.length === 0 && (
           <div className="welcome-screen">
             <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
             <div className="feature-cards-container">
@@ -944,15 +961,11 @@ return (
                 <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
               </div>
             </div>
-            </div>
-          )}
-
-            
+          </div>
          
           {messages.length > 0 && (
             <div className="messages-list-wrapper" ref={messagesStartRef}>
-
-          {messages.map((msg, index) => {
+              {messages.map((msg, index) => {
             const isUser = msg.sender === USER_NAME;
             const isReportMsg = msg.type === 'report';
             const isProcessMsg = msg.type === 'process_running';

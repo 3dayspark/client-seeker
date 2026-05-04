@@ -2095,6 +2095,7 @@
   justify-content: flex-start;
   gap: 24px; /* 以前 messages-area にあった gap をこちらに移動 */
   padding-bottom: 40px; /* 一番下までスクロールした時の余白 */
+  scroll-margin-top: 20px; 
 }
 
 /* 既存の messages-area から gap を消す（ラッパーに移したため） */
