@@ -1,65 +1,39 @@
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
+// ==========================================
+// 1. 各種定数と画像のカスタマイズ設定
+// ==========================================
 const AI_ASSISTANT_NAME = "産業リサーチAI";
 const USER_NAME = "自分";
+
+// 【カスタマイズ: アバター画像】
+// 独自の画像（jpg, png, svgなど）を使用する場合は、URLを置き換えるか、
+// import文でローカル画像を読み込んで指定してください（例: import aiAvatar from './assets/ai-avatar.png'）
 const AI_AVATAR = `https://ui-avatars.com/api/?name=AI&background=0D8ABC&color=fff&size=128`;
 const USER_AVATAR = `https://ui-avatars.com/api/?name=User&background=333&color=fff&size=128`;
 
-// APIエンドポイントの設定
+// 【カスタマイズ: 機能紹介アイコン】
+// ウェルカム画面の3つの機能アイコン用画像URL
+const ICON_PROFILE = `https://img.icons8.com/?size=100&id=108652&format=png&color=007bff`; // 顧客プロファイリング用
+const ICON_SEARCH = `https://img.icons8.com/?size=100&id=132&format=png&color=007bff`;    // スクリーニング用
+const ICON_ANALYZE = `https://img.icons8.com/?size=100&id=103424&format=png&color=007bff`; // データ分析用
+
+const SYSTEM_NOTICE = "【お知らせ】コスト削減のため、AIバックエンドサービスは日本時間 平日 9:00 〜 18:00 の間のみ稼働しております。ご不便をおかけしますが、ご理解の程よろしくお願いいたします。";
+
+const QUICK_PROMPTS =[
+  { label: "強化ガラスの顧客開拓", text: "こんにちは。当社は高品質な強化ガラスを製造しており、取引先となる優良企業を探しています。" },
+  { label: "人型ロボットの顧客開拓", text: "こんにちは。当社はヒューマノイドロボットを製造しています。様々な業界で、ヒューマノイドロボットを必要としている潜在的な顧客を探したいです。" },
+  { label: "商談中案件の金額確認", text: "現在進行中の商談先企業をすべて教えてください。商談金額もそれぞれ併せて。" }
+];
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
-
 const API_ENDPOINT = `${API_BASE_URL}/chat`;
-/**
- * ロケットアイコンコンポーネント
- * ステータス: 進行中を表示
- */
-const RocketIcon = () => (
-  <svg 
-    width="20" 
-    height="20" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg" 
-    className="status-svg"
-  >
-    {/* 1. ロケット本体：機首、胴体、翼を含む */}
-    <path 
-      d="M21 3C21 3 17.5 9.5 15.5 11.5C14.5 12.5 13.5 12.5 13.5 12.5L16 17.5L12 16L10.5 19L8.5 14L3 12.5L8 10.5C8 10.5 8 9.5 9 8.5C11 6.5 21 3 21 3Z" 
-      stroke="currentColor" 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-    />
 
-    {/* 2. 舷窓 */}
-    <circle 
-      cx="14.5" 
-      cy="9.5" 
-      r="1.5" 
-      stroke="currentColor" 
-      strokeWidth="1.5" 
-    />
-
-    {/* 3. 噴射気流：推進の動感を表現 */}
-    <path d="M6.5 16.5L4 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M10 18L8.5 20.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M4.5 13.5L3 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-/**
- * チェックアイコンコンポーネント
- * ステータス: 完了を表示
- */
-const CheckIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="status-svg">
-    <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M7.75 12L10.58 14.83L16.25 9.17004" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
+// --- SVG アイコンコンポーネント ---
+const RocketIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="status-svg"><path d="M21 3C21 3 17.5 9.5 15.5 11.5C14.5 12.5 13.5 12.5 13.5 12.5L16 17.5L12 16L10.5 19L8.5 14L3 12.5L8 10.5C8 10.5 8 9.5 9 8.5C11 6.5 21 3 21 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><circle cx="14.5" cy="9.5" r="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M6.5 16.5L4 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M10 18L8.5 20.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M4.5 13.5L3 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>);
+const CheckIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="status-svg"><path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M7.75 12L10.58 14.83L16.25 9.17004" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>);
+const MenuIcon = () => (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>);
 
 // --- LogContent コンポーネント ---
 const LogContent = ({ logs, logRef, onImageClick }) => {
@@ -418,79 +392,113 @@ const MessageWithCitations = ({ text }) => {
 
 // --- App メインコンポーネント ---
 function App() {
-
   const [password, setPassword] = useState(localStorage.getItem('app_password') || '');
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('app_password'));
-  const[loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState('');
 
+  // ==========================================
+  // セッション（履歴）管理の状態
+  // ==========================================
+  const[sessions, setSessions] = useState(() => {
+    const saved = localStorage.getItem('chat_sessions');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [currentSessionId, setCurrentSessionId] = useState(null);
   const [messages, setMessages] = useState([]); 
+  
   const [userInput, setUserInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
-  // 状態: thinking (AI思考中), responding (テキスト返信中), executing (ツール実行中)
-  const [aiState, setAiState] = useState('idle'); 
-
+  const[aiState, setAiState] = useState('idle'); 
   const [currentLogMessages, setCurrentLogMessages] = useState([]); 
-  const logRef = useRef(null); 
-  const messagesEndRef = useRef(null); 
   const [previewImage, setPreviewImage] = useState(null);
   
-  // セッション ID 管理
-  const [sessionId, setSessionId] = useState(null);
+  // モバイル用サイドバー開閉状態
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Session ID の初期化
+  const logRef = useRef(null); 
+  const messagesEndRef = useRef(null); 
+
+  // 初期化：セッションが存在しない場合は新規作成
   useEffect(() => {
-      if (!sessionId) {
-          setSessionId(`sess_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+    if (sessions.length === 0) {
+      createNewSession();
+    } else if (!currentSessionId) {
+      // 最後に更新されたセッションを読み込む
+      const lastSession = [...sessions].sort((a, b) => b.updatedAt - a.updatedAt)[0];
+      switchSession(lastSession.id);
+    }
+  },[]);
+
+  // messages が更新されたら、現在のセッションに保存（localStorageへ同期）
+  useEffect(() => {
+    if (currentSessionId && messages.length > 0) {
+      setSessions(prev => {
+        const updated = prev.map(s => 
+          s.id === currentSessionId ? { ...s, messages, updatedAt: Date.now() } : s
+        );
+        localStorage.setItem('chat_sessions', JSON.stringify(updated));
+        return updated;
+      });
+    }
+  },[messages, currentSessionId]);
+
+  // 新規セッション作成
+  const createNewSession = () => {
+    const newId = `sess_${Date.now()}`;
+    const newSession = {
+      id: newId,
+      title: "新しいチャット",
+      messages:[],
+      updatedAt: Date.now()
+    };
+    setSessions(prev => {
+      const updated = [newSession, ...prev];
+      localStorage.setItem('chat_sessions', JSON.stringify(updated));
+      return updated;
+    });
+    setCurrentSessionId(newId);
+    setMessages([]);
+    if (window.innerWidth <= 768) setIsSidebarOpen(false); // スマホ時は閉じる
+  };
+
+  // セッション切り替え
+  const switchSession = (id) => {
+    const target = sessions.find(s => s.id === id);
+    if (target) {
+      setCurrentSessionId(id);
+      setMessages(target.messages ||[]);
+      if (window.innerWidth <= 768) setIsSidebarOpen(false);
+    }
+  };
+
+  // セッション削除
+  const deleteSession = (id) => {
+    const updated = sessions.filter(s => s.id !== id);
+    setSessions(updated);
+    localStorage.setItem('chat_sessions', JSON.stringify(updated));
+    if (currentSessionId === id) {
+      if (updated.length > 0) {
+        switchSession(updated[0].id);
+      } else {
+        createNewSession();
       }
-      setMessages([]);
-  }, []);
-
-  // 自動スクロール処理
-  useEffect(() => {
-    if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
-  }, [currentLogMessages]);
+    }
+  };
 
   useEffect(() => {
     if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages, aiState]);
-
-
-// --- システム通知テキスト ---
-const SYSTEM_NOTICE = "【お知らせ】AIバックエンドサービスは日本時間 平日 7:30 〜 21:00 の間のみ稼働しております。ご不便をおかけしますが、ご理解の程よろしくお願いいたします。";
-
-// --- クイックプロンプト（初期入力用テンプレート） ---
-const QUICK_PROMPTS =[
-  {
-    label: "強化ガラスの顧客開拓",
-    text: "こんにちは。当社は高品質な強化ガラスを製造しており、取引先となる優良企業を探しています。"
-  },
-  {
-    label: "人型ロボットの顧客開拓",
-    text: "こんにちは。当社はヒューマノイドロボットを製造しています。様々な業界で、ヒューマノイドロボットを必要としている潜在的な顧客を探したいです。"
-  },
-  {
-    label: "商談中案件の金額確認",
-    text: "現在進行中の商談先企業をすべて教えてください。商談金額もそれぞれ併せて。"
-  }
-];
-
-
 
   const handleLogin = async () => {
     if (!password.trim()) {
         setLoginError('パスワードを入力してください。');
         return;
     }
-
     try {
         const response = await fetch(`${API_BASE_URL}/verify-password`, {
             method: 'GET',
-            headers: { 
-                'x-api-key': password 
-            }
+            headers: { 'x-api-key': password }
         });
-
         if (response.ok) {
             localStorage.setItem('app_password', password);
             setIsAuthenticated(true);
@@ -501,58 +509,84 @@ const QUICK_PROMPTS =[
     } catch (error) {
         setLoginError('サーバーに接続できません / Server Error');
     }
-};
+  };
 
+  // LLMを使用したバックグラウンドタイトル生成
+  const generateTitleWithLLM = async (text, sessionId) => {
+    try {
+      // ストリーミングAPIを非同期で叩いてタイトルを抽出
+      const response = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': password },
+        body: JSON.stringify({ 
+            message: `以下のユーザー入力の意図を汲み取り、このチャットの短いタイトル（10文字以内の文字列のみ）を作成してください。説明や記号は不要です。\n入力内容：${text}`,
+            session_id: `title_${Date.now()}` 
+        }),
+      });
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let generatedTitle = '';
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        let eventEndIndex;
+        while ((eventEndIndex = buffer.indexOf('\n\n')) !== -1) {
+          const event = buffer.substring(0, eventEndIndex);
+          buffer = buffer.substring(eventEndIndex + 2);
+          if (event.startsWith('data: [TEXT_RESPONSE]')) {
+              generatedTitle += event.replace('data:[TEXT_RESPONSE]', '');
+          }
+        }
+      }
+      
+      const finalTitle = generatedTitle.replace(/\\n/g, '').trim() || text.slice(0, 10) + '...';
+      
+      setSessions(prev => {
+        const updated = prev.map(s => s.id === sessionId ? { ...s, title: finalTitle } : s);
+        localStorage.setItem('chat_sessions', JSON.stringify(updated));
+        return updated;
+      });
+    } catch (e) {
+      console.error("Title generation failed", e);
+    }
+  };
 
   const handleSendMessage = async (overrideText = null) => {
-    // ボタンからテキストが渡された場合はそれを使用、なければ入力欄を使用
     const isStringOverride = typeof overrideText === 'string';
-  
     const promptText = isStringOverride ? overrideText : userInput;
-    
     if (!promptText.trim()) return;
-    const userMessage = { sender: USER_NAME, text: promptText, type: 'text' };
+
+    const userMessage = { sender: USER_NAME, text: promptText, type: 'text', id: Date.now() };
     
-    setMessages((prev) => [...prev, userMessage]);
-    
-    
-    if (!isStringOverride) {
-      setUserInput(''); 
+    // タイトル生成（新規セッションの最初の発言時）
+    if (messages.length === 0) {
+      setSessions(prev => prev.map(s => s.id === currentSessionId ? { ...s, title: promptText.slice(0, 10) + '...' } : s));
+      generateTitleWithLLM(promptText, currentSessionId);
     }
 
-    setIsLoading(true);
-    setAiState('thinking'); // 思考状態へ移行
+    setMessages((prev) => [...prev, userMessage]);
+    if (!isStringOverride) setUserInput(''); 
 
-    // 一時変数の準備
-    let tempAiMsgId = Date.now();
+    setIsLoading(true);
+    setAiState('thinking'); 
+
+    let tempAiMsgId = Date.now() + 1;
     let isToolRunning = false;
     let incomingTextResponse = "";
     
     try {
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json',
-            'x-api-key': password
-        },
-        body: JSON.stringify({ 
-            message: promptText,
-            session_id: sessionId 
-        }),
+        headers: { 'Content-Type': 'application/json', 'x-api-key': password },
+        body: JSON.stringify({ message: promptText, session_id: currentSessionId }),
       });
 
-
-
       if (response.status === 401) {
-        localStorage.removeItem('app_password'); 
-        setIsAuthenticated(false);               
-        setLoginError('パスワードが間違っています / Invalid Password');
-        setIsLoading(false);
-        setAiState('idle');
-        return;
+        throw new Error('401'); // 下部の catch ブロックへ回す
       }
-
-
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
       const reader = response.body.getReader();
@@ -696,18 +730,16 @@ const QUICK_PROMPTS =[
       }
 
     } catch (error) {
-
+      // 【最適化】エラー発生時（ネットワーク切れ、パスワード変更等）は、今送ったメッセージを削除（ロールバック）
+      setMessages(prev => prev.filter(m => m.id !== userMessage.id));
+      
       if (error.message.includes('Failed to fetch') || error.message.includes('401')) {
         localStorage.removeItem('app_password'); 
         setIsAuthenticated(false);               
         setLoginError('認証エラー：パスワードが無効です。再度入力してください。');
-        setIsLoading(false);
-        setAiState('idle');
-        return;
+      } else {
+        setMessages(prev =>[...prev, { sender: AI_ASSISTANT_NAME, text: `エラーが発生しました: ${error.message}`, type: 'text' }]);
       }
-
-
-      setMessages(prev => [...prev, { sender: AI_ASSISTANT_NAME, text: `エラーが発生しました: ${error.message}`, type: 'text' }]);
     } finally {
       setIsLoading(false);
       setAiState('idle');
@@ -782,86 +814,104 @@ if (!isAuthenticated) {
       <div className="login-overlay">
           <div className="login-card">
               <h2>アクセス認証</h2>
-             
-
               <input 
                   type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="パスワード / Password"
                   className="login-input"
-                  onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
-                          handleLogin();
-                      }
-                  }}
+                  onKeyPress={(e) => { if (e.key === 'Enter') handleLogin(); }}
               />
-              <br />
-
-
-              <button 
-                  className="login-btn"
-                  onClick={handleLogin} 
-              >
-                  ログイン / Login
-              </button>
-              
+              <button className="login-btn" onClick={handleLogin}>ログイン / Login</button>
               {loginError && <div className="login-error">{loginError}</div>}
           </div>
       </div>
   );
 }
 
+return (
+  <div className="app-layout-wrapper">
+    
+    {/* 1. 全幅のトップ通知バー（チャット外） */}
+    <div className="top-notification-bar">
+      <span className="notification-icon"></span>
+      <span className="notification-text">{SYSTEM_NOTICE}</span>
+    </div>
 
+    <div className="main-content-area">
+      
+      {/* モバイル用サイドバーのオーバーレイ背景 */}
+      {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
 
-
-  return (
-    <div className="chat-container">
-      {/* トップ通知バー */}
-      <div className="top-notification-bar">
-        <span className="notification-icon"></span>
-        <span className="notification-text">{SYSTEM_NOTICE}</span>
+      {/* 2. 左側の履歴サイドバー */}
+      <div className={`history-sidebar ${isSidebarOpen ? 'open' : ''}`}>
+         <div className="sidebar-header">
+            <button className="new-chat-btn" onClick={createNewSession}>
+               <span className="plus-icon">+</span> 新しいチャット
+            </button>
+         </div>
+         
+         <div className="session-list-container">
+            {sessions.length === 0 ? (
+              <div className="empty-session-text">チャット履歴がありません</div>
+            ) : (
+              sessions.map(s => (
+                <div 
+                  key={s.id} 
+                  className={`session-item ${currentSessionId === s.id ? 'active' : ''}`}
+                  onClick={() => switchSession(s.id)}
+                >
+                   <div className="session-title">{s.title || "新しいチャット"}</div>
+                   <button 
+                      className="delete-session-btn" 
+                      onClick={(e) => { e.stopPropagation(); deleteSession(s.id); }}
+                      title="削除"
+                   >×</button>
+                </div>
+              ))
+            )}
+         </div>
       </div>
 
-      {/* プレビューモーダル */}
-      {previewImage && (
-          <div className="image-modal-overlay" onClick={closePreview}>
-              <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
-                  <span className="close-button" onClick={closePreview}>&times;</span>
-                  <img src={`data:image/png;base64,${previewImage}`} alt="Full Preview" />
-              </div>
-          </div>
-      )}
+      {/* 3. 右側のチャットメインエリア */}
+      <div className="chat-container">
+        
+        {/* モバイル時に表示されるヘッダーバー */}
+        <div className="mobile-chat-header">
+           <button className="menu-btn" onClick={() => setIsSidebarOpen(true)}>
+             <MenuIcon />
+           </button>
+           <span className="mobile-header-title">
+              {sessions.find(s => s.id === currentSessionId)?.title || "新しいチャット"}
+           </span>
+        </div>
 
-      <div className="messages-area">
-        {/* メッセージがない場合はウェルカム画面（Hero UI）を表示 */}
-        {messages.length === 0 ? (
-          <div className="welcome-screen">
-            <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
-            <div className="feature-cards-container">
-              {/* 機能1: 顧客プロファイリング */}
-              <div className="feature-card">
-                <div className="feature-icon"></div>
-                <h3 className="feature-title">顧客プロファイリング</h3>
-                <p className="feature-desc">B2B営業の専門家として、業界ナレッジベースに基づき最適なターゲット顧客像をご提案します。</p>
-              </div>
-              {/* 機能2: 高度なスクリーニング */}
-              <div className="feature-card">
-                <div className="feature-icon"></div>
-                <h3 className="feature-title">高度なスクリーニング</h3>
-                <p className="feature-desc">定義した顧客像に基づき、B2B企業データベースから条件に合致する企業を自動検索・抽出します。</p>
-              </div>
-              {/* 機能3: 営業データ分析 */}
-              <div className="feature-card">
-                <div className="feature-icon"></div>
-                <h3 className="feature-title">営業データ分析</h3>
-                <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
+        <div className="messages-area">
+          {messages.length === 0 ? (
+            <div className="welcome-screen">
+              <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
+              <div className="feature-cards-container">
+                <div className="feature-card">
+                  {/* アイコン画像化 */}
+                  <img src={ICON_PROFILE} alt="Profile" className="feature-icon-img" />
+                  <h3 className="feature-title">顧客プロファイリング</h3>
+                  <p className="feature-desc">B2B営業の専門家として、業界ナレッジベースに基づき最適なターゲット顧客像をご提案します。</p>
+                </div>
+                <div className="feature-card">
+                  <img src={ICON_SEARCH} alt="Search" className="feature-icon-img" />
+                  <h3 className="feature-title">高度なスクリーニング</h3>
+                  <p className="feature-desc">定義した顧客像に基づき、B2B企業データベースから条件に合致する企業を自動検索・抽出します。</p>
+                </div>
+                <div className="feature-card">
+                  <img src={ICON_ANALYZE} alt="Analyze" className="feature-icon-img" />
+                  <h3 className="feature-title">営業データ分析</h3>
+                  <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
+                </div>
               </div>
             </div>
-          </div>
-        ) : (
-        messages.map((msg, index) => {
-            const isUser = msg.sender === USER_NAME;
+          ) : (
+            messages.map((msg, index) => {
+              const isUser = msg.sender === USER_NAME;
             const isReportMsg = msg.type === 'report';
             const isProcessMsg = msg.type === 'process_running';
      
@@ -1146,20 +1196,23 @@ if (!isAuthenticated) {
       
       {/* 下部入力エリア */}
       <div className="input-area">
-        <input 
-            type="text" 
-            value={userInput} 
-            onChange={(e) => setUserInput(e.target.value)} 
-            onKeyPress={handleKeyPress} 
-            placeholder={isLoading ? "回答を生成中..." : "探したい企業や条件を入力"} 
-            disabled={isLoading}
-        />
-        <button onClick={handleSendMessage} disabled={isLoading}>
-            {isLoading ? '送信' : '送信'}
-        </button>
-      </div>
-      </div>
+            <input 
+                type="text" 
+                value={userInput} 
+                onChange={(e) => setUserInput(e.target.value)} 
+                onKeyPress={handleKeyPress} 
+                placeholder={isLoading ? "回答を生成中..." : "探したい企業や条件を入力"} 
+                disabled={isLoading}
+            />
+            
+            <button onClick={() => handleSendMessage()} disabled={isLoading}>
+                {isLoading ? '送信中' : '送信'}
+            </button>
+          </div>
+        </div> 
+      </div> 
     </div>
+  </div> 
   );
 }
 
