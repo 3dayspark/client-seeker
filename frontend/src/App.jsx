@@ -420,6 +420,7 @@ function App() {
 
   const logRef = useRef(null); 
   const messagesEndRef = useRef(null); 
+  const messagesStartRef = useRef(null); 
 
   // 初期化：セッションが存在しない場合は新規作成
   useEffect(() => {
@@ -445,9 +446,26 @@ function App() {
     }
   },[messages, currentSessionId]);
 
+// スクロール制御を高度化（最初の一言でトップにジャンプし、以降は自動追従）
+useEffect(() => {
+  if (messages.length === 1 && aiState === 'thinking') {
+    // 最初のメッセージ送信時：メッセージリストの先頭へスクロールし、Hero UIを画面外へ押し出す
+    setTimeout(() => {
+      messagesStartRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  } else if (messagesEndRef.current) {
+    // 通常時：メッセージが画面下部を越えた場合のみ、最低限のスクロールで追従 (nearest)
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}, [messages, aiState]);
+
+
+
   // 新規セッション作成
   const createNewSession = () => {
-    if (messages.length === 0) return;// 現在のセッションが空の場合は新規作成を無効化
+    const hasEmpty = sessions.some(s => !s.messages || s.messages.length === 0);
+    if (hasEmpty) return; // 空セッションが存在する場合は無効化
+
     const newId = `sess_${Date.now()}`;
     const newSession = {
       id: newId,
@@ -815,6 +833,9 @@ const getLabel = (key) => {
   return FIELD_MAPPING[key] || key; // マッピングがなければそのまま英語キーを表示
 };
 
+// 全セッションの中から、空のセッションが1つでも存在するかチェック
+const hasEmptySession = sessions.some(s => !s.messages || s.messages.length === 0);
+
 
 if (!isAuthenticated) {
   return (
@@ -845,7 +866,7 @@ return (
         <span className="notification-icon">⚠️</span>
         <span className="notification-text">{SYSTEM_NOTICE}</span>
         {/* 閉じるボタン */}
-        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>確認 / 知悉</span>
+        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>確認</span>
       </div>
     )}
 
@@ -860,8 +881,8 @@ return (
             <button 
               className="new-chat-btn" 
               onClick={createNewSession}
-              disabled={messages.length === 0}
-              style={{ opacity: messages.length === 0 ? 0.5 : 1, cursor: messages.length === 0 ? 'not-allowed' : 'pointer' }}
+              disabled={hasEmptySession}
+              style={{ opacity: hasEmptySession ? 0.5 : 1, cursor: hasEmptySession ? 'not-allowed' : 'pointer' }}
             >
                <span className="plus-icon">+</span> 新しいチャット
             </button>
@@ -923,7 +944,10 @@ return (
                 <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
               </div>
             </div>
-          </div>
+
+
+            
+         
 
 
           {messages.map((msg, index) => {
@@ -1190,7 +1214,7 @@ return (
       
       <div ref={messagesEndRef} />
       </div>
-
+      </div>
 
       <div className="input-section-wrapper">
         {/* メッセージが空の時だけ、クイックプロンプトを表示 */}

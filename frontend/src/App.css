@@ -2069,3 +2069,48 @@
       position: relative !important;
     }
   }
+
+
+  /* ==========================================================================
+   Hero UI と メッセージエリアの高度なスクロール制御
+   ========================================================================== */
+
+/* ヒーローUIに最低1画面分（100%）の高さを強制。
+   これにより、下部にメッセージが出現した際、物理的に1画面分下に押しやられる構造を作る */
+.welcome-screen {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* メッセージのラッパーにも最低1画面分（100%）の高さを強制。
+   これがないと、メッセージが短い時にブラウザが「上に余白があるからHero UIを見せよう」としてしまう */
+.messages-list-wrapper {
+  min-height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px; /* 以前 messages-area にあった gap をこちらに移動 */
+  padding-bottom: 40px; /* 一番下までスクロールした時の余白 */
+}
+
+/* 既存の messages-area から gap を消す（ラッパーに移したため） */
+.messages-area {
+  gap: 0 !important;
+}
+
+/* ==========================================================================
+   スマホ時のレイアウト崩れ・Z-index（前面背面）修正
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* スマホの入力エリア（z-index: 999等）より確実に上に表示されるよう爆上げする */
+  .history-sidebar {
+    z-index: 2000 !important;
+  }
+  .sidebar-overlay {
+    z-index: 1999 !important;
+  }
+}
