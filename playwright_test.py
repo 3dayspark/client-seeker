@@ -10,7 +10,7 @@ import itertools
 import requests
 from typing import List, Dict, Any, Optional, Set
 from playwright.async_api import async_playwright, Page, Browser, Locator, ElementHandle
-from playwright_stealth import stealth
+from playwright_stealth import Stealth
 from openai import OpenAI
 
 # 標準ロガーの設定（スクリプト初期化時のエラー出力用）
@@ -1867,7 +1867,8 @@ async def test_qcc_llm_interaction_with_playwright(Logger, client_description: s
     page: Page = await context.new_page()
     
 
-    stealth(page)
+    stealth = Stealth()
+    await stealth.apply_stealth_async(page)
 
     target_url = "https://www.qcc.com/web/search/advance?hasState=true"
     Logger.log_to_frontend(f"  - ナビゲート先: {target_url}")
