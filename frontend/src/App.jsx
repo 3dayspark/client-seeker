@@ -924,7 +924,7 @@ return (
         </div>
 
         <div className="messages-area">
-
+        {messages.length === 0 && (
           <div className="welcome-screen">
             <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
             <div className="feature-cards-container">
@@ -944,11 +944,13 @@ return (
                 <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
               </div>
             </div>
-
+            </div>
+          )}
 
             
          
-
+          {messages.length > 0 && (
+            <div className="messages-list-wrapper" ref={messagesStartRef}>
 
           {messages.map((msg, index) => {
             const isUser = msg.sender === USER_NAME;
@@ -1213,8 +1215,12 @@ return (
       )}
       
       <div ref={messagesEndRef} />
-      </div>
-      </div>
+      
+      
+        </div> 
+      )}
+
+      </div> 
 
       <div className="input-section-wrapper">
         {/* メッセージが空の時だけ、クイックプロンプトを表示 */}
@@ -1233,25 +1239,25 @@ return (
           </div>
         )}
       
-      {/* 下部入力エリア */}
-      <div className="input-area">
-            <input 
-                type="text" 
-                value={userInput} 
-                onChange={(e) => setUserInput(e.target.value)} 
-                onKeyPress={handleKeyPress} 
-                placeholder={isLoading ? "回答を生成中..." : "探したい企業や条件を入力"} 
-                disabled={isLoading}
-            />
-            
-            <button onClick={() => handleSendMessage()} disabled={isLoading}>
-                {isLoading ? '送信中' : '送信'}
-            </button>
-          </div>
-        </div> 
+        {/* 下部入力エリア */}
+        <div className="input-area">
+          <input 
+              type="text" 
+              value={userInput} 
+              onChange={(e) => setUserInput(e.target.value)} 
+              onKeyPress={handleKeyPress} 
+              placeholder={isLoading ? "回答を生成中..." : "探したい企業や条件を入力"} 
+              disabled={isLoading}
+          />
+          <button onClick={() => handleSendMessage()} disabled={isLoading}>
+              {isLoading ? '送信中' : '送信'}
+          </button>
+        </div>
       </div> 
-    </div>
+
+    </div> 
   </div> 
+</div> 
   );
 }
 
