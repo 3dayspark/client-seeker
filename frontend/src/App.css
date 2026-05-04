@@ -2115,3 +2115,28 @@
     z-index: 1999 !important;
   }
 }
+
+
+/* ==========================================================================
+   モバイル：削除ボタンの常時表示 & クイックプロンプトの複数行表示
+   ========================================================================== */
+   @media (max-width: 768px) {
+    /* 1. 履歴セッションの「×」削除ボタンをモバイルでは常に表示（ホバー不要） */
+    .delete-session-btn {
+      display: block !important; 
+    }
+    
+    /* 2. クイックプロンプトの横スクロールを無効化し、複数行表示に変更（PCと同様） */
+    .quick-prompts-container {
+      flex-wrap: wrap !important;         /* 折り返しを許可 */
+      overflow-x: visible !important;     /* 横スクロールバーを削除 */
+      justify-content: center !important; /* PCと同様に中央揃え（左寄せにする場合は flex-start に変更可） */
+    }
+    
+    /* 画面幅が非常に狭い場合でも、ボタン内テキストがはみ出さず自動改行されるようにする */
+    .quick-prompt-btn {
+      white-space: normal !important;     /* ボタン内テキストの改行を許可 */
+      text-align: center;                 /* テキストを中央揃え */
+      flex-shrink: 1 !important;          /* 画面幅に応じてボタンの縮小を許可 */
+    }
+  }

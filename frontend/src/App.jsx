@@ -17,7 +17,7 @@ const USER_AVATAR = `https://ui-avatars.com/api/?name=User&background=333&color=
 // ウェルカム画面の3つの機能アイコン用画像URL
 const ICON_PROFILE = `https://img.icons8.com/?size=100&id=108652&format=png&color=007bff`; // 顧客プロファイリング用
 const ICON_SEARCH = `https://img.icons8.com/?size=100&id=132&format=png&color=007bff`;    // スクリーニング用
-const ICON_ANALYZE = `https://img.icons8.com/?size=100&id=103424&format=png&color=007bff`; // データ分析用
+const ICON_ANALYZE = `https://img.icons8.com/?size=100&id=119290&format=png&color=007bff`; // データ分析用
 
 const SYSTEM_NOTICE = "【お知らせ】コスト削減のため、AIバックエンドサービスは日本時間 平日 9:00 〜 18:00 の間のみ稼働しております。ご不便をおかけしますが、ご理解の程よろしくお願いいたします。";
 
