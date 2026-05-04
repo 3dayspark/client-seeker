@@ -443,9 +443,7 @@ function App() {
       if (!sessionId) {
           setSessionId(`sess_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
       }
-      setMessages([
-        { sender: AI_ASSISTANT_NAME, text: `こんにちは。産業チェーンの分析や、見込み顧客のリストアップをサポートします。具体的にどのような企業や業界をお探しですか？`, type: 'text' }
-      ]);
+      setMessages([]);
   }, []);
 
   // 自動スクロール処理
@@ -456,6 +454,26 @@ function App() {
   useEffect(() => {
     if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages, aiState]);
+
+
+// --- システム通知テキスト ---
+const SYSTEM_NOTICE = "【お知らせ】AIバックエンドサービスは日本時間 平日 7:30 〜 21:00 の間のみ稼働しております。ご不便をおかけしますが、ご理解の程よろしくお願いいたします。";
+
+// --- クイックプロンプト（初期入力用テンプレート） ---
+const QUICK_PROMPTS =[
+  {
+    label: "強化ガラスの顧客開拓",
+    text: "こんにちは。当社は高品質な強化ガラスを製造しており、取引先となる優良企業を探しています。"
+  },
+  {
+    label: "人型ロボットの顧客開拓",
+    text: "こんにちは。当社はヒューマノイドロボットを製造しています。様々な業界で、ヒューマノイドロボットを必要としている潜在的な顧客を探したいです。"
+  },
+  {
+    label: "商談中案件の金額確認",
+    text: "現在進行中の商談先企業をすべて教えてください。商談金額もそれぞれ併せて。"
+  }
+];
 
 
 
@@ -799,6 +817,12 @@ if (!isAuthenticated) {
 
   return (
     <div className="chat-container">
+      {/* トップ通知バー */}
+      <div className="top-notification-bar">
+        <span className="notification-icon"></span>
+        <span className="notification-text">{SYSTEM_NOTICE}</span>
+      </div>
+
       {/* プレビューモーダル */}
       {previewImage && (
           <div className="image-modal-overlay" onClick={closePreview}>
@@ -810,7 +834,33 @@ if (!isAuthenticated) {
       )}
 
       <div className="messages-area">
-        {messages.map((msg, index) => {
+        {/* メッセージがない場合はウェルカム画面（Hero UI）を表示 */}
+        {messages.length === 0 ? (
+          <div className="welcome-screen">
+            <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
+            <div className="feature-cards-container">
+              {/* 機能1: 顧客プロファイリング */}
+              <div className="feature-card">
+                <div className="feature-icon"></div>
+                <h3 className="feature-title">顧客プロファイリング</h3>
+                <p className="feature-desc">B2B営業の専門家として、業界ナレッジベースに基づき最適なターゲット顧客像をご提案します。</p>
+              </div>
+              {/* 機能2: 高度なスクリーニング */}
+              <div className="feature-card">
+                <div className="feature-icon"></div>
+                <h3 className="feature-title">高度なスクリーニング</h3>
+                <p className="feature-desc">定義した顧客像に基づき、B2B企業データベースから条件に合致する企業を自動検索・抽出します。</p>
+              </div>
+              {/* 機能3: 営業データ分析 */}
+              <div className="feature-card">
+                <div className="feature-icon"></div>
+                <h3 className="feature-title">営業データ分析</h3>
+                <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
+              </div>
+            </div>
+          </div>
+        ) : (
+        messages.map((msg, index) => {
             const isUser = msg.sender === USER_NAME;
             const isReportMsg = msg.type === 'report';
             const isProcessMsg = msg.type === 'process_running';
@@ -1058,7 +1108,8 @@ if (!isAuthenticated) {
                   )}
               </div>
           );
-      })}
+        }) 
+      )} 
       
       {/* Thinking 状態表示 */}
       {aiState === 'thinking' && (
@@ -1074,6 +1125,24 @@ if (!isAuthenticated) {
       
       <div ref={messagesEndRef} />
       </div>
+
+
+      <div className="input-section-wrapper">
+        {/* メッセージが空の時だけ、クイックプロンプトを表示 */}
+        {messages.length === 0 && (
+          <div className="quick-prompts-container">
+            {QUICK_PROMPTS.map((prompt, idx) => (
+              <button 
+                key={idx} 
+                className="quick-prompt-btn"
+                onClick={() => handleSendMessage(prompt.text)}
+                disabled={isLoading}
+              >
+                {prompt.label}
+              </button>
+            ))}
+          </div>
+        )}
       
       {/* 下部入力エリア */}
       <div className="input-area">
@@ -1088,6 +1157,7 @@ if (!isAuthenticated) {
         <button onClick={handleSendMessage} disabled={isLoading}>
             {isLoading ? '送信' : '送信'}
         </button>
+      </div>
       </div>
     </div>
   );

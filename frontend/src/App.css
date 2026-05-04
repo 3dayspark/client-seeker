@@ -1604,3 +1604,183 @@ body {
     border-radius: 4px;
     border: 1px solid #fed7d7;
   }
+
+
+  /* ==========================================================================
+   11. トップ通知バー (Top Notification Bar)
+   ========================================================================== */
+.top-notification-bar {
+  background-color: #fff9e6; /* 淡い黄色で通知を目立たせる（警告色が強すぎないように調整） */
+  color: #856404;
+  padding: 10px 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #ffeeba;
+  z-index: 10;
+}
+
+.notification-icon {
+  font-size: 1.1em;
+}
+
+.notification-text {
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   12. ウェルカムスクリーン / Hero UI (Welcome Screen)
+   ========================================================================== */
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 0 20px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.welcome-title {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #2c3e50; /* 落ち着いたダークネイビー */
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.feature-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #007bff; /* ホバー時にブランドカラーを強調 */
+}
+
+.feature-icon {
+  font-size: 2em;
+  margin-bottom: 16px;
+  background-color: #f0f7ff;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.feature-title {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.feature-desc {
+  font-size: 0.85em;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   13. 入力エリアラッパー＆クイックプロンプト (Quick Prompts)
+   ========================================================================== */
+.input-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-top: 1px solid #eaeaea;
+}
+
+/* 既存の .input-area の border-top を削除し、ラッパーに持たせるための上書き */
+.input-area {
+  border-top: none; 
+}
+
+.quick-prompts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 24px 0 24px; /* 入力エリアのすぐ上に配置 */
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.quick-prompt-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #dcdcdc;
+  color: #4a5568;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.quick-prompt-btn:hover:not(:disabled) {
+  background-color: #e6f2ff; /* 爽やかなブルー背景 */
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.quick-prompt-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   レスポンシブ対応追加 (モバイル用の上書き)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .feature-cards-container {
+    grid-template-columns: 1fr; /* モバイルでは縦並び */
+    gap: 16px;
+  }
+  
+  .welcome-title {
+    font-size: 1.4em;
+    margin-bottom: 24px;
+  }
+
+  .quick-prompts-container {
+    padding: 12px 12px 0 12px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap; /* モバイルでは横スクロール可能に */
+    scrollbar-width: none; /* Firefoxスクロールバー非表示 */
+  }
+  
+  .quick-prompts-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safariスクロールバー非表示 */
+  }
+
+  .quick-prompt-btn {
+    white-space: nowrap; /* テキストの折り返しを防ぐ */
+  }
+}
