@@ -392,6 +392,7 @@ const MessageWithCitations = ({ text }) => {
 
 // --- App メインコンポーネント ---
 function App() {
+  
   const [password, setPassword] = useState(localStorage.getItem('app_password') || '');
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('app_password'));
   const [loginError, setLoginError] = useState('');
@@ -414,6 +415,8 @@ function App() {
   
   // モバイル用サイドバー開閉状態
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  // 通知バーの表示状態 
+  const [showNotice, setShowNotice] = useState(true);
 
   const logRef = useRef(null); 
   const messagesEndRef = useRef(null); 
@@ -444,6 +447,7 @@ function App() {
 
   // 新規セッション作成
   const createNewSession = () => {
+    if (messages.length === 0) return;// 現在のセッションが空の場合は新規作成を無効化
     const newId = `sess_${Date.now()}`;
     const newSession = {
       id: newId,
@@ -536,11 +540,14 @@ function App() {
         while ((eventEndIndex = buffer.indexOf('\n\n')) !== -1) {
           const event = buffer.substring(0, eventEndIndex);
           buffer = buffer.substring(eventEndIndex + 2);
-          if (event.startsWith('data: [TEXT_RESPONSE]')) {
-              generatedTitle += event.replace('data:[TEXT_RESPONSE]', '');
-          }
-        }
-      }
+          if (event.includes('[TEXT_RESPONSE]')) {
+            const parts = event.split('[TEXT_RESPONSE]');
+            if (parts.length > 1) {
+                generatedTitle += parts[1];
+            }
+         }
+       }
+     }
       
       const finalTitle = generatedTitle.replace(/\\n/g, '').trim() || text.slice(0, 10) + '...';
       
@@ -832,21 +839,30 @@ if (!isAuthenticated) {
 return (
   <div className="app-layout-wrapper">
     
-    {/* 1. 全幅のトップ通知バー（チャット外） */}
-    <div className="top-notification-bar">
-      <span className="notification-icon"></span>
-      <span className="notification-text">{SYSTEM_NOTICE}</span>
-    </div>
+    {/* 1. 通知バー（表示状態が true の時だけレンダリング） */}
+    {showNotice && (
+      <div className="top-notification-bar">
+        <span className="notification-icon">⚠️</span>
+        <span className="notification-text">{SYSTEM_NOTICE}</span>
+        {/* 閉じるボタン */}
+        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>確認 / 知悉</span>
+      </div>
+    )}
 
     <div className="main-content-area">
-      
       {/* モバイル用サイドバーのオーバーレイ背景 */}
       {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
 
       {/* 2. 左側の履歴サイドバー */}
       <div className={`history-sidebar ${isSidebarOpen ? 'open' : ''}`}>
          <div className="sidebar-header">
-            <button className="new-chat-btn" onClick={createNewSession}>
+            {/* 現在のセッションが空の場合はボタンを無効化 */}
+            <button 
+              className="new-chat-btn" 
+              onClick={createNewSession}
+              disabled={messages.length === 0}
+              style={{ opacity: messages.length === 0 ? 0.5 : 1, cursor: messages.length === 0 ? 'not-allowed' : 'pointer' }}
+            >
                <span className="plus-icon">+</span> 新しいチャット
             </button>
          </div>
@@ -887,31 +903,31 @@ return (
         </div>
 
         <div className="messages-area">
-          {messages.length === 0 ? (
-            <div className="welcome-screen">
-              <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
-              <div className="feature-cards-container">
-                <div className="feature-card">
-                  {/* アイコン画像化 */}
-                  <img src={ICON_PROFILE} alt="Profile" className="feature-icon-img" />
-                  <h3 className="feature-title">顧客プロファイリング</h3>
-                  <p className="feature-desc">B2B営業の専門家として、業界ナレッジベースに基づき最適なターゲット顧客像をご提案します。</p>
-                </div>
-                <div className="feature-card">
-                  <img src={ICON_SEARCH} alt="Search" className="feature-icon-img" />
-                  <h3 className="feature-title">高度なスクリーニング</h3>
-                  <p className="feature-desc">定義した顧客像に基づき、B2B企業データベースから条件に合致する企業を自動検索・抽出します。</p>
-                </div>
-                <div className="feature-card">
-                  <img src={ICON_ANALYZE} alt="Analyze" className="feature-icon-img" />
-                  <h3 className="feature-title">営業データ分析</h3>
-                  <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
-                </div>
+
+          <div className="welcome-screen">
+            <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
+            <div className="feature-cards-container">
+              <div className="feature-card">
+                <img src={ICON_PROFILE} alt="Profile" className="feature-icon-img" />
+                <h3 className="feature-title">顧客プロファイリング</h3>
+                <p className="feature-desc">B2B営業の専門家として、業界ナレッジベースに基づき最適なターゲット顧客像をご提案します。</p>
+              </div>
+              <div className="feature-card">
+                <img src={ICON_SEARCH} alt="Search" className="feature-icon-img" />
+                <h3 className="feature-title">高度なスクリーニング</h3>
+                <p className="feature-desc">定義した顧客像に基づき、B2B企業データベースから条件に合致する企業を自動検索・抽出します。</p>
+              </div>
+              <div className="feature-card">
+                <img src={ICON_ANALYZE} alt="Analyze" className="feature-icon-img" />
+                <h3 className="feature-title">営業データ分析</h3>
+                <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
               </div>
             </div>
-          ) : (
-            messages.map((msg, index) => {
-              const isUser = msg.sender === USER_NAME;
+          </div>
+
+
+          {messages.map((msg, index) => {
+            const isUser = msg.sender === USER_NAME;
             const isReportMsg = msg.type === 'report';
             const isProcessMsg = msg.type === 'process_running';
      
@@ -1158,8 +1174,7 @@ return (
                   )}
               </div>
           );
-        }) 
-      )} 
+        })}
       
       {/* Thinking 状態表示 */}
       {aiState === 'thinking' && (

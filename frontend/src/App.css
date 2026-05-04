@@ -1874,6 +1874,29 @@
   line-height: 1.4;
 }
 
+.notification-dismiss {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: auto; /* 余白を使って右端に押しやる */
+  white-space: nowrap;
+  font-size: 0.9em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.notification-dismiss:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  text-decoration: underline;
+}
+
+/* ヒーローUI（ウェルカムスクリーン）が潰れないように保護 */
+.welcome-screen {
+  flex-shrink: 0;
+  padding-bottom: 20px;
+}
+
 /* ==========================================================================
    12. ウェルカムスクリーン / Hero UI (Welcome Screen)
    ========================================================================== */
@@ -2028,3 +2051,21 @@
     white-space: nowrap; /* テキストの折り返しを防ぐ */
   }
 }
+
+/* ==========================================================================
+   スマホ時のレイアウト崩れ（通知バーの被り）修正
+   ========================================================================== */
+   @media (max-width: 768px) {
+    /* スマホ環境で以前のCSSの position などの影響をリセットし、
+       flexの縦並び（通知バー → チャットヘッダー）を強制する */
+    .chat-container {
+      position: static !important; /* 絶対配置を解除してフローに戻す */
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  
+    .main-content-area {
+      position: relative !important;
+    }
+  }
