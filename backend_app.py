@@ -741,7 +741,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             
             # ストリームを閉じる直前にサジェストプロンプトを送信
             suggests = json.dumps(get_suggested_prompts(clean_text), ensure_ascii=False)
-            yield f"data:[SUGGEST_PROMPTS]{suggests}\n\n"
+            yield f"data: [SUGGEST_PROMPTS]{suggests}\n\n"
             
             
             yield "data: ---END_OF_STREAM---\n\n"
@@ -1160,7 +1160,7 @@ First 5 rows preview:
             
             # ストリームを閉じる直前にサジェストプロンプトを送信
             suggests = json.dumps(get_suggested_prompts(clean_follow_up), ensure_ascii=False)
-            yield f"data:[SUGGEST_PROMPTS]{suggests}\n\n"
+            yield f"data: [SUGGEST_PROMPTS]{suggests}\n\n"
             
             # ここで一旦ストリームを終了し、ユーザーの入力を待つ
             yield "data: ---END_OF_STREAM---\n\n"

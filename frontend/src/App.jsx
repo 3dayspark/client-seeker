@@ -656,10 +656,8 @@ useEffect(() => {
         while ((eventEndIndex = buffer.indexOf('\n\n')) !== -1) {
           const event = buffer.substring(0, eventEndIndex);
           buffer = buffer.substring(eventEndIndex + 2);
-          const dataPrefix = 'data: ';
-          
-          if (event.startsWith(dataPrefix)) {
-            const logLine = event.substring(dataPrefix.length).trim();
+          if (event.startsWith('data:')) {
+            const logLine = event.substring(5).trim();
             
             if (logLine === "---END_OF_STREAM---") {
                 break;
