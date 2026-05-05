@@ -685,24 +685,31 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
 
         # ストリームを閉じて終了する前に、動的プロンプトを判定して送るヘルパー関数
-        def get_suggested_prompts():
-            if has_searched_db:
+        def get_suggested_prompts(text_response=""):
+            db_keywords =["連絡先", "商談", "携帯", "抽出", "企業", "データ", "件見つかり", "検索結果", "該当する"]
+            proposal_keywords =["ターゲット", "条件案", "プロファイル", "提案", "画像", "定義", "スクリーニング"]
+            ask_keywords =["地域", "エリア", "業種", "規模", "売上", "どのよう", "教えて", "詳細", "希望", "いかが", "条件"]
+            
+            is_db_context = has_searched_db or any(kw in text_response for kw in db_keywords)
+            is_proposal_context = has_proposed or any(kw in text_response for kw in proposal_keywords)
+            is_asking = any(kw in text_response for kw in ask_keywords) or "?" in text_response or "？" in text_response
+
+            if is_proposal_context and not is_asking:
+                return[
+                    {"label": "類似の既存顧客を検索", "text": "この顧客プロファイルに最も当てはまりそうな、データベース内の既存顧客を教えていただけますか？"},
+                    {"label": "DB内の業界から顧客を検索", "text": "この顧客プロファイルに一番当てはまりそうな、当社の既存顧客を教えてください。（まずデータベース内の顧客の業界をすべて確認してください）"}
+                ]
+            elif is_db_context and not is_asking:
                 return[
                     {"label": "連絡先を教えて", "text": "この会社の連絡先を教えていただけますか？"},
                     {"label": "携帯番号ありのみ抽出", "text": "今の条件で、携帯番号のデータが入っている企業だけを抽出してください。"},
                     {"label": "9000万円超＆2024年以降", "text": "商談金額9,000万円超かつ最終接触日が2024年以降の顧客を抽出してください。"}
                 ]
-            elif has_proposed:
-                return[
-                    {"label": "類似の既存顧客を検索", "text": "この顧客プロファイルに最も当てはまりそうな、データベース内の既存顧客を教えていただけますか？"},
-                    {"label": "DB内の業界から顧客を検索", "text": "この顧客プロファイルに一番当てはまりそうな、当社の既存顧客を教えてください。（まずデータベース内の顧客の業界をすべて確認してください）"}
-                ]
             else:
                 return[
                     {"label": "南部・優良自動車メーカー", "text": "中国南部地域に位置し、経営状態が良好で生産規模が大きく、高年商かつ信用リスクの低い自動車メーカー"},
-                    {"label": "上海・深センの資金力のある企業", "text": "エリアは主に上海と深センです。経営状態が良好で、資金力が豊富な企業を希望します。業界については、先ほどの例の通りでお願いします。"}
+                    {"label": "上海・深センの资金力", "text": "エリアは主に上海と深センです。経営状態が良好で、資金力が豊富な企業を希望します。業界については、先ほどの例の通りでお願いします。"}
                 ]
-
 
 
 
@@ -733,7 +740,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             yield f"data: [TEXT_RESPONSE]{clean_text.replace('\n', '\\n')}\n\n"
             
             # ストリームを閉じる直前にサジェストプロンプトを送信
-            suggests = json.dumps(get_suggested_prompts(), ensure_ascii=False)
+            suggests = json.dumps(get_suggested_prompts(clean_text), ensure_ascii=False)
             yield f"data:[SUGGEST_PROMPTS]{suggests}\n\n"
             
             
@@ -980,7 +987,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
 
             # ストリームを閉じる直前にサジェストプロンプトを送信
-            suggests = json.dumps(get_suggested_prompts(), ensure_ascii=False)
+            suggests = json.dumps(get_suggested_prompts(final_report_content), ensure_ascii=False)
             yield f"data: [SUGGEST_PROMPTS]{suggests}\n\n"
 
             yield "data: ---END_OF_STREAM---\n\n"
@@ -1152,7 +1159,7 @@ First 5 rows preview:
             history.append({"role": "assistant", "content": clean_follow_up})
             
             # ストリームを閉じる直前にサジェストプロンプトを送信
-            suggests = json.dumps(get_suggested_prompts(), ensure_ascii=False)
+            suggests = json.dumps(get_suggested_prompts(clean_follow_up), ensure_ascii=False)
             yield f"data:[SUGGEST_PROMPTS]{suggests}\n\n"
             
             # ここで一旦ストリームを終了し、ユーザーの入力を待つ

@@ -907,6 +907,9 @@ if (!isAuthenticated) {
   );
 }
 
+
+const hasQuickPrompts = messages.length === 0 || dynamicPrompts.length > 0;
+
 return (
   <div className="app-layout-wrapper">
     
@@ -972,8 +975,8 @@ return (
               {sessions.find(s => s.id === currentSessionId)?.title || "新しいチャット"}
            </span>
         </div>
-
-        <div className="messages-area">
+            
+        <div className={`messages-area ${hasQuickPrompts ? 'has-prompts' : 'no-prompts'}`}>
           <div className="welcome-screen">
             <h1 className="welcome-title">どのようなサポートが必要ですか？</h1>
             <div className="feature-cards-container">
