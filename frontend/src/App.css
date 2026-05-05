@@ -1063,10 +1063,10 @@
     pointer-events: auto; 
     background: linear-gradient(to bottom, transparent, #fff 80%);
     padding-bottom: 8px;
-    margin-bottom: -1px;
+    margin-bottom: 10px;
     padding-top: 24px; 
   }
-
+  
 
   .input-area {
     position: relative; 
@@ -2168,6 +2168,7 @@
     text-align: center;
     max-width: 800px;
     width: 100%;
+    margin-bottom: 52px;
   }
   
   .rag-docs-title {
