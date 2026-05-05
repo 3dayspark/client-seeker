@@ -636,6 +636,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         current_turn += 1
 
         # --- LLM 呼び出し ---
+        yield f"data: [STATUS_MSG]思考中...\n\n"
         llm_response = None
 
         for attempt in range(len(MODEL_CANDIDATES)):
@@ -1238,9 +1239,19 @@ async def chat_endpoint(request: Request, x_api_key: str = Header(None)):
     if not user_message:
         raise HTTPException(status_code=400, detail="Message is empty")
 
+
+    headers = {
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no"  
+    }
+
+
+
     return StreamingResponse(
         run_master_agent_flow(session_id, user_message),
-        media_type="text/event-stream"
+        media_type="text/event-stream",
+        headers=headers
     )
 
 @app.get("/")
