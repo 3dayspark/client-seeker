@@ -643,7 +643,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             except Exception as e:
                 error_str = str(e)
                 # 429エラーやQuotaの制限を検知
-                if "429" in error_str or "Rate limit" in error_str or "quota" in error_str.lower():
+                if "429" in error_str or "Rate limit" in error_str or "quota" in error_str.lower() or "empty or invalid structure" in error_str:
                     next_idx = (current_model_index + 1) % len(MODEL_CANDIDATES)
                     next_model = MODEL_CANDIDATES[next_idx]
                     
