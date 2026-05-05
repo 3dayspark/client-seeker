@@ -101,6 +101,7 @@ gemini_api_key_pool = None
 gemini_base_headers = {"Content-Type": "application/json"}
 rag_index = None
 VALID_FILENAMES = set() 
+CURRENT_MODEL_INDEX = 0
 
 # チャット履歴管理
 # 本番環境ではRedisやDBへの移行を推奨
@@ -252,14 +253,10 @@ def sanitize_citations(text: str) -> str:
 # ---------------------------------------------------------
 # ファイル選択用 LLM 呼び出し
 # ---------------------------------------------------------
-async def _select_relevant_files_with_llm(query: str, all_filenames: list, model_id: str) -> list[str]:
-    """
-    ユーザーのクエリと全ファイルリストをLLMに渡し、関連しそうなファイル名のみを抽出させる。
-    """
+async def _select_relevant_files_with_llm(query: str, all_filenames: list) -> list[str]:
     if not all_filenames:
         return []
     
-    # ファイルリストを文字列化
     files_str = "\n".join([f"- {name}" for name in all_filenames])
     
     prompt = f"""
@@ -285,37 +282,29 @@ async def _select_relevant_files_with_llm(query: str, all_filenames: list, model
     ```
     """
 
-    # 既存の _call_master_llm を再利用（historyは空で単発実行）
-    # ※ 本番では軽量モデルを使うなどの最適化が可能
-    response = await _call_master_llm(prompt,[], model_id)
-    
-    data = extract_json_from_text(response)
-    if data and "selected_files" in data:
-        selected = data["selected_files"]
-        logger.info(f"📂 LLM Selected Files: {selected}")
-        
-        # 実在チェック (LLMが幻覚で変な名前を返さないようにフィルタ)
-        valid_selected = [f for f in selected if f in VALID_FILENAMES]
-        
-        # 揺らぎ対応 (パス除去など)
-        if not valid_selected and selected:
-             for s in selected:
-                 for v in VALID_FILENAMES:
-                     if s in v or v in s:
-                         valid_selected.append(v)
-        
-        return list(set(valid_selected))
-    
-    return []
+    try:
+        response = await _call_master_llm(prompt,[])
+        data = extract_json_from_text(response)
+        if data and "selected_files" in data:
+            selected = data["selected_files"]
+            logger.info(f"📂 LLM Selected Files: {selected}")
+            
+            valid_selected =[f for f in selected if f in VALID_FILENAMES]
+            if not valid_selected and selected:
+                 for s in selected:
+                     for v in VALID_FILENAMES:
+                         if s in v or v in s:
+                             valid_selected.append(v)
+            return list(set(valid_selected))
+    except Exception as e:
+        logger.error(f"🚨 ファイル自動選定LLM失敗 (安全のため全件検索にフォールバック): {e}")
+
+    return[]
 
 
-async def _verify_rag_result(query: str, rag_text: str, model_id: str) -> dict:
-    """
-    RAGの結果が質問に関連しているか検証し、無関係な場合は除外すべきファイル名を特定する。
-    """
-    
+async def _verify_rag_result(query: str, rag_text: str) -> dict:
     if not rag_text or "関連ドキュメント" in rag_text and "見つかりませんでした" in rag_text:
-        return {"is_relevant": False, "bad_files": []}
+        return {"is_relevant": False, "bad_files":[]}
 
     prompt = f"""
     あなたは検索結果の品質評価者です。
@@ -341,18 +330,28 @@ async def _verify_rag_result(query: str, rag_text: str, model_id: str) -> dict:
     ```
     """
 
-    resp = await _call_master_llm(prompt,[], model_id)
-    return extract_json_from_text(resp)
+    try:
+        resp = await _call_master_llm(prompt,[])
+        data = extract_json_from_text(resp)
+        if data:
+            return data
+    except Exception as e:
+        logger.error(f"🚨 RAG検証LLM失敗 (安全のため結果をそのまま採用します): {e}")
+    
+    # 失敗した場合は安全のため、全て「関連あり」として通す
+    return {"is_relevant": True, "bad_files":[]}
 
 
 # --- 補助関数: LLM 呼び出し (Master Brain) ---
-async def _call_master_llm(prompt: str, history: List[Dict[str, str]], model_id: str) -> str:
+async def _call_master_llm(prompt: str, history: List[Dict[str, str]]) -> str:
     """
     LLM を呼び出して応答を生成します。履歴をプロンプトに統合します。
+    エラーまたは空の応答が発生した場合は、自動的に候補モデルリスト(MODEL_CANDIDATES)から次のモデルに切り替えてリトライします。
     """
+    global CURRENT_MODEL_INDEX
+    
     # 1. コンテキスト文字列の構築
     history_text = ""
-    # トークン制限を考慮し、最新の10件のみを取得
     recent_history = history[-10:] if len(history) > 10 else history
 
     for msg in recent_history:
@@ -365,7 +364,7 @@ async def _call_master_llm(prompt: str, history: List[Dict[str, str]], model_id:
             history_text += f"Assistant: {content}\n"
         elif role == "tool":
             readable_content = content.replace("||NEWLINE||", "\n").replace("||REASON||", " [判断根拠: ")
-            if " [判断根拠: " in readable_content:
+            if "[判断根拠: " in readable_content:
                 readable_content = readable_content.replace("\n", "]\n")
             history_text += f"System (Tool Execution Result): \n{readable_content}\n"
 
@@ -378,43 +377,54 @@ async def _call_master_llm(prompt: str, history: List[Dict[str, str]], model_id:
     Assistant:
     """
 
-    # ModelScope の呼び出し
-    if not USE_GEMINI_AS_LLM and modelscope_client:
-        try:
-            response = await asyncio.to_thread(
-                modelscope_client.chat.completions.create,
-                model=model_id, 
-                messages=[{'role': 'user', 'content': full_prompt}],
-                stream=False,
-                extra_body={"enable_thinking": False}
-            )
-            if response and hasattr(response, 'choices') and response.choices:
-                return response.choices[0].message.content.strip()
-            else:
-                raise ValueError(f"API Returned an empty or invalid structure: {response}")
-        except Exception as e:
-            logger.error(f"ModelScope Call Error: {e}")
-            raise e # 呼び出し側でリトライできるように例外を投げる
+    last_error = None
+    # 2. 自動モデルフォールバック（失敗した時だけ次のモデルを試す）
+    for attempt in range(len(MODEL_CANDIDATES)):
+        idx = (CURRENT_MODEL_INDEX + attempt) % len(MODEL_CANDIDATES)
+        target_model = MODEL_CANDIDATES[idx]
 
-    # Gemini の呼び出し
-    elif USE_GEMINI_AS_LLM and gemini_api_key_pool:
-        try:
-            current_key = next(gemini_api_key_pool)
-            headers = gemini_base_headers.copy()
-            headers["X-goog-api-key"] = current_key
-            payload = {"contents": [{"parts": [{"text": full_prompt}]}]}
+        # ModelScope の呼び出し
+        if not USE_GEMINI_AS_LLM and modelscope_client:
+            try:
+                response = await asyncio.to_thread(
+                    modelscope_client.chat.completions.create,
+                    model=target_model, 
+                    messages=[{'role': 'user', 'content': full_prompt}],
+                    stream=False,
+                    extra_body={"enable_thinking": False}
+                )
+                if response and hasattr(response, 'choices') and response.choices:
+                    CURRENT_MODEL_INDEX = idx  # 成功したらグローバルインデックスを更新
+                    return response.choices[0].message.content.strip()
+                else:
+                    raise ValueError(f"API Returned an empty structure (choices=None) for {target_model}")
+            except Exception as e:
+                logger.warning(f"⚠️ Model [{target_model}] failed: {e}. Trying next...")
+                last_error = e
+                continue
 
-            response = await asyncio.to_thread(
-                requests.post, GEMINI_API_URL, headers=headers, json=payload, timeout=60
-            )
-            response.raise_for_status()
-            data = response.json()
-            return data['candidates'][0]['content']['parts'][0]['text'].strip()
-        except Exception as e:
-            return f"Error calling Gemini: {e}"
+        # Gemini の呼び出し
+        elif USE_GEMINI_AS_LLM and gemini_api_key_pool:
+            try:
+                current_key = next(gemini_api_key_pool)
+                headers = gemini_base_headers.copy()
+                headers["X-goog-api-key"] = current_key
+                payload = {"contents": [{"parts": [{"text": full_prompt}]}]}
 
-    return "Error: No LLM client available."
+                response = await asyncio.to_thread(
+                    requests.post, GEMINI_API_URL, headers=headers, json=payload, timeout=60
+                )
+                response.raise_for_status()
+                data = response.json()
+                CURRENT_MODEL_INDEX = idx
+                return data['candidates'][0]['content']['parts'][0]['text'].strip()
+            except Exception as e:
+                logger.warning(f"⚠️ Gemini error: {e}. Trying next...")
+                last_error = e
+                continue
 
+    # 3. すべてのモデルが失敗した場合のみエラーを投げる
+    raise RuntimeError(f"All LLM candidate models failed. Last error: {last_error}")
 
 
 
@@ -636,33 +646,13 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         current_turn += 1
 
         # --- LLM 呼び出し ---
-        llm_response = None
-
-        for attempt in range(len(MODEL_CANDIDATES)):
-            target_model = MODEL_CANDIDATES[current_model_index]
-            try:
-                llm_response = await _call_master_llm(system_instruction, history, target_model)
-                break  # 成功したら抜ける
-            except Exception as e:
-                error_str = str(e)
-                # 429エラーやQuotaの制限を検知
-                if "429" in error_str or "Rate limit" in error_str or "quota" in error_str.lower() or "empty or invalid structure" in error_str:
-                    next_idx = (current_model_index + 1) % len(MODEL_CANDIDATES)
-                    next_model = MODEL_CANDIDATES[next_idx]
-                    
-                    # yield f"data: [STATUS_MSG]現在のモデル [{target_model}] の利用枠が上限に達しました。[{next_model}] に切り替えています...\n\n"
-                    
-                    current_model_index = next_idx
-                    if attempt == len(MODEL_CANDIDATES) - 1:
-                        # 全てのモデルで失敗
-                        yield f"data: [TEXT_RESPONSE]申し訳ありません。現在すべてのモデルが1日の利用枠に達したため、回答を生成できません。\n\n"
-                        yield "data: ---END_OF_STREAM---\n\n"
-                        return
-                else:
-                    # その他のエラー
-                    yield f"data: [TEXT_RESPONSE]エラーが発生しました: {error_str}\n\n"
-                    yield "data: ---END_OF_STREAM---\n\n"
-                    return
+        try:
+            llm_response = await _call_master_llm(system_instruction, history)
+        except Exception as e:
+            logger.error(f"Master Agent LLM Call Failed completely: {e}")
+            yield f"data: [TEXT_RESPONSE]申し訳ありません。現在すべてのAIモデルが一時的に制限されているか、利用枠に達したため回答を生成できません。\n\n"
+            yield "data: ---END_OF_STREAM---\n\n"
+            return
 
         # エージェント自身の発言として履歴に記録
         history.append({"role": "assistant", "content": llm_response})
@@ -714,7 +704,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                 ```
                 """
                 try:
-                    resp = await _call_master_llm(prompt_text, history, MODEL_CANDIDATES[current_model_index])
+                    resp = await _call_master_llm(prompt_text, history)
                     data = extract_json_from_text(resp)
                     if data and "suggestions" in data and len(data["suggestions"]) >= 1:
                         return data["suggestions"][:3] 
@@ -796,7 +786,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                 all_files_list = list(VALID_FILENAMES)
                 
                 # LLMによる推論
-                selected_files = await _select_relevant_files_with_llm(query, all_files_list, MODEL_CANDIDATES[current_model_index])
+                selected_files = await _select_relevant_files_with_llm(query, all_files_list)
                 
                 if selected_files:
                     target_files = selected_files
@@ -852,7 +842,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                         break
 
                     # LLMによる検証
-                    verification = await _verify_rag_result(query, rag_result, MODEL_CANDIDATES[current_model_index])
+                    verification = await _verify_rag_result(query, rag_result)
                     
                     if verification and verification.get("is_relevant") is True:
                         # 承認
