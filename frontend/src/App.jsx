@@ -1270,8 +1270,8 @@ return (
           <div className="message-row ai">
               <div className="avatar" style={{ backgroundImage: `url(${AI_AVATAR})` }}></div>
               <div className="message-content">
-                   <div className="message-bubble ai" style={{color: '#888', fontStyle: 'italic'}}>
-                   処理中です…デモ環境のため、少々お時間をいただく場合があります
+                   <div className="message-bubble ai">
+                       <span className="thinking-text">考え中...</span>
                    </div>
               </div>
           </div>

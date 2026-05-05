@@ -636,7 +636,6 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         current_turn += 1
 
         # --- LLM 呼び出し ---
-        yield f"data: [STATUS_MSG]思考中...\n\n"
         llm_response = None
 
         for attempt in range(len(MODEL_CANDIDATES)):

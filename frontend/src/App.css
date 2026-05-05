@@ -2226,3 +2226,31 @@
       display: inline-block;
     }
   }
+
+  /* ==========================================================================
+  Thinking shining text
+   ========================================================================== */
+
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.thinking-text {
+ 
+  background: linear-gradient(90deg, #888888 20%, #e0e0e0 50%, #888888 80%);
+  background-size: 200% auto;
+  
+
+  color: #888;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+
+  animation: textShine 1.5s linear infinite;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
