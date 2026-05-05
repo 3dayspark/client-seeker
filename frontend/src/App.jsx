@@ -880,7 +880,7 @@ if (!isAuthenticated) {
       <div className="top-notification-bar" style={{ position: 'fixed', top: 0, width: '100%', zIndex: 3000 }}>
         <span className="notification-icon">⚠️</span>
         <span className="notification-text">{SYSTEM_NOTICE}</span>
-        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>確認</span>
+        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>閉じる</span>
       </div>
     )}
 
@@ -917,7 +917,7 @@ return (
         <span className="notification-icon">⚠️</span>
         <span className="notification-text">{SYSTEM_NOTICE}</span>
         {/* 閉じるボタン */}
-        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>確認</span>
+        <span className="notification-dismiss" onClick={() => setShowNotice(false)}>閉じる</span>
       </div>
     )}
 
