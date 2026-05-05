@@ -10,8 +10,8 @@ const USER_NAME = "自分";
 // 【カスタマイズ: アバター画像】
 // 独自の画像（jpg, png, svgなど）を使用する場合は、URLを置き換えるか、
 // import文でローカル画像を読み込んで指定してください（例: import aiAvatar from './assets/ai-avatar.png'）
-const AI_AVATAR = `https://ui-avatars.com/api/?name=AI&background=0D8ABC&color=fff&size=128`;
-const USER_AVATAR = `https://ui-avatars.com/api/?name=User&background=333&color=fff&size=128`;
+const AI_AVATAR = `https://img.icons8.com/?size=100&id=XY6XVIE2E3ig&format=png&color=007bff`;
+const USER_AVATAR = `https://img.icons8.com/?size=100&id=6pZID8Z263Q9&format=png&color=007bff`;
 
 // 【カスタマイズ: 機能紹介アイコン】
 // ウェルカム画面の3つの機能アイコン用画像URL
@@ -459,7 +459,7 @@ useEffect(() => {
     if (messages.length > 0) {
       // 履歴がある場合は、最初のメッセージが上部（padding付）にくるように即座にスクロール
       setTimeout(() => {
-        messagesStartRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' });
+        messagesStartRef.current?.scrollIntoView({ behavior: 'auto', block: 'end' });
       }, 10);
     } else {
       // 新規セッションの場合は一番上（Hero UI）へ
@@ -785,7 +785,7 @@ useEffect(() => {
              }
              return msg;
           }));
-          setMessages(prev => [...prev, { sender: AI_ASSISTANT_NAME, text: "申し訳ございません。クラウドサーバーが中国以外のIPのため、中国の法規制により現在本サイトでの検索はご利用いただけません。早急に対応いたします。", type: 'text' }]);
+          setMessages(prev => [...prev, { sender: AI_ASSISTANT_NAME, text: "申し訳ございません。クラウドサーバーが中国以外のIPのため、中国の法規制により、現在qcc.comの中国企業検索ページをご利用いただけません。", type: 'text' }]);
       }
 
     } catch (error) {
@@ -997,7 +997,7 @@ return (
 
             {/* RAGドキュメント一覧 */}
             <div className="rag-docs-container">
-              <div className="rag-docs-title">ナレッジベースドキュメント一覧</div>
+              <div className="rag-docs-title">ナレッジベース一覧</div>
               <div className="rag-docs-list">
                 <span className="rag-doc-tag">中国華南地域の水素燃料電池産業</span>
                 <span className="rag-doc-tag">中国経済と日本企業2025年白書</span>
@@ -1214,7 +1214,7 @@ return (
                                   {/* 実行ボタン */}
                                   <button 
                                       className="proposal-btn"
-                                      onClick={() => handleSendMessage("条件を確認しました。自動スクリーニングを開始します。")}
+                                      onClick={() => handleSendMessage("条件を確認しました。スクリーニングを開始してください。")}
                                       disabled={isLoading}
                                   >
                                       条件を確定して検索開始

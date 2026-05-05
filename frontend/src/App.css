@@ -997,6 +997,7 @@
     overflow: hidden;
     position: fixed;
     width: 100%;
+    overflow-x: hidden !important;
   }
 
   #root {
@@ -1004,6 +1005,7 @@
     width: 100%;
     overflow: hidden;
     background-color: #fff;
+    overflow-x: hidden;
   }
 
   .chat-container {
@@ -1016,6 +1018,7 @@
     box-shadow: none;
     position: relative;
     display: block;
+    overflow-x: hidden;
   }
 
   /* --- 2. チャットウィンドウ内容エリア --- */

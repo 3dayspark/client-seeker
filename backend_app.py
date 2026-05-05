@@ -93,6 +93,8 @@ ENABLE_AGENTIC_FILE_SELECTION = True
 # False: 検索でヒットしたものは全てコンテキストとして採用する（Recall重視、幻覚防止）
 ENABLE_AGENTIC_RESULT_VERIFICATION = True
 
+USE_LLM_FOR_SUGGESTIONS = True
+
 # --- グローバル変数 ---
 modelscope_client = None
 gemini_api_key_pool = None
@@ -685,7 +687,34 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
 
         # ストリームを閉じて終了する前に、動的プロンプトを判定して送るヘルパー関数
-        def get_suggested_prompts(text_response=""):
+        async def get_suggested_prompts(text_response=""):
+            
+            if USE_LLM_FOR_SUGGESTIONS:
+                prompt_text = """
+                あなたはユーザーの次の発言を予測するアシスタントです。
+                これまでの会話履歴と、あなたがたった今出力した最新の回答を踏まえて、ユーザーが次に尋ねる可能性が高い質問や指示を3つ提案してください。
+                提案は以下の条件を満たす必要があります：
+                1. ユーザーの意図に沿ったものであり、B2B顧客開拓、スクリーニング、社内DB検索というエージェントの機能に繋がるものであること。
+                2. 「label」は10文字以内の短い見出し、「text」は具体的な発言内容（30文字程度）にすること。
+                必ず以下のJSON形式のみで出力してください。
+                ```json
+                {
+                    "suggestions":[
+                        {"label": "連絡先を教えて", "text": "この会社の連絡先を教えていただけますか？"},
+                        {"label": "...", "text": "..."}
+                    ]
+                }
+                ```
+                """
+                try:
+                    resp = await _call_master_llm(prompt_text, history, MODEL_CANDIDATES[current_model_index])
+                    data = extract_json_from_text(resp)
+                    if data and "suggestions" in data and len(data["suggestions"]) >= 1:
+                        return data["suggestions"][:3] 
+                except Exception as e:
+                    logger.error(f"LLM Suggestion Error, fallback to rule-based: {e}")
+            
+            
             db_keywords =["連絡先", "商談", "携帯", "抽出", "企業", "データ", "件見つかり", "検索結果", "該当する"]
             proposal_keywords =["ターゲット", "条件案", "プロファイル", "提案", "画像", "定義", "スクリーニング"]
             ask_keywords =["地域", "エリア", "業種", "規模", "売上", "どのよう", "教えて", "詳細", "希望", "いかが", "条件"]
@@ -740,7 +769,8 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             yield f"data: [TEXT_RESPONSE]{clean_text.replace('\n', '\\n')}\n\n"
             
             # ストリームを閉じる直前にサジェストプロンプトを送信
-            suggests = json.dumps(get_suggested_prompts(clean_text), ensure_ascii=False)
+            suggest_list = await get_suggested_prompts(clean_text)
+            suggests = json.dumps(suggest_list, ensure_ascii=False)
             yield f"data: [SUGGEST_PROMPTS]{suggests}\n\n"
             
             
@@ -987,7 +1017,8 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
 
             # ストリームを閉じる直前にサジェストプロンプトを送信
-            suggests = json.dumps(get_suggested_prompts(final_report_content), ensure_ascii=False)
+            suggest_list = await get_suggested_prompts(final_report_content)
+            suggests = json.dumps(suggest_list, ensure_ascii=False)
             yield f"data: [SUGGEST_PROMPTS]{suggests}\n\n"
 
             yield "data: ---END_OF_STREAM---\n\n"
@@ -1159,7 +1190,8 @@ First 5 rows preview:
             history.append({"role": "assistant", "content": clean_follow_up})
             
             # ストリームを閉じる直前にサジェストプロンプトを送信
-            suggests = json.dumps(get_suggested_prompts(clean_follow_up), ensure_ascii=False)
+            suggest_list = await get_suggested_prompts(clean_follow_up) 
+            suggests = json.dumps(suggest_list, ensure_ascii=False)
             yield f"data: [SUGGEST_PROMPTS]{suggests}\n\n"
             
             # ここで一旦ストリームを終了し、ユーザーの入力を待つ
