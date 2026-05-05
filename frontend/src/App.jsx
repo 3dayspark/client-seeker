@@ -985,13 +985,13 @@ return (
               </div>
               <div className="feature-card">
                 <img src={ICON_SEARCH} alt="Search" className="feature-icon-img" />
-                <h3 className="feature-title">自動化スクリーニング</h3>
-                <p className="feature-desc">定義した顧客像に基づき、B2B企業データベースから条件に合致する企業を自動検索・抽出します。</p>
+                <h3 className="feature-title">自動スクリーニング</h3>
+                <p className="feature-desc">ターゲット条件に基づき、企業検索サイト上での絞り込み条件を自動設定し、効率的な企業選定を支援します。</p>
               </div>
               <div className="feature-card">
                 <img src={ICON_ANALYZE} alt="Analyze" className="feature-icon-img" />
-                <h3 className="feature-title">営業データ分析</h3>
-                <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
+                <h3 className="feature-title">営業データ活用</h3>
+                <p className="feature-desc">フォロー中の顧客情報をもとに、条件に応じた絞り込みや関連情報の検索をスムーズに行えます。</p>
               </div>
             </div>
 
