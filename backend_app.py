@@ -250,7 +250,7 @@ def sanitize_citations(text: str) -> str:
 # ---------------------------------------------------------
 # ファイル選択用 LLM 呼び出し
 # ---------------------------------------------------------
-async def _select_relevant_files_with_llm(query: str, all_filenames: list) -> list[str]:
+async def _select_relevant_files_with_llm(query: str, all_filenames: list, model_id: str) -> list[str]:
     """
     ユーザーのクエリと全ファイルリストをLLMに渡し、関連しそうなファイル名のみを抽出させる。
     """
@@ -285,7 +285,7 @@ async def _select_relevant_files_with_llm(query: str, all_filenames: list) -> li
 
     # 既存の _call_master_llm を再利用（historyは空で単発実行）
     # ※ 本番では軽量モデルを使うなどの最適化が可能
-    response = await _call_master_llm(prompt, [])
+    response = await _call_master_llm(prompt,[], model_id)
     
     data = extract_json_from_text(response)
     if data and "selected_files" in data:
@@ -307,7 +307,7 @@ async def _select_relevant_files_with_llm(query: str, all_filenames: list) -> li
     return []
 
 
-async def _verify_rag_result(query: str, rag_text: str) -> dict:
+async def _verify_rag_result(query: str, rag_text: str, model_id: str) -> dict:
     """
     RAGの結果が質問に関連しているか検証し、無関係な場合は除外すべきファイル名を特定する。
     """
@@ -339,7 +339,7 @@ async def _verify_rag_result(query: str, rag_text: str) -> dict:
     ```
     """
 
-    resp = await _call_master_llm(prompt, [])
+    resp = await _call_master_llm(prompt,[], model_id)
     return extract_json_from_text(resp)
 
 
@@ -752,7 +752,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                 all_files_list = list(VALID_FILENAMES)
                 
                 # LLMによる推論
-                selected_files = await _select_relevant_files_with_llm(query, all_files_list)
+                selected_files = await _select_relevant_files_with_llm(query, all_files_list, MODEL_CANDIDATES[current_model_index])
                 
                 if selected_files:
                     target_files = selected_files
@@ -808,7 +808,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                         break
 
                     # LLMによる検証
-                    verification = await _verify_rag_result(query, rag_result)
+                    verification = await _verify_rag_result(query, rag_result, MODEL_CANDIDATES[current_model_index])
                     
                     if verification and verification.get("is_relevant") is True:
                         # 承認
