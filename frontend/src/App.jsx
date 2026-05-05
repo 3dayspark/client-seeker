@@ -19,12 +19,12 @@ const ICON_PROFILE = `https://img.icons8.com/?size=100&id=44859&format=png&color
 const ICON_SEARCH = `https://img.icons8.com/?size=100&id=44045&format=png&color=007bff`;    // スクリーニング用
 const ICON_ANALYZE = `https://img.icons8.com/?size=100&id=48296&format=png&color=007bff`; // データ分析用
 
-const SYSTEM_NOTICE = "【お知らせ】AIバックエンドサービスは日本時間 平日 7:30 〜 21:30 の間のみ稼働しております。ご不便をおかけしますが、ご理解の程よろしくお願いいたします。";
+const SYSTEM_NOTICE = "【お知らせ】AIバックエンドサービスは、日本時間の平日7:30〜21:30の間のみ稼働しております。ご不便をおかけいたしますが、何卒ご理解のほどよろしくお願いいたします。";
 
 const QUICK_PROMPTS =[
-  { label: "強化ガラスの顧客開拓", text: "こんにちは。当社は高品質な強化ガラスを製造しており、取引先となる優良企業を探しています。" },
-  { label: "人型ロボットの顧客開拓", text: "こんにちは。当社はヒューマノイドロボットを製造しています。様々な業界で、ヒューマノイドロボットを必要としている潜在的な顧客を探したいです。" },
-  { label: "商談中案件の金額確認", text: "現在進行中の商談先企業をすべて教えてください。商談金額もそれぞれ併せて。" }
+  { label: "強化ガラスの顧客開拓", text: "当社は高品質な強化ガラスを製造しており、取引先となる企業を探しています。" },
+  { label: "人型ロボットの顧客開拓", text: "当社はヒューマノイドロボットを製造しています。さまざまな業界において、ニーズのある企業を探しています。" },
+  { label: "商談中案件の金額確認", text: "現在進行中の商談先をすべて教えてください。それぞれの商談金額もあわせて教えてください。" }
 ];
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
@@ -986,7 +986,7 @@ return (
               <div className="feature-card">
                 <img src={ICON_SEARCH} alt="Search" className="feature-icon-img" />
                 <h3 className="feature-title">自動スクリーニング</h3>
-                <p className="feature-desc">ターゲット条件に基づき、企業検索サイト上での絞り込み条件を自動設定し、効率的な企業選定を支援します。</p>
+                <p className="feature-desc">ターゲット条件に基づき、企業検索サイトで絞り込み条件を自動設定し、企業選定を支援します。</p>
               </div>
               <div className="feature-card">
                 <img src={ICON_ANALYZE} alt="Analyze" className="feature-icon-img" />
