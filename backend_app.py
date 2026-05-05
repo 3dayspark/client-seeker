@@ -647,7 +647,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                     next_idx = (current_model_index + 1) % len(MODEL_CANDIDATES)
                     next_model = MODEL_CANDIDATES[next_idx]
                     
-                    yield f"data: [STATUS_MSG]現在のモデル [{target_model}] の利用枠が上限に達しました。[{next_model}] に切り替えています...\n\n"
+                    # yield f"data: [STATUS_MSG]現在のモデル [{target_model}] の利用枠が上限に達しました。[{next_model}] に切り替えています...\n\n"
                     
                     current_model_index = next_idx
                     if attempt == len(MODEL_CANDIDATES) - 1:

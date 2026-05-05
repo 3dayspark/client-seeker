@@ -1024,11 +1024,7 @@
     padding-top: 20px;
     padding-left: 12px;
     padding-right: 12px;
-
-    /* 下部の入力エリア(約60px) + 安全領域(約34px) + 余白(30px) = 合計約124px */
-    /* 入力エリアによるコンテンツ被りを防ぐためのパディング */
-    padding-bottom: 130px;
-
+    padding-bottom: 180px; 
     background-color: #f2f4f7;
     width: 100%;
     height: 100%;
@@ -1051,10 +1047,32 @@
   }
 
   /* --- 3. 入力エリア (固定表示) --- */
-  .input-area {
+  .input-section-wrapper {
     position: fixed;
     bottom: 0;
     left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+  }
+
+  .quick-prompts-container {
+    pointer-events: auto; 
+    background: linear-gradient(to bottom, transparent, #fff 80%);
+    padding-bottom: 8px;
+    margin-bottom: -1px;
+    padding-top: 24px; 
+  }
+
+
+  .input-area {
+    position: relative; 
+    bottom: auto;
+    left: auto;
+    pointer-events: auto; 
     width: 100%;
     height: auto;
     z-index: 999;
@@ -2182,4 +2200,17 @@
   .rag-doc-tag:hover {
     background-color: #e1e4e8;
     border-color: #c6cbd1;
+  }
+
+
+  @media (max-width: 768px) {
+  
+    .rag-doc-tag {
+      font-size: 0.95em !important;   
+      padding: 8px 16px !important;  
+      white-space: normal !important;
+      text-align: left;
+      line-height: 1.4;
+      display: inline-block;
+    }
   }
