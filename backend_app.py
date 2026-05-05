@@ -76,8 +76,8 @@ GEMINI_API_KEYS = playwright_test.GEMINI_API_KEYS
 GEMINI_API_URL = playwright_test.GEMINI_API_URL
 USE_GEMINI_AS_LLM = False
 MODEL_CANDIDATES =[
-    "Qwen/Qwen3-235B-A22B-Instruct-2507",
     "deepseek-ai/DeepSeek-V4-Flash",
+    "Qwen/Qwen3-235B-A22B-Instruct-2507",
     "Qwen/Qwen3-235B-A22B",
     "MiniMax/MiniMax-M2.7"
 ]
