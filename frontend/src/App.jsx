@@ -996,15 +996,15 @@ return (
 
             {/* RAGドキュメント一覧 */}
             <div className="rag-docs-container">
-              <div className="rag-docs-title">現在ナレッジベースに格納されているドキュメント</div>
+              <div className="rag-docs-title">ナレッジベースドキュメント一覧</div>
               <div className="rag-docs-list">
-                <span className="rag-doc-tag">中国・華南地域の水素燃料電池産業の最新動向</span>
+                <span className="rag-doc-tag">中国華南地域の水素燃料電池産業</span>
                 <span className="rag-doc-tag">中国経済と日本企業2025年白書</span>
-                <span className="rag-doc-tag">太陽光発電企業サプライチェーン計画および統合計画レポート</span>
-                <span className="rag-doc-tag">全国工作機械産業チェーン地域別概況.xlsx</span>
-                <span className="rag-doc-tag">広州美容産業チェーンインサイトレポート.pdf</span>
-                <span className="rag-doc-tag">自動車ガラス産業チェーンの深い解析とビジネスチャンス開拓ガイド.txt</span>
-                <span className="rag-doc-tag">人型ロボット産業チェーンの深い解析とビジネスチャンス開拓ガイド.txt</span>
+                <span className="rag-doc-tag">太陽光発電企業サプライチェーン</span>
+                <span className="rag-doc-tag">工作機械産業地域別概況.xlsx</span>
+                <span className="rag-doc-tag">広州美容産業レポート.pdf</span>
+                <span className="rag-doc-tag">自動車ガラス産業チェーン.txt</span>
+                <span className="rag-doc-tag">人型ロボット産業チェーンガイド.txt</span>
               </div>
             </div>
 

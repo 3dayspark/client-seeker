@@ -81,7 +81,6 @@ MODEL_CANDIDATES =[
     "Qwen/Qwen3-235B-A22B",
     "MiniMax/MiniMax-M2.7"
 ]
-current_model_index = 0  # 状態保持用グローバル変数
 
 
 # --- RAG制御用グローバルスイッチ ---
@@ -387,8 +386,10 @@ async def _call_master_llm(prompt: str, history: List[Dict[str, str]], model_id:
                 stream=False,
                 extra_body={"enable_thinking": False}
             )
-            if hasattr(response.choices[0].message, 'content'):
+            if response and hasattr(response, 'choices') and response.choices:
                 return response.choices[0].message.content.strip()
+            else:
+                raise ValueError(f"API Returned an empty or invalid structure: {response}")
         except Exception as e:
             logger.error(f"ModelScope Call Error: {e}")
             raise e # 呼び出し側でリトライできるように例外を投げる
@@ -624,16 +625,15 @@ async def run_master_agent_flow(session_id: str, user_message: str):
     yield f"data: [Thinking] エージェントが思考を開始しました...\n\n"
 
     current_turn = 0
-
     has_proposed = False
     has_searched_db = False
+    current_model_index = 0  
 
     while current_turn < MAX_TURNS:
         current_turn += 1
 
         # --- LLM 呼び出し ---
         llm_response = None
-        global current_model_index
 
         for attempt in range(len(MODEL_CANDIDATES)):
             target_model = MODEL_CANDIDATES[current_model_index]

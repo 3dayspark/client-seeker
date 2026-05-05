@@ -47,7 +47,12 @@ _loaded_gemini_keys, _loaded_ms_key = load_api_keys()
 # --- ModelScope 設定 ---
 MODEL_SCOPE_API_KEY = _loaded_ms_key 
 MODEL_SCOPE_BASE_URL = 'https://api-inference.modelscope.cn/v1'
-MODEL_SCOPE_MODEL_ID = 'deepseek-ai/DeepSeek-V4-Flash'  #Qwen/Qwen3-32B   #Qwen/Qwen3-235B-A22B-Instruct-2507      #deepseek-ai/DeepSeek-V4-Flash
+MODEL_CANDIDATES =[
+    "Qwen/Qwen3-235B-A22B-Instruct-2507",
+    "deepseek-ai/DeepSeek-V4-Flash",
+    "Qwen/Qwen3-235B-A22B",
+    "MiniMax/MiniMax-M2.7"
+]
 
 # --- Gemini API 設定 ---
 GEMINI_API_KEYS = _loaded_gemini_keys
@@ -257,7 +262,6 @@ async def _call_modelscope_api(Logger, prompt: str) -> str:
         try:
             if not MODEL_SCOPE_API_KEY or "YOUR_API_KEY" in MODEL_SCOPE_API_KEY:
                 raise ValueError("ModelScope API キーが設定されていません。")
-            Logger.log_to_frontend(f" - ModelScope API クライアントの設定に成功しました。使用モデル：'{MODEL_SCOPE_MODEL_ID}'")
             modelscope_client = OpenAI(
                 base_url=MODEL_SCOPE_BASE_URL,
                 api_key=MODEL_SCOPE_API_KEY,
@@ -267,11 +271,17 @@ async def _call_modelscope_api(Logger, prompt: str) -> str:
             return ""
             
     current_delay = INITIAL_DELAY_SECONDS
-    for attempt in range(MAX_RETRIES):
+    current_model_idx = 0
+    max_total_attempts = MAX_RETRIES * len(MODEL_CANDIDATES)
+
+    for attempt in range(max_total_attempts):
+        target_model = MODEL_CANDIDATES[current_model_idx]
         try:
-            Logger.log_to_frontend(f" - ModelScope API を呼び出し中 (試行 {attempt + 1}/{MAX_RETRIES})...")
-            response = modelscope_client.chat.completions.create(
-                model=MODEL_SCOPE_MODEL_ID,
+            Logger.log_to_frontend(f" - ModelScope API を呼び出し中 (モデル: {target_model})...")
+            
+            response = await asyncio.to_thread(
+                modelscope_client.chat.completions.create,
+                model=target_model,
                 messages=[{
                     'role': 'user',
                     'content': [{'type': 'text', 'text': prompt}],
@@ -280,22 +290,33 @@ async def _call_modelscope_api(Logger, prompt: str) -> str:
                 extra_body={"enable_thinking": False}
             )
 
-            full_response_content = ""
-            if isinstance(response, object) and hasattr(response, 'choices'):
+            if hasattr(response, 'choices') and response.choices:
+                full_response_content = ""
                 for choice in response.choices:
                     if hasattr(choice.message, 'content') and choice.message.content:
                         full_response_content += choice.message.content
-            return full_response_content.strip()
+                return full_response_content.strip()
+            else:
+                raise ValueError("Invalid response structure or empty choices")
 
         except Exception as e:
-            Logger.log_to_frontend(f" - ❌ ModelScope API 呼び出し失敗: {e}")
-            if attempt < MAX_RETRIES - 1:
-                Logger.log_to_frontend(f" - {current_delay} 秒後にリトライします...")
-                await asyncio.sleep(current_delay)
-                current_delay *= 2
+            error_str = str(e)
+            if "429" in error_str or "Rate limit" in error_str or "quota" in error_str.lower():
+                next_idx = (current_model_idx + 1) % len(MODEL_CANDIDATES)
+                next_model = MODEL_CANDIDATES[next_idx]
+                
+                Logger.log_to_frontend(f"[STATUS_MSG]現在のモデル [{target_model}] の利用枠が上限に達しました。[{next_model}] に切り替えています...")
+                current_model_idx = next_idx
+                continue
             else:
-                Logger.log_to_frontend(f"❌ 最大リトライ回数に達しました。ModelScope API の呼び出しを中止します。")
-                return ""
+                Logger.log_to_frontend(f" - ❌ ModelScope API 呼び出し失敗: {e}")
+                if attempt < max_total_attempts - 1:
+                    Logger.log_to_frontend(f" - {current_delay} 秒後にリトライします...")
+                    await asyncio.sleep(current_delay)
+                    current_delay *= 2
+                else:
+                    Logger.log_to_frontend(f"❌ 最大リトライ回数に達しました。ModelScope API の呼び出しを中止します。")
+                    return ""
     return ""
 
 
