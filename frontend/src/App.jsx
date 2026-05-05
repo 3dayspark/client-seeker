@@ -423,6 +423,9 @@ function App() {
   const messagesEndRef = useRef(null); 
   const messagesStartRef = useRef(null); 
 
+  // バックエンドから受け取る動的なサジェストプロンプト
+  const [dynamicPrompts, setDynamicPrompts] = useState([]);
+
   // 初期化：セッションが存在しない場合は新規作成
   useEffect(() => {
     if (sessions.length === 0) {
@@ -606,12 +609,16 @@ useEffect(() => {
     
     // タイトル生成（新規セッションの最初の発言時）
     if (messages.length === 0) {
-      setSessions(prev => prev.map(s => s.id === currentSessionId ? { ...s, title: promptText.slice(0, 10) + '...' } : s));
-      generateTitleWithLLM(promptText, currentSessionId);
+      const firstLine = promptText.split('\n').find(line => line.trim().length > 0) || promptText;
+      const newTitle = firstLine.length > 15 ? firstLine.slice(0, 15) + '...' : firstLine;
+      setSessions(prev => prev.map(s => s.id === currentSessionId ? { ...s, title: newTitle } : s));
     }
 
     setMessages((prev) => [...prev, userMessage]);
     if (!isStringOverride) setUserInput(''); 
+    
+    // 送信時に動的プロンプトをリセット
+    setDynamicPrompts([]);
 
     setIsLoading(true);
     setAiState('thinking'); 
@@ -656,6 +663,17 @@ useEffect(() => {
             
             if (logLine === "---END_OF_STREAM---") {
                 break;
+            }
+
+            // サジェストプロンプトの受信処理
+            if (logLine.startsWith('[SUGGEST_PROMPTS]')) {
+              const jsonStr = logLine.replace('[SUGGEST_PROMPTS]', '');
+              try {
+                  setDynamicPrompts(JSON.parse(jsonStr));
+              } catch (e) {
+                  console.error("Suggest Prompts JSON Error", e);
+              }
+              continue;
             }
 
             // --- ステータスメッセージの処理 ---
@@ -769,7 +787,7 @@ useEffect(() => {
              }
              return msg;
           }));
-          setMessages(prev => [...prev, { sender: AI_ASSISTANT_NAME, text: "スクリーニング条件の生成が完了しました。上のレポートをご確認ください。条件の変更や追加の指示があれば、お知らせください。", type: 'text' }]);
+          setMessages(prev => [...prev, { sender: AI_ASSISTANT_NAME, text: "申し訳ございません。クラウドサーバーが中国以外のIPのため、中国の法規制により現在本サイトでの検索はご利用いただけません。早急に対応いたします。", type: 'text' }]);
       }
 
     } catch (error) {
@@ -966,7 +984,7 @@ return (
               </div>
               <div className="feature-card">
                 <img src={ICON_SEARCH} alt="Search" className="feature-icon-img" />
-                <h3 className="feature-title">高度なスクリーニング</h3>
+                <h3 className="feature-title">自動化スクリーニング</h3>
                 <p className="feature-desc">定義した顧客像に基づき、B2B企業データベースから条件に合致する企業を自動検索・抽出します。</p>
               </div>
               <div className="feature-card">
@@ -975,6 +993,23 @@ return (
                 <p className="feature-desc">社内DB上の商談履歴を分析し、既存の顧客関係から新たなアプローチのヒントを導き出します。</p>
               </div>
             </div>
+
+            {/* RAGドキュメント一覧 */}
+            <div className="rag-docs-container">
+              <div className="rag-docs-title">現在ナレッジベースに格納されているドキュメント</div>
+              <div className="rag-docs-list">
+                <span className="rag-doc-tag">中国・華南地域の水素燃料電池産業の最新動向</span>
+                <span className="rag-doc-tag">中国経済と日本企業2025年白書</span>
+                <span className="rag-doc-tag">太陽光発電企業サプライチェーン計画および統合計画レポート</span>
+                <span className="rag-doc-tag">全国工作機械産業チェーン地域別概況.xlsx</span>
+                <span className="rag-doc-tag">広州美容産業チェーンインサイトレポート.pdf</span>
+                <span className="rag-doc-tag">自動車ガラス産業チェーンの深い解析とビジネスチャンス開拓ガイド.txt</span>
+                <span className="rag-doc-tag">人型ロボット産業チェーンの深い解析とビジネスチャンス開拓ガイド.txt</span>
+              </div>
+            </div>
+
+
+
           </div>
          
           {messages.length > 0 && (
@@ -1178,7 +1213,7 @@ return (
                                   {/* 実行ボタン */}
                                   <button 
                                       className="proposal-btn"
-                                      onClick={() => handleSendMessage("条件を確認しました。高度なスクリーニングを開始してください。")}
+                                      onClick={() => handleSendMessage("条件を確認しました。自動スクリーニングを開始します。")}
                                       disabled={isLoading}
                                   >
                                       条件を確定して検索開始
@@ -1250,10 +1285,10 @@ return (
       </div> 
 
       <div className="input-section-wrapper">
-        {/* メッセージが空の時だけ、クイックプロンプトを表示 */}
-        {messages.length === 0 && (
+        {/* メッセージが空の時、または動的プロンプトがある時にクイックプロンプトを表示 */}
+        {(messages.length === 0 || dynamicPrompts.length > 0) && (
           <div className="quick-prompts-container">
-            {QUICK_PROMPTS.map((prompt, idx) => (
+            {(messages.length === 0 ? QUICK_PROMPTS : dynamicPrompts).map((prompt, idx) => (
               <button 
                 key={idx} 
                 className="quick-prompt-btn"

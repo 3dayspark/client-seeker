@@ -75,6 +75,14 @@ MODEL_SCOPE_MODEL_ID = playwright_test.MODEL_SCOPE_MODEL_ID
 GEMINI_API_KEYS = playwright_test.GEMINI_API_KEYS
 GEMINI_API_URL = playwright_test.GEMINI_API_URL
 USE_GEMINI_AS_LLM = False
+MODEL_CANDIDATES =[
+    "Qwen/Qwen3-235B-A22B-Instruct-2507",
+    "deepseek-ai/DeepSeek-V4-Flash",
+    "Qwen/Qwen3-235B-A22B",
+    "MiniMax/MiniMax-M2.7"
+]
+current_model_index = 0  # 状態保持用グローバル変数
+
 
 # --- RAG制御用グローバルスイッチ ---
 
@@ -337,7 +345,7 @@ async def _verify_rag_result(query: str, rag_text: str) -> dict:
 
 
 # --- 補助関数: LLM 呼び出し (Master Brain) ---
-async def _call_master_llm(prompt: str, history: List[Dict[str, str]]) -> str:
+async def _call_master_llm(prompt: str, history: List[Dict[str, str]], model_id: str) -> str:
     """
     LLM を呼び出して応答を生成します。履歴をプロンプトに統合します。
     """
@@ -374,7 +382,7 @@ async def _call_master_llm(prompt: str, history: List[Dict[str, str]]) -> str:
         try:
             response = await asyncio.to_thread(
                 modelscope_client.chat.completions.create,
-                model=MODEL_SCOPE_MODEL_ID,
+                model=model_id, 
                 messages=[{'role': 'user', 'content': full_prompt}],
                 stream=False,
                 extra_body={"enable_thinking": False}
@@ -383,7 +391,7 @@ async def _call_master_llm(prompt: str, history: List[Dict[str, str]]) -> str:
                 return response.choices[0].message.content.strip()
         except Exception as e:
             logger.error(f"ModelScope Call Error: {e}")
-            return f"Error calling ModelScope: {e}"
+            raise e # 呼び出し側でリトライできるように例外を投げる
 
     # Gemini の呼び出し
     elif USE_GEMINI_AS_LLM and gemini_api_key_pool:
@@ -617,14 +625,43 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
     current_turn = 0
 
+    has_proposed = False
+    has_searched_db = False
+
     while current_turn < MAX_TURNS:
         current_turn += 1
 
         # --- LLM 呼び出し ---
-        llm_response = await _call_master_llm(system_instruction, history)
-        logger.info(f"Turn {current_turn} LLM Response: {llm_response}")
+        llm_response = None
+        global current_model_index
 
-        # エージェント自身の発言として履歴に記録（思考・行動の文脈維持）
+        for attempt in range(len(MODEL_CANDIDATES)):
+            target_model = MODEL_CANDIDATES[current_model_index]
+            try:
+                llm_response = await _call_master_llm(system_instruction, history, target_model)
+                break  # 成功したら抜ける
+            except Exception as e:
+                error_str = str(e)
+                # 429エラーやQuotaの制限を検知
+                if "429" in error_str or "Rate limit" in error_str or "quota" in error_str.lower():
+                    next_idx = (current_model_index + 1) % len(MODEL_CANDIDATES)
+                    next_model = MODEL_CANDIDATES[next_idx]
+                    
+                    yield f"data: [STATUS_MSG]現在のモデル [{target_model}] の利用枠が上限に達しました。[{next_model}] に切り替えています...\n\n"
+                    
+                    current_model_index = next_idx
+                    if attempt == len(MODEL_CANDIDATES) - 1:
+                        # 全てのモデルで失敗
+                        yield f"data: [TEXT_RESPONSE]申し訳ありません。現在すべてのモデルが1日の利用枠に達したため、回答を生成できません。\n\n"
+                        yield "data: ---END_OF_STREAM---\n\n"
+                        return
+                else:
+                    # その他のエラー
+                    yield f"data: [TEXT_RESPONSE]エラーが発生しました: {error_str}\n\n"
+                    yield "data: ---END_OF_STREAM---\n\n"
+                    return
+
+        # エージェント自身の発言として履歴に記録
         history.append({"role": "assistant", "content": llm_response})
 
         # --- 解析 ---
@@ -645,6 +682,29 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
         if thought:
             yield f"data: [Thinking] {thought}\n\n"
+
+
+        # ストリームを閉じて終了する前に、動的プロンプトを判定して送るヘルパー関数
+        def get_suggested_prompts():
+            if has_searched_db:
+                return[
+                    {"label": "連絡先を教えて", "text": "この会社の連絡先を教えていただけますか？"},
+                    {"label": "携帯番号ありのみ抽出", "text": "今の条件で、携帯番号のデータが入っている企業だけを抽出してください。"},
+                    {"label": "9000万円超＆2024年以降", "text": "商談金額9,000万円超かつ最終接触日が2024年以降の顧客を抽出してください。"}
+                ]
+            elif has_proposed:
+                return[
+                    {"label": "類似の既存顧客を検索", "text": "この顧客プロファイルに最も当てはまりそうな、データベース内の既存顧客を教えていただけますか？"},
+                    {"label": "DB内の業界から顧客を検索", "text": "この顧客プロファイルに一番当てはまりそうな、当社の既存顧客を教えてください。（まずデータベース内の顧客の業界をすべて確認してください）"}
+                ]
+            else:
+                return[
+                    {"label": "南部・優良自動車メーカー", "text": "中国南部地域に位置し、経営状態が良好で生産規模が大きく、高年商かつ信用リスクの低い自動車メーカー"},
+                    {"label": "上海・深センの資金力のある企業", "text": "エリアは主に上海と深センです。経営状態が良好で、資金力が豊富な企業を希望します。業界については、先ほどの例の通りでお願いします。"}
+                ]
+
+
+
 
         # --- アクション分岐 ---
 
@@ -671,6 +731,12 @@ async def run_master_agent_flow(session_id: str, user_message: str):
 
             # フロントエンドへの表示用
             yield f"data: [TEXT_RESPONSE]{clean_text.replace('\n', '\\n')}\n\n"
+            
+            # ストリームを閉じる直前にサジェストプロンプトを送信
+            suggests = json.dumps(get_suggested_prompts(), ensure_ascii=False)
+            yield f"data:[SUGGEST_PROMPTS]{suggests}\n\n"
+            
+            
             yield "data: ---END_OF_STREAM---\n\n"
             return  # ユーザー入力待ちへ
 
@@ -912,6 +978,11 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             else:
                 history.append({"role": "tool", "content": "スクリーニングが終了しましたが、レポートは生成されませんでした。エラーログを確認してください。"})
 
+
+            # ストリームを閉じる直前にサジェストプロンプトを送信
+            suggests = json.dumps(get_suggested_prompts(), ensure_ascii=False)
+            yield f"data: [SUGGEST_PROMPTS]{suggests}\n\n"
+
             yield "data: ---END_OF_STREAM---\n\n"
             return  # ツール実行完了で終了
 
@@ -938,6 +1009,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
    
         # CASE 5: semantic_search
         elif action == "semantic_search":
+            has_searched_db = True 
             table_name = params.get("table_name", "companies")
             query_text = params.get("query_text", "")
             
@@ -960,6 +1032,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
         
         # CASE 6: 社内データベース検索
         elif action == "search_internal_crm":
+            has_searched_db = True
             sql_query = params.get("sql_query", "")
             
             # --- スキーマ確認クエリかどうかの判定 ---
@@ -1035,8 +1108,9 @@ First 5 rows preview:
 
             history.append({"role": "tool", "content": tool_msg})
             continue
-        # CASE 5: スクリーニング条件の提案 
+        # CASE 7: スクリーニング条件の提案 
         elif action == "propose_screening_condition":
+            has_proposed = True
             # パラメータの抽出
             p_guidance = params.get("guidance_text", "")
             p_regions = params.get("regions", [])
@@ -1076,6 +1150,11 @@ First 5 rows preview:
             
             # LLMの履歴にも自身が発言したこととして記録（一貫性維持のため）
             history.append({"role": "assistant", "content": clean_follow_up})
+            
+            # ストリームを閉じる直前にサジェストプロンプトを送信
+            suggests = json.dumps(get_suggested_prompts(), ensure_ascii=False)
+            yield f"data:[SUGGEST_PROMPTS]{suggests}\n\n"
+            
             # ここで一旦ストリームを終了し、ユーザーの入力を待つ
             yield "data: ---END_OF_STREAM---\n\n"
             return

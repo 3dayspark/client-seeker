@@ -2142,3 +2142,44 @@
   }
 
 
+/* ==========================================================================
+   RAGドキュメント一覧用スタイル
+   ========================================================================== */
+   .rag-docs-container {
+    margin-top: 32px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .rag-docs-title {
+    font-size: 0.9em;
+    color: #6a737d;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  
+  .rag-docs-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .rag-doc-tag {
+    background-color: #f6f8fa;
+    color: #4a5568;
+    border: 1px solid #d1d5da;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.8em;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    transition: all 0.2s;
+    cursor: default;
+  }
+  
+  .rag-doc-tag:hover {
+    background-color: #e1e4e8;
+    border-color: #c6cbd1;
+  }
