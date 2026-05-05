@@ -144,6 +144,7 @@ rag_index = build_or_load_index()
 def extract_json_from_text(text: str) -> Dict[str, Any]:
     """
     LLMの回答からJSONブロックを抽出し、構文エラー（特に改行コード）を強力に自動修復してパースします。
+    末尾の余分な「}」やゴミ文字にも対応します。
     """
     try:
         # 1. Markdownのコードブロック記法を除去
@@ -151,21 +152,16 @@ def extract_json_from_text(text: str) -> Dict[str, Any]:
         text = re.sub(r'```', '', text)
         text = text.strip()
 
-        # 2. 最初に見つかった { ... } のペアを探す (最長一致)
-        # 単純なregexではなく、ネストに対応した簡易抽出、または単純に { で始まり } で終わる範囲を探す
+        # 2. 最初に見つかった { を探す (rfind は使わない)
         start_idx = text.find('{')
-        end_idx = text.rfind('}')
-        
-        if start_idx != -1 and end_idx != -1:
-            json_str = text[start_idx : end_idx + 1]
-        else:
-            json_str = text
+        if start_idx == -1:
+            return None
+
+        # { から最後までの文字列を切り出す
+        json_str = text[start_idx:]
 
         # 3. JSON文字列内の「不正な改行」を「\\n」に置換する処理
-        # JSONの仕様では、ダブルクォートで囲まれた文字列の中で生の改行は許されないため、
-        # これを検知してエスケープします。
-        
-        new_chars = []
+        new_chars =[]
         in_string = False
         escape = False
         
@@ -181,7 +177,6 @@ def extract_json_from_text(text: str) -> Dict[str, Any]:
                 new_chars.append('\\n')
                 escape = False
             elif in_string and char == '\r':
-                # \r は無視するかスペースにする
                 pass 
                 escape = False
             elif in_string and char == '\t':
@@ -194,19 +189,37 @@ def extract_json_from_text(text: str) -> Dict[str, Any]:
         
         json_str_clean = "".join(new_chars)
 
-        return json.loads(json_str_clean)
+        # 4. raw_decodeを使用して最初の有効なJSONオブジェクトを抽出
+        # これにより、末尾に多重の「}」やテキストが混ざっていても無視してパースできます。
+        decoder = json.JSONDecoder()
+        obj, _ = decoder.raw_decode(json_str_clean)
+        
+        return obj
 
     except json.JSONDecodeError as e:
         logger.warning(f"JSON Parse Error: {e} | Raw: {text[:100]}...")
-        # 最後の手段：改行をすべて消してトライしてみる（整形崩れるが動作優先）
+        # 最後の手段1：制御文字を削除してraw_decode
         try:
-             # 簡易的な修復：制御文字を削除
-             simple_clean = re.sub(r'[\x00-\x1f]', ' ', text)
-             match = re.search(r'(\{[\s\S]*\})', simple_clean)
-             if match:
-                 return json.loads(match.group(1))
+            simple_clean = re.sub(r'[\x00-\x1f]', ' ', text[start_idx:])
+            obj, _ = json.JSONDecoder().raw_decode(simple_clean)
+            return obj
         except:
             pass
+            
+        # 最後の手段2：強引に後ろから「}」を削りながらトライ
+        try:
+            temp_str = json_str_clean
+            while temp_str.rfind('}') != -1:
+                # 最後の } の位置で切り取る
+                temp_str = temp_str[:temp_str.rfind('}') + 1]
+                try:
+                    return json.loads(temp_str)
+                except:
+                    # 失敗したら最後の } を削って次へ
+                    temp_str = temp_str[:-1]
+        except:
+            pass
+            
         return None
     except Exception as e:
         logger.error(f"Extract Error: {e}")
