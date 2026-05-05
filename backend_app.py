@@ -624,6 +624,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
     回答テキストには、「*」の記号を含めないようにしてください。
     """
 
+    yield ":\n\n"  # SSE keep-alive
     yield f"data: [Thinking] エージェントが思考を開始しました...\n\n"
 
     current_turn = 0
