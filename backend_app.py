@@ -70,7 +70,7 @@ app.add_middleware(
 # --- 定数・設定 (playwright_test.pyの設定を利用) ---
 MODEL_SCOPE_API_KEY = playwright_test.MODEL_SCOPE_API_KEY
 MODEL_SCOPE_BASE_URL = playwright_test.MODEL_SCOPE_BASE_URL
-MODEL_SCOPE_MODEL_ID = playwright_test.MODEL_SCOPE_MODEL_ID
+
 
 GEMINI_API_KEYS = playwright_test.GEMINI_API_KEYS
 GEMINI_API_URL = playwright_test.GEMINI_API_URL
