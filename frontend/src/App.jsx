@@ -12,6 +12,7 @@ const USER_NAME = "自分";
 // import文でローカル画像を読み込んで指定してください（例: import aiAvatar from './assets/ai-avatar.png'）
 const AI_AVATAR = `https://img.icons8.com/?size=100&id=XY6XVIE2E3ig&format=png&color=007bff`;
 const USER_AVATAR = `https://img.icons8.com/?size=100&id=6pZID8Z263Q9&format=png&color=007bff`;
+const THINKING_ICON = `https://img.icons8.com/?size=100&id=102555&format=png&color=888888`;
 
 // 【カスタマイズ: 機能紹介アイコン】
 // ウェルカム画面の3つの機能アイコン用画像URL
@@ -1279,14 +1280,33 @@ return (
               <div className="avatar" style={{ backgroundImage: `url(${AI_AVATAR})` }}></div>
               <div className="message-content">
                    <div className="message-bubble ai">
-                       <span className="thinking-text">考え中...</span>
+                       <span>考え中...</span>
                    </div>
               
                    {thinkingText && (
-                       <div style={{ marginTop: '6px', marginLeft: '8px', fontSize: '0.85em', color: '#888', maxWidth: '85%' }}>
-                           <span className="thinking-text" style={{ fontStyle: 'normal' }}>└ {thinkingText}</span>
-                       </div>
-                   )}
+    <div style={{ 
+        marginTop: '12px', 
+        marginLeft: '4px', 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: '6px', 
+        maxWidth: '90%' 
+    }}>
+        <div style={{
+            width: '18px', 
+            height: '18px', 
+            backgroundImage: `url(${THINKING_ICON})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            flexShrink: 0,
+            opacity: 0.7 
+        }}></div>
+        <div style={{ fontSize: '0.85em', color: '#888', lineHeight: '1.4' }}>
+            <span className="thinking-text" style={{ fontStyle: 'normal' }}>{thinkingText}</span>
+        </div>
+    </div>
+)}
               </div>
           </div>
       )}

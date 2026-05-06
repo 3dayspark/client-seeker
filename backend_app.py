@@ -861,13 +861,22 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                         )
                     
                     rag_task = asyncio.create_task(asyncio.to_thread(sync_rag_run))
+                    queue_task = asyncio.create_task(session_log_queue.get())
+
                     while True:
-                        queue_task = asyncio.create_task(session_log_queue.get())
+                        done, pending = await asyncio.wait(
+                            {queue_task, rag_task}, 
+                            return_when=asyncio.FIRST_COMPLETED, 
+                            timeout=15.0 
+                        )
                         
-                        done, pending = await asyncio.wait({queue_task, rag_task}, return_when=asyncio.FIRST_COMPLETED)
-                        
+                        if not done:
+                            yield ": keep-alive heartbeat\n\n"
+                            continue
+                            
                         if queue_task in done:
-                            yield queue_task.result()  
+                            yield queue_task.result()
+                            queue_task = asyncio.create_task(session_log_queue.get())
                             
                         if rag_task in done:
                             if queue_task in pending:
@@ -916,12 +925,22 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                     )
                     
                 rag_task = asyncio.create_task(asyncio.to_thread(sync_rag_run))
+                queue_task = asyncio.create_task(session_log_queue.get())
+
                 while True:
-                    queue_task = asyncio.create_task(session_log_queue.get())
-                    done, pending = await asyncio.wait({queue_task, rag_task}, return_when=asyncio.FIRST_COMPLETED)
+                    done, pending = await asyncio.wait(
+                        {queue_task, rag_task}, 
+                        return_when=asyncio.FIRST_COMPLETED, 
+                        timeout=15.0  
+                    )
                     
+                    if not done:
+                        yield ": keep-alive heartbeat\n\n"
+                        continue
+                        
                     if queue_task in done:
                         yield queue_task.result()
+                        queue_task = asyncio.create_task(session_log_queue.get())
                         
                     if rag_task in done:
                         if queue_task in pending:
