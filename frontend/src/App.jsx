@@ -12,7 +12,7 @@ const USER_NAME = "自分";
 // import文でローカル画像を読み込んで指定してください（例: import aiAvatar from './assets/ai-avatar.png'）
 const AI_AVATAR = `https://img.icons8.com/?size=100&id=XY6XVIE2E3ig&format=png&color=007bff`;
 const USER_AVATAR = `https://img.icons8.com/?size=100&id=6pZID8Z263Q9&format=png&color=007bff`;
-const THINKING_ICON = `https://img.icons8.com/?size=100&id=102555&format=png&color=888888`;
+const THINKING_ICON = `https://img.icons8.com/?size=100&id=9Upks1A4mqpl&format=png&color=888888`;
 
 // 【カスタマイズ: 機能紹介アイコン】
 // ウェルカム画面の3つの機能アイコン用画像URL
@@ -1290,7 +1290,7 @@ return (
         display: 'flex', 
         alignItems: 'center', 
         gap: '6px', 
-        maxWidth: '90%' 
+        // maxWidth: '90%' 
     }}>
         <div style={{
             width: '18px', 
