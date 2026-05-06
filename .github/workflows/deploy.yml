@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main  
+    paths-ignore:
+      - 'frontend/**'   
+      - '**.md'         
+      - '.github/workflows/deploy.yml'
+      - '.github/workflows/deploy-frontend.yml'
 
 jobs:
   deploy:
