@@ -1292,16 +1292,22 @@ return (
         gap: '6px'
         // maxWidth: '90%' 
     }}>
-        <div style={{
-            width: '18px', 
-            height: '18px', 
-            backgroundImage: `url(${THINKING_ICON})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            flexShrink: 0,
-            opacity: 0.5 
-        }}></div>
+        <div 
+            className="thinking-icon" 
+            style={{
+                width: '18px', 
+                height: '18px', 
+                WebkitMaskImage: `url(${THINKING_ICON})`,
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'center',
+                maskImage: `url(${THINKING_ICON})`,
+                maskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                flexShrink: 0
+            }}
+        ></div>
         <div style={{ fontSize: '0.85em', color: '#888', lineHeight: '1.4' }}>
             <span className="thinking-text" style={{ fontStyle: 'normal' }}>{thinkingText}</span>
         </div>

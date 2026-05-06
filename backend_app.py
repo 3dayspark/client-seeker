@@ -648,7 +648,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
     """
 
     yield ":\n\n"  # SSE keep-alive
-    yield f"data: [Thinking] エージェントが思考を開始しました...\n\n"
+    yield f"data: [Thinking] 思考中です…\n\n"
 
     current_turn = 0
     has_proposed = False
@@ -1157,7 +1157,7 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                 # 通常の検索
                 yield f"data: [STATUS_MSG]条件に基づいて社内データベースを検索中...\n\n"
             
-            yield f"data: [Thinking] Database Querying...\n\n"
+            yield f"data: [Thinking] データベース検索中…\n\n"
 
             # SQL実行
             db_results = await execute_raw_sql(sql_query)
