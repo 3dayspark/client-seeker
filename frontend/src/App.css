@@ -2240,7 +2240,7 @@
   
   .thinking-text {
     color: #888;
-    animation: ambientPulse 2s ease-in-out infinite;
+    animation: ambientPulse 1s ease-in-out infinite;
     font-weight: 500;
     letter-spacing: 0.05em;
   }
@@ -2248,5 +2248,5 @@
   .thinking-icon {
     background-color: #888;
     display: inline-block;
-    animation: ambientPulse 2s ease-in-out infinite;
+    animation: ambientPulse 1s ease-in-out infinite;
   }

@@ -79,6 +79,8 @@ MODEL_CANDIDATES =[
     "deepseek-ai/DeepSeek-V4-Flash",
     "Qwen/Qwen3-235B-A22B-Instruct-2507",
     "Qwen/Qwen3-235B-A22B",
+    "Qwen/Qwen3-235B-A22B-Thinking-2507",
+    "Qwen/Qwen3-Coder-480B-A35B-Instruct",
     "ZhipuAI/GLM-4.7",
     "MiniMax/MiniMax-M2.5"
 ]
