@@ -299,7 +299,8 @@ def query_knowledge_base(
     top_k_retrieval: int = 30, 
     top_k_final: int = 7,      
     bm25_weight: float = 0.5,
-    debug_mode: bool = True
+    debug_mode: bool = True,
+    progress_callback = None
 ) -> Tuple[str, List[str], List[str]]:
     if index is None: return "（ナレッジベース未初期化）", [], []
 
@@ -309,8 +310,13 @@ def query_knowledge_base(
             tokens = chinese_tokenizer(query_text)
             logger.info(f"🔎 Query Tokens: {tokens}")
 
+        
+        if progress_callback: 
+            progress_callback(f"RAG検索クエリ解析中: {query_text}")
+        
         # 0. Vector Search設定
         if target_filenames:
+            if progress_callback: progress_callback("ターゲットファイルを特定中...")
             short_node_ids = _get_target_node_ids(index, target_filenames, "short_doc")
             long_node_ids = _get_target_node_ids(index, target_filenames, "long_doc")
             
@@ -318,10 +324,12 @@ def query_knowledge_base(
             vector_retriever_long = VectorIndexRetriever(index=index, similarity_top_k=top_k_retrieval, node_ids=long_node_ids)
             if debug_mode: logger.info(f"🎯 Target Node IDs - Short: {len(short_node_ids)}, Long: {len(long_node_ids)}")
         else:
+            if progress_callback: progress_callback("全ドキュメントを対象に検索設定中...")
             vector_retriever_short = VectorIndexRetriever(index=index, similarity_top_k=top_k_retrieval, filters=MetadataFilters(filters=[ExactMatchFilter(key="doc_type", value="short_doc")]))
             vector_retriever_long = VectorIndexRetriever(index=index, similarity_top_k=top_k_retrieval, filters=MetadataFilters(filters=[ExactMatchFilter(key="doc_type", value="long_doc")]))
 
         # 1. Custom BM25 Retriever
+        if progress_callback: progress_callback("BM25（キーワード検索）の準備中...")
         bm25_nodes = []
         all_nodes_dict = index.docstore.docs
         if target_filenames:
@@ -348,6 +356,8 @@ def query_knowledge_base(
             bm25_retriever = None
 
         # 2. 検索実行
+        if progress_callback: progress_callback("ベクトル検索およびハイブリッド検索を実行中...")
+
         if debug_mode:
             try:
                 nodes_short_debug = vector_retriever_short.retrieve(query_text)
@@ -375,6 +385,8 @@ def query_knowledge_base(
         nodes = fusion_retriever.retrieve(query_text)
 
         # 3. フィルタリング
+        if progress_callback: progress_callback(f"検索結果のフィルタリング中（初期候補: {len(nodes)}件）...")
+        
         if target_filenames and nodes:
             filtered_nodes = []
             for node in nodes:
@@ -392,6 +404,7 @@ def query_knowledge_base(
         if not nodes: return "（指定ファイルに関連情報なし）", [], []
 
         # 4. Rerank
+        if progress_callback: progress_callback("Cross-Encoderによる結果のRerank（再ランク付け）処理中...")
         reranker = LocalSentenceTransformerRerank(model_name=RERANK_MODEL_NAME, top_n=top_k_final)
         reranked_nodes = reranker.postprocess_nodes(nodes, query_bundle=QueryBundle(query_text))
 
@@ -399,6 +412,7 @@ def query_knowledge_base(
         if not reranked_nodes: return "（関連ドキュメントなし）", [], []
 
         # 5. 整形
+        if progress_callback: progress_callback("最終的なコンテキストの整形・抽出中...")
         retrieved_contexts = [node.node.get_content() for node in reranked_nodes]
         result_text = ""
         hit_files = []

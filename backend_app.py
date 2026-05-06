@@ -818,6 +818,16 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             final_rag_result = ""
             final_hit_files = []
 
+            
+            loop = asyncio.get_running_loop()
+            def rag_progress_callback(msg: str):
+                try:
+                    loop.call_soon_threadsafe(session_log_queue.put_nowait, f"data: [Thinking] {msg}\n\n")
+                except Exception:
+                    pass
+            
+            
+            
             # A. 検証モード (Agentic Loop)
             if ENABLE_AGENTIC_RESULT_VERIFICATION:
                 # 既存の「検索 -> 検証 -> 除外 -> 再検索」ループロジック
@@ -842,17 +852,33 @@ async def run_master_agent_flow(session_id: str, user_message: str):
                     yield f"data: [STATUS_MSG]現在検索中…{attempt}回目の試行です。お待ちください。\n\n"
                     
                     # 検索実行
-                    rag_result, hit_files, *_ = await asyncio.to_thread(
-                        query_knowledge_base, 
-                        rag_index, 
-                        query, 
-                        target_filenames=effective_search_files if ENABLE_AGENTIC_FILE_SELECTION else None 
-                    )
-
-                    # 結果が空なら終了
-                    if not hit_files:
-                        final_rag_result = rag_result
-                        break
+                    def sync_rag_run():
+                        return query_knowledge_base(
+                            rag_index, 
+                            query, 
+                            target_filenames=effective_search_files if ENABLE_AGENTIC_FILE_SELECTION else None,
+                            progress_callback=rag_progress_callback
+                        )
+                    
+                    rag_task = asyncio.create_task(asyncio.to_thread(sync_rag_run))
+                    while True:
+                        queue_task = asyncio.create_task(session_log_queue.get())
+                        
+                        done, pending = await asyncio.wait({queue_task, rag_task}, return_when=asyncio.FIRST_COMPLETED)
+                        
+                        if queue_task in done:
+                            yield queue_task.result()  
+                            
+                        if rag_task in done:
+                            if queue_task in pending:
+                                queue_task.cancel()
+                            break
+                    
+                    
+                    while not session_log_queue.empty():
+                        yield session_log_queue.get_nowait()
+                        
+                    rag_result, hit_files, *_ = rag_task.result()
 
                     # LLMによる検証
                     verification = await _verify_rag_result(query, rag_result)
@@ -881,13 +907,31 @@ async def run_master_agent_flow(session_id: str, user_message: str):
             
             # B. 標準モード (Standard Global Search) 
             else:
-                # 1回だけ実行し、結果をそのまま受け入れる
-                rag_result, hit_files, *_ = await asyncio.to_thread(
-                    query_knowledge_base, 
-                    rag_index, 
-                    query, 
-                    target_filenames=target_files
-                )
+                def sync_rag_run():
+                    return query_knowledge_base(
+                        rag_index, 
+                        query, 
+                        target_filenames=target_files,
+                        progress_callback=rag_progress_callback
+                    )
+                    
+                rag_task = asyncio.create_task(asyncio.to_thread(sync_rag_run))
+                while True:
+                    queue_task = asyncio.create_task(session_log_queue.get())
+                    done, pending = await asyncio.wait({queue_task, rag_task}, return_when=asyncio.FIRST_COMPLETED)
+                    
+                    if queue_task in done:
+                        yield queue_task.result()
+                        
+                    if rag_task in done:
+                        if queue_task in pending:
+                            queue_task.cancel()
+                        break
+                
+                while not session_log_queue.empty():
+                    yield session_log_queue.get_nowait()
+                    
+                rag_result, hit_files, *_ = rag_task.result()
                 final_rag_result = rag_result
                 final_hit_files = hit_files
 

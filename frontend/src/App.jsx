@@ -411,6 +411,7 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const[aiState, setAiState] = useState('idle'); 
+  const [thinkingText, setThinkingText] = useState('');
   const [currentLogMessages, setCurrentLogMessages] = useState([]); 
   const [previewImage, setPreviewImage] = useState(null);
   
@@ -622,6 +623,7 @@ useEffect(() => {
 
     setIsLoading(true);
     setAiState('thinking'); 
+    setThinkingText('');
 
     let tempAiMsgId = Date.now() + 1;
     let isToolRunning = false;
@@ -729,6 +731,12 @@ useEffect(() => {
             // 1. [Thinking] マーカー
             if (logLine.startsWith('[Thinking]')) {
                 setAiState('thinking');
+                
+                const t_text = logLine.replace('[Thinking]', '').trim();
+                if (t_text) {
+                    setThinkingText(t_text);
+                }
+                
                 continue; 
             }
 
@@ -1273,6 +1281,12 @@ return (
                    <div className="message-bubble ai">
                        <span className="thinking-text">考え中...</span>
                    </div>
+              
+                   {thinkingText && (
+                       <div style={{ marginTop: '6px', marginLeft: '8px', fontSize: '0.85em', color: '#888', maxWidth: '85%' }}>
+                           <span className="thinking-text" style={{ fontStyle: 'normal' }}>└ {thinkingText}</span>
+                       </div>
+                   )}
               </div>
           </div>
       )}
