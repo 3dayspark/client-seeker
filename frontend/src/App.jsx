@@ -1285,11 +1285,11 @@ return (
               
                    {thinkingText && (
     <div style={{ 
-        marginTop: '12px', 
+        marginTop: '16px', 
         marginLeft: '4px', 
         display: 'flex', 
         alignItems: 'center', 
-        gap: '6px', 
+        gap: '6px'
         // maxWidth: '90%' 
     }}>
         <div style={{
@@ -1300,7 +1300,7 @@ return (
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             flexShrink: 0,
-            opacity: 0.7 
+            opacity: 0.5 
         }}></div>
         <div style={{ fontSize: '0.85em', color: '#888', lineHeight: '1.4' }}>
             <span className="thinking-text" style={{ fontStyle: 'normal' }}>{thinkingText}</span>
